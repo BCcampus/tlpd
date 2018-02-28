@@ -1,0 +1,30 @@
+{
+  "name": "bccampus/pro-d",
+  "description": "Theme and functionality to support Professional Development",
+  "type": "wordpress-theme",
+  "version": "0.9.6",
+  "homepage": "https://github.com/bccampus/pro-d",
+  "authors": [
+    {
+      "name": "Brad Payne",
+      "email": "brad@bradpayne.ca",
+      "homepage": "https://bradpayne.ca"
+    },
+    {
+      "name": "Alex Paredes",
+      "email": "aparedes@bccampus.ca"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^5.7",
+    "humanmade/coding-standards": "^0.2.1"
+  },
+  "scripts": {
+    "test": [
+      "@standards"
+    ],
+    "standards": [
+      "vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php ."
+    ]
+  }
+}

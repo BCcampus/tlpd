@@ -1,0 +1,1316 @@
+<?php
+/*
+|--------------------------------------------------------------------------
+| Load Composer Dependencies
+|--------------------------------------------------------------------------
+|
+|
+|
+|
+*/
+if ( file_exists( $composer = __DIR__ . '/vendor/autoload.php' ) ) {
+	require_once( $composer );
+}
+
+/*
+|--------------------------------------------------------------------------
+| Asynchronous loading js
+|--------------------------------------------------------------------------
+|
+| to improve speed of page load
+|
+|
+*/
+add_filter( /**
+ * @param $tag
+ * @param $handle
+ * @param $src
+ *
+ * @return string
+ */
+	'script_loader_tag', function ( $tag, $handle, $src ) {
+	$defer = [
+		'jquery-migrate',
+		'jquery-ui-position',
+		'jquery-ui-draggable',
+		'jquery-ui-resizable',
+		'jquery-ui-mouse',
+		'jquery-ui-menu',
+		'jquery-ui-sortable',
+		'jquery-ui-datepicker',
+		'jquery-ui-autocomplete',
+		'jquery-ui-dialog',
+		'jquery-ui-button',
+		'bp-confirm',
+		'bp-jquery-query',
+		'events-manager',
+		'jquery-mobilemenu',
+		'jquery-fitvids',
+		'modal-video',
+	];
+
+	$async = [
+		'bp-jquery-cookie',
+		'dtheme-ajax-js',
+		'wp-a11y',
+		'bp-widget-members',
+		'groups_widget_groups_list-js',
+		'joyride',
+	];
+
+	if ( in_array( $handle, $defer ) ) {
+		return "<script defer type='text/javascript' src='{$src}'></script>" . "\n";
+	}
+
+	if ( in_array( $handle, $async ) ) {
+		return "<script async type='text/javascript' src='{$src}'></script>" . "\n";
+	}
+
+	return $tag;
+}, 10, 3 );
+
+/*
+|--------------------------------------------------------------------------
+| Scripts and Styles
+|--------------------------------------------------------------------------
+|
+| Pro-d look, feel, functionality
+|
+|
+*/
+
+/**
+ * need our stylesheet to fire later than the rest
+ * in order for: now your base are belong to us
+ * infinity theme behaves differently than you would expect parent themes to act
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	wp_enqueue_style( 'pro-d', get_stylesheet_directory_uri() . '/dist/styles/main.css', array( '@:dynamic' ), '', 'screen' );
+}, 11 );
+
+/**
+ * back end, front end parity
+ */
+add_editor_style( get_stylesheet_directory_uri() . '/dist/styles/main.css' );
+
+/**
+ * Load our scripts
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	$template_dir = get_stylesheet_directory_uri();
+
+	// toss Events Manager scripts and their dependencies
+	wp_dequeue_script( 'events-manager' );
+	remove_action( 'close_body', 'cbox_theme_flex_slider_script' );
+
+	wp_enqueue_script( 'jquery-ui-draggable' );
+	wp_enqueue_script( 'markerclusterer', $template_dir . '/dist/scripts/markerclusterer.js', array(), false, true );
+
+	$script_deps = array(
+		'jquery'                 => 'jquery',
+		'jquery-ui-core'         => 'jquery-ui-core',
+		'jquery-ui-widget'       => 'jquery-ui-widget',
+		'jquery-ui-position'     => 'jquery-ui-position',
+		'jquery-ui-sortable'     => 'jquery-ui-sortable',
+		'jquery-ui-datepicker'   => 'jquery-ui-datepicker',
+		'jquery-ui-autocomplete' => 'jquery-ui-autocomplete',
+		'jquery-ui-dialog'       => 'jquery-ui-dialog',
+		'markerclusterer'        => 'markerclusterer',
+	);
+	wp_enqueue_script( 'events-manager', $template_dir . '/dist/scripts/events-manager.js', array_values( $script_deps ), isset( $EM_VERSION ) );
+	wp_enqueue_script( 'tinyscrollbar', $template_dir . '/dist/scripts/jquery.tinyscrollbar.min.js', array( 'jquery' ), '1.0', true );
+
+	// load popover only for users who aren't logged in
+	if ( ! is_user_logged_in() ) {
+		wp_enqueue_script( 'bootstrap-tooltip', $template_dir . '/dist/scripts/tooltip.js', array(), null, true );
+		wp_enqueue_script( 'bootstrap-popover', $template_dir . '/dist/scripts/popover.js', array( 'bootstrap-tooltip' ), null, true );
+		wp_enqueue_script( 'initpopover', $template_dir . '/dist/scripts/initpopover.js', array( 'bootstrap-popover' ), null, true );
+		wp_enqueue_script( 'popover-dismiss', $template_dir . '/dist/scripts/popover-dismiss.js', array( 'initpopover' ), null, true );
+	}
+
+	wp_enqueue_script( 'bootstrap-script', $template_dir . '/dist/scripts/bootstrap.min.js', array(), null, true );
+	wp_enqueue_style( 'bootstrap-style', $template_dir . '/dist/styles/bootstrap.min.css' );
+	wp_enqueue_script( 'modal-video', $template_dir . '/dist/scripts/modal-video.js', array( 'jquery' ), null, true );
+
+	// load styling for datepicker in pro-d profile page only
+	if ( function_exists( 'bp_is_my_profile()' ) ) {
+		if ( bp_is_my_profile() ) {
+			wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
+		}
+	}
+
+	if ( is_front_page() ) {
+		wp_enqueue_script( 'jquery-tabs', $template_dir . '/dist/scripts/tabs.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+	}
+
+	if ( is_singular( 'event' ) ) {
+		wp_enqueue_style( 'banner', $template_dir . '/dist/styles/event.css' );
+	}
+
+	if ( is_page( 'edit-events' ) || is_page( 'post-event' ) ) {
+		wp_enqueue_style( 'media-manager', $template_dir . '/dist/styles/media.css' );
+	}
+
+}, 10 );
+
+/*
+|--------------------------------------------------------------------------
+| Admin Styles
+|--------------------------------------------------------------------------
+|
+| for admin pages only
+|
+|
+*/
+
+add_action( 'admin_enqueue_scripts', function () {
+	wp_enqueue_style( 'prod_admin_css', get_stylesheet_directory_uri() . '/dist/styles/admin.css', false, false, 'screen' );
+} );
+
+// remove from parent theme
+remove_action( 'wp_head', 'infinity_custom_favicon' );
+
+/*
+|--------------------------------------------------------------------------
+| Common
+|--------------------------------------------------------------------------
+|
+|
+*/
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 100, 100 );
+
+/*
+|--------------------------------------------------------------------------
+| Maps
+|--------------------------------------------------------------------------
+|
+| Hijacks files from events-manager plugin
+|
+|
+*/
+if ( function_exists( 'em_content' ) ) {
+	remove_filter( 'the_content', 'em_content' );
+}
+
+if ( function_exists( 'em_content' ) ) {
+	remove_filter( 'init', 'em_init_actions' );
+}
+include( get_stylesheet_directory() . '/pro-d-actions.php' );
+include( get_stylesheet_directory() . '/pro-d-events.php' );
+
+/*
+|--------------------------------------------------------------------------
+| Events Manager
+|--------------------------------------------------------------------------
+|
+| Creates a new scope for the events manager short code, and then registers it with events manager.
+| It will only lists events with a date greater than today's.
+|
+|
+*/
+
+/**
+ *
+ * @param $conditions
+ * @param $args
+ *
+ * @return mixed
+ */
+function prod_em_scope_conditions( $conditions, $args ) {
+	if ( ! empty( $args['scope'] ) && $args['scope'] == 'after-today' ) {
+		$current_date        = date( 'Y-m-d', current_time( 'timestamp' ) );
+		$conditions['scope'] = " (event_start_date > CAST('$current_date' AS DATE))";
+	}
+
+	return $conditions;
+}
+
+add_filter( 'em_events_build_sql_conditions', 'prod_em_scope_conditions', 1, 2 );
+
+
+/**
+ *
+ * @param $scopes
+ *
+ * @return array
+ */
+function prod_em_scopes( $scopes ) {
+	$my_scopes = array(
+		'after-today' => 'After Today',
+	);
+
+	return $scopes + $my_scopes;
+}
+
+add_filter( 'em_get_scopes', 'prod_em_scopes', 1, 1 );
+
+/*
+|--------------------------------------------------------------------------
+| Login customization
+|--------------------------------------------------------------------------
+|
+|
+|
+|
+*/
+
+/**
+ * Custom stylesheet enqueued at login page
+ */
+add_action( 'login_enqueue_scripts', function () {
+	wp_enqueue_style( 'custom-login', get_stylesheet_directory_uri() . '/dist/styles/login.css' );
+} );
+
+/**
+ * Link logo image to our home_url instead of WordPress.org
+ *
+ * @return string|void
+ */
+add_filter( 'login_headerurl', function () {
+	return home_url();
+} );
+
+/**
+ * Give the image our sites name
+ *
+ * @return string|void
+ */
+add_filter( 'login_headertitle', function () {
+	return get_bloginfo( 'name' );
+} );
+
+/**
+ * Add custom text to login form
+ *
+ * @param $message
+ *
+ * @return string
+ */
+function prod_login_message( $message ) {
+	if ( empty( $message ) ) {
+		$imgdir = get_stylesheet_directory_uri();
+		$html   = '<p class="login-logo"><picture><source srcset="' . $imgdir . '/dist/images/pro-d-logo-small.webp" type="image/webp"><source srcset="' . $imgdir . '/dist/images/pro-d-logo-small.png"><img src="' . $imgdir . '/dist/images/pro-d-logo-small.png" width="101" height="92" alt="BC Provincial Government"></picture></p>';
+		$html   .= '<p class="logintext">Log in To Your pro-d Account</p>';
+		echo $html;
+	} else {
+		return $message;
+	}
+}
+
+add_filter( 'login_message', 'prod_login_message' );
+
+/**
+ * Adds Sign Up button and Forgot lost password link
+ */
+function prod_login_form() {
+	$html = '<p class="signuptext">New to pro-d?</p><p><a class ="button button-primary button-large signup" href="' . home_url() . '/sign-up" title="Sign Up">Sign Up</a></p>';
+	$html .= '&nbsp; &#45; &nbsp;<a class ="forgot" href="' . wp_lostpassword_url() . '" title="Lost Password">Forgot Password?</a>';
+
+	echo $html;
+}
+
+add_action( 'login_form', 'prod_login_form' );
+
+/*
+|--------------------------------------------------------------------------
+| Excerpt
+|--------------------------------------------------------------------------
+|
+| Filter the read more ...
+|
+|
+*/
+
+/**
+ * @param $more
+ *
+ * @return string
+ */
+function prod_read_more( $more ) {
+	global $post;
+
+	return ' <a href="' . get_the_permalink( $post->ID ) . '">...[Read full article]</a>';
+}
+
+add_filter( 'excerpt_more', 'prod_read_more' );
+
+/*
+|--------------------------------------------------------------------------
+| Labels/Localization
+|--------------------------------------------------------------------------
+|
+| Addin' sum canadiana to this here 'merican plugin
+|
+|
+*/
+
+function prod_get_provinces() {
+	$provinces = array(
+		'Alberta',
+		'British Columbia',
+		'Manitoba',
+		'New Brunswick',
+		'Newfoundland',
+		'Northwest Territories',
+		'Nova Scotia',
+		'Nunavut',
+		'Ontario',
+		'Prince Edward Island',
+		'Quebec',
+		'Saskatchewan',
+		'Yukon',
+	);
+
+	return $provinces;
+}
+
+
+/**
+ * Runs once to set up defaults
+ * increase variable $prod_version to ensure it runs again
+ */
+function prod_run_once() {
+
+	// change prod_version value to run it again
+	$prod_version        = 6.7;
+	$current_version     = get_option( 'prod_version', 0 );
+	$img_max_dimension   = 1000;
+	$img_min_dimension   = 50;
+	$img_max_size        = 8388608;
+	$default_no          = array(
+		'dbem_css_search',
+		'dbem_events_form_reshow',
+		'dbem_events_anonymous_submissions',
+		'dbem_cp_events_comments',
+		'dbem_search_form_countries',
+		'dbem_locations_page_search_form',
+		'dbem_bookings_anonymous',
+		'dbem_bookings_approval',
+		'dbem_bookings_double',
+		'dbem_bookings_login_form',
+		'dbem_search_form_geo',
+	);
+	$default_yes         = array(
+		'dbem_rsvp_enabled',
+		'dbem_recurrence_enabled',
+		'dbem_categories_enabled',
+		'dbem_attributes_enabled',
+		'dbem_cp_events_custom_fields',
+		'dbem_locations_enabled',
+		'dbem_require_location',
+		'dbem_events_form_editor',
+		'dbem_cp_events_formats',
+		'dbem_gmap_is_active',
+		'dbem_cp_events_formats',
+		'dbem_bookings_approval_reserved',
+		'dbem_bookings_user_cancellation',
+		'dbem_bookings_approval_overbooking',
+	);
+	$default_attributes  = '#_ATT{Target Audience}
+#_ATT{Online}{|Yes|No}
+#_ATT{Professional Development Certificate}{|Yes|No|Upon Request|Not Currently Available}
+#_ATT{Professional Development Certificate Credit Hours}
+#_ATT{Registration Fee}
+#_ATT{Registration Space}{|Filling Up!|FULL}
+#_ATT{Registration Contact Email}
+#_ATT{Registration Contact Phone Number}
+#_ATT{Registration Link}
+#_ATT{Prerequisite(s)}
+#_ATT{Required Materials}
+#_ATT{Presenter(s)}
+#_ATT{Presenter Information}
+#_ATT{Event Sponsors}';
+	$single_event_format = '<div class="single-event-map">#_LOCATIONMAP</div>
+<p>
+	<strong>Date/Time</strong><br/>
+	Date(s) - #_EVENTDATES<br /><i>#_EVENTTIMES</i>
+</p>
+<p>
+	<strong>Location</strong><br/>
+	#_LOCATIONLINK
+</p>
+<p><strong>Add to My Calendar</strong><br>#_EVENTICALLINK</p>
+{has_location}
+
+{/has_location}
+<br style="clear:both" />
+#_EVENTNOTES
+<p>
+	<strong>Categories</strong>
+	#_CATEGORIES
+</p>
+{has_bookings}
+#_BOOKINGFORM
+{/has_bookings}';
+
+	$success_message = '<p><strong>Congratulations! You have successfully submitted your training event.</strong></p> <p><strong>Go to the <a href="' . get_site_url() . '">' . 'homepage</a> and use the search or map feature to find your event.</strong></p>';
+
+	$loc_balloon_format = '<strong>#_LOCATIONNAME</strong><address>#_LOCATIONADDRESS<br>#_LOCATIONTOWN</address>
+#_LOCATIONNEXTEVENTS';
+
+	$format_event_list_header = '<table cellpadding="0" cellspacing="0" class="events-table" >
+    <thead>
+        <tr>
+			<th class="event-time" width="150">Date/Time</th>
+			<th class="event-description" width="*">Event</th>
+			<th class="event-capacity" width="*">Capacity</th>
+		</tr>
+   	</thead>
+    <tbody>';
+
+	$format_event_list = '<tr>
+			<td>#_EVENTDATES<br/>#_EVENTTIMES</td>
+            <td>#_EVENTLINK
+                {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}
+            </td>
+			<td>#_ATT{Registration Space}</td>
+        </tr>';
+
+	$format_event_list_footer = '</tbody></table>';
+
+	if ( $current_version < $prod_version ) {
+
+		update_option( 'dbem_placeholders_custom', $default_attributes );
+		update_option( 'dbem_image_max_width', $img_max_dimension );
+		update_option( 'dbem_image_max_height', $img_max_dimension );
+		update_option( 'dbem_image_min_width', $img_min_dimension );
+		update_option( 'dbem_image_min_height', $img_min_dimension );
+		update_option( 'dbem_image_max_size', $img_max_size );
+		update_option( 'dbem_events_form_result_success', $success_message );
+		update_option( 'dbem_events_form_result_success_updated', $success_message );
+		update_option( 'dbem_map_text_format', $loc_balloon_format );
+		update_option( 'dbem_event_list_item_format', $format_event_list );
+		update_option( 'dbem_event_list_item_format_header', $format_event_list_header );
+		update_option( 'dbem_event_list_item_format_footer', $format_event_list_footer );
+		update_option( 'dbem_single_event_format', $single_event_format );
+		update_option( 'dbem_location_event_list_limit', 20 );
+
+		foreach ( $default_no as $no ) {
+			update_option( $no, 0 );
+		}
+
+		foreach ( $default_yes as $yes ) {
+			update_option( $yes, 1 );
+		}
+		/**
+		 * Changes to search for labels
+		 */
+		update_option( 'dbem_search_form_state_label', 'Province' );
+		update_option( 'dbem_search_form_text_label', 'Search by Topic, Keyword or Location' );
+		update_option( 'dbem_search_form_dates_label', 'Search by Start Date' );
+		update_option( 'dbem_search_form_category_label', 'Search by Category' );
+		update_option( 'dbem_search_form_town_label', 'City/Community/Town' );
+		update_option( 'dbem_search_form_dates_separator', 'End Date' );
+
+		/**
+		 * All events will be in Canada
+		 */
+		update_option( 'dbem_location_default_country', 'CA' );
+
+		/**
+		 * Most events will be in British Columbia
+		 */
+		update_option( 'prod_location_default_province', 'British Columbia' );
+
+		/**
+		 * Booking submit button text
+		 */
+		update_option( 'dbem_bookings_submit_button', 'Plan to attend' );
+
+		/**
+		 * Booking submit success
+		 */
+		update_option( 'dbem_booking_feedback', 'Event added! Click on myPROD (top right of your screen) to find this saved event.' );
+
+		/**
+		 * Manage bookings link text
+		 */
+		update_option( '	dbem_bookings_form_msg_bookings_link', 'My Profile Page' );
+
+		/**
+		 * Update option to current version
+		 */
+		update_option( 'prod_version', $prod_version );
+
+	}
+}
+
+add_action( 'wp_loaded', 'prod_run_once' );
+
+/**
+ * Changing state to province and other customizations
+ *
+ * @param $translated
+ * @param $original
+ * @param $domain
+ *
+ * @return mixed
+ */
+function prod_terminology_modify( $translated, $original, $domain ) {
+
+	if ( 'events-manager' == $domain ) {
+		$modify = array(
+			'State/County:'                                                                  => 'Province:',
+			'Details'                                                                        => 'Event Description and Objectives',
+			'Category:'                                                                      => 'Category',
+			'Submit %s'                                                                      => 'Post %s',
+			'You must log in to view and manage your events.'                                => 'You are using this site in the role as a Learner. Learners may search for, share, and print events. Only Organizers may post and edit events.',
+			'You are currently viewing your public page, this is what other users will see.' => 'This is your professional development activity page - a personal record of your training events, events you plan on </br> attending, and record of professional development hours you have accumulated. <p>To officially register for a professional development event you must contact the agency responsible for the training event.</p>',
+			'Events'                                                                         => 'myPROD',
+		);
+	}
+
+	if ( 'buddypress' == $domain ) {
+		$modify = array(
+			'Register'                                                                                                                  => 'Sign Up',
+			'Email Address'                                                                                                             => 'Work Email Address',
+			'Registering for this site is easy. Just fill in the fields below, and we\'ll get a new account set up for you in no time.' => 'Fill in the fields below to register as an Organizer or a Learner. <b>Learner</b> — you are primarily looking for training events. <b>Organizer</b> — you are primarily posting training events on behalf of your organization.',
+		);
+	}
+
+	if ( isset( $modify[ $original ] ) ) {
+		$translated = $modify[ $original ];
+	}
+
+	return $translated;
+}
+
+add_filter( 'gettext', 'prod_terminology_modify', 11, 3 );
+
+/**
+ * Howdy message needs a higher priority and different logic
+ * than @see prod_terminology_modify()
+ *
+ * @param $translated_text
+ * @param $text
+ * @param $domain
+ *
+ * @return mixed
+ */
+function prod_howdy_message( $translated_text, $text, $domain ) {
+	$new_message = str_replace( 'Howdy,', '', $text );
+
+	return $new_message;
+}
+
+add_filter( 'gettext', 'prod_howdy_message', 10, 3 );
+
+/**
+ *
+ * @param int $post_id
+ * @param array $data
+ *
+ * @return array
+ */
+function prod_event_output( $post_id = 0, $data = array() ) {
+	// get the data
+	if ( is_array( $data ) ) {
+		$data = get_post_custom( $post_id );
+	}
+
+	// return the design
+	return $data;
+}
+
+/**
+ * intercepts output, finds post id#s, uses them to get slugs
+ * insert those slugs into the <li> as classes
+ *
+ * @param string $input
+ *
+ * @return mixed|string
+ */
+function prod_event_etc_output( $input = '' ) {
+	$output = $input;
+	preg_match_all( '/<li class="category-(\d+)">/', $input, $output_array );
+	foreach ( $output_array[1] as $index => $post_id ) {
+		$cats       = wp_get_object_terms( $post_id, 'event-categories' );
+		$cat_output = $space = '';
+		foreach ( $cats as $cat ) {
+			$c          = get_category( $cat );
+			$cat_output .= $space . 'cat_' . str_replace( '-', '_', $c->slug );
+			$space      = ' ';
+		}
+		$new_classes = "<li class=\"$cat_output\">";
+		$output      = str_replace( $output_array[0][ $index ], $new_classes, $output );
+	}
+	// remove pagination links
+	$output = preg_replace( '/<strong><span class=\"page-numbers(.*)<\/span>/i', '', $output );
+
+	return $output;
+}
+
+
+/**
+ * use it for two uses -- the Ajax response and the post info
+ *
+ * @param int $post_id
+ * @param bool $ajax
+ */
+function et_fetch( $post_id = - 1, $ajax = true ) {
+	if ( $ajax == true ) {
+		$output = prod_event_output( $post_id );
+		echo json_encode( $output ); //encode into JSON format and output
+		die(); //stop "0" from being output
+	}
+}
+
+add_action( 'wp_ajax_nopriv_cyop_lookup', 'et_fetch' );
+add_action( 'wp_ajax_cyop_lookup', 'et_fetch' );
+
+/**
+ * remove links/menus from the admin bar,
+ * if you are not an admin
+ */
+function prod_admin_bar_render() {
+	global $wp_admin_bar;
+
+	// check if the admin panel is attempting to be displayed
+	if ( ! is_admin() ) {
+		$wp_admin_bar->remove_node( 'wp-logo' );
+		$wp_admin_bar->remove_node( 'search' );
+		$wp_admin_bar->remove_node( 'comments' );
+		$wp_admin_bar->remove_node( 'edit' );
+		$wp_admin_bar->remove_node( 'edit-profile' );
+		$wp_admin_bar->remove_node( 'logout' );
+		$wp_admin_bar->remove_node( 'new-content' );
+		$wp_admin_bar->remove_node( 'updates' );
+		$wp_admin_bar->remove_node( 'my-blogs' );
+		$wp_admin_bar->remove_node( 'customize' );
+		$wp_admin_bar->remove_node( 'site-name' );
+		$wp_admin_bar->remove_node( 'my-account-buddypress' );
+		$wp_admin_bar->remove_node( 'bp-notifications' );
+		$wp_admin_bar->remove_node( 'itsec_admin_bar_menu' );
+
+		// add my profile link
+		$profileurl = prod_get_my_bookings_url();
+		$wp_admin_bar->add_node( array(
+			'id'     => 'my_profile',
+			'title'  => 'myPROD',
+			'href'   => $profileurl,
+			'parent' => 'user-actions',
+			'meta'   => array( 'class' => 'my-profile-page' ),
+		) );
+
+		//add logout link after my profile link, and redirect to homepage after logout
+		$logouturl = wp_logout_url( home_url() );
+		$wp_admin_bar->add_node( array(
+			'id'     => 'logout',
+			'title'  => 'Logout',
+			'href'   => $logouturl,
+			'parent' => 'user-actions',
+			'meta'   => array( 'class' => 'my-logout-link' ),
+		) );
+
+		// maintain a way for admins to access the dashboard
+		if ( current_user_can( 'activate_plugins' ) ) {
+			$url = get_admin_url();
+			$wp_admin_bar->add_node( array(
+				'id'    => 'prod_dashboard',
+				'title' => 'Dashboard',
+				'href'  => $url,
+				'meta'  => array(
+					'class' => 'my-toolbar-page',
+				),
+			) );
+		}
+	}
+}
+
+add_action( 'wp_before_admin_bar_render', 'prod_admin_bar_render' );
+
+/**
+ * Remove BP sidebar menu items
+ */
+function prod_bp_nav() {
+	global $bp;
+	bp_core_remove_nav_item( 'activity' );
+	bp_core_remove_nav_item( 'forums' );
+	bp_core_remove_nav_item( 'groups' );
+	bp_core_remove_nav_item( 'friends' );
+	bp_core_remove_nav_item( 'messages' );
+	bp_core_remove_nav_item( 'notifications' );
+	//subnav
+	bp_core_remove_subnav_item( 'events', 'attending' );
+	bp_core_remove_subnav_item( 'events', 'my-bookings' );
+	bp_core_remove_subnav_item( 'events', 'my-events' );
+
+}
+
+add_action( 'bp_setup_nav', 'prod_bp_nav', 1000 );
+
+
+// Filter wp_nav_menu() to add pop-overs to links in header menu
+function prod_nav_menu_items( $nav, $args ) {
+	if ( $args->theme_location == 'main-menu' ) {
+		if ( is_user_logged_in() ) {
+			$nav = '<li class="home"><a href=' . home_url() . '/post-event>Post an Event</a></li>';
+			$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
+			$nav .= '<li class="home"><a href="' . prod_get_my_bookings_url() . '">' . __( '<i>my</i>pro-d' ) . '</a></li>';
+		} else {
+			//add popover with a message, and login and sign-up links
+			$popover = '<li class="home"><a href="#" data-container="body"  role="button"  data-toggle="popover" data-placement="bottom" data-html="true" data-original-title="" data-content="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
+			$nav     = $popover . 'post events.">Post an Event</a></li>';
+			$nav     .= $popover . 'edit your events.">Edit Event</a></li>';
+			$nav     .= $popover . ' view your events."><i>my</i>pro-d</a></li>';
+		}
+	}
+
+	return $nav;
+}
+
+add_filter( 'wp_nav_menu_items', 'prod_nav_menu_items', 10, 2 );
+
+/**
+ * Add favicon, theme color, PWA manifest
+ */
+add_action( 'wp_head', function () {
+	$manifest = prod_get_manifest_path();
+	echo '<meta name="theme-color" content="#bee7fa"/>' . "\n";
+	echo '<link rel="shortcut icon" type="image/x-icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon.ico" />' . "\n";
+	echo '<link rel="manifest" href="' . $manifest . '">';
+
+} );
+
+
+/**
+ * Validating that required attribute fields are not empty
+ */
+function prod_validate_attributes() {
+	global $EM_Event;
+
+	// bail early if not an object
+	if ( ! is_object( $EM_Event ) ) {
+		return false;
+	}
+
+	if ( empty( $EM_Event->event_attributes['Professional Development Certificate'] ) ) {
+		$EM_Event->add_error( sprintf( __( '%s is required.', 'pro-d' ), __( 'Professional Development Certificate', 'pro-d' ) ) );
+	}
+
+	if ( empty( $EM_Event->event_attributes['Registration Fee'] ) ) {
+		$EM_Event->add_error( sprintf( __( '%s is required.', 'pro-d' ), __( 'Registration Fee', 'pro-d' ) ) );
+	}
+
+	return $EM_Event;
+
+}
+
+add_action( 'em_event_validate', 'prod_validate_attributes' );
+
+/**
+ * Makes profile fields descriptions into modals,
+ * content of modals are in pro-d/templates/*-modal.php
+ */
+function prod_profile_field_modals() {
+
+	// check xprofile is activated
+	if ( bp_is_active( 'xprofile' ) ) {
+
+		$bp_field_name = bp_get_the_profile_field_name();
+
+		// replace content of $field_description to enable use of modals
+		switch ( $bp_field_name ) {
+
+			case 'Agreement Terms:':
+				$field_description = '<a href="#terms" data-toggle="modal">Terms and Conditions</a>';
+
+				return $field_description;
+				break;
+
+			case 'Position/Role':
+				$field_description = '<a href="#role" data-toggle="modal">What’s the difference between Learner and Organizer?</a>';
+
+				return $field_description;
+				break;
+		}
+	}
+}
+
+add_filter( 'bp_get_the_profile_field_description', 'prod_profile_field_modals' );
+
+/**
+ * Display a link to FAQ after the submit button on the registration page
+ */
+function prod_faq() {
+	$html = "<div class='submit faq'><a href=\"https://BCCAMPUS.mycusthelp.ca/webapp/_rs/FindAnswers.aspx?coid=6CFA1D4B2B28F770A1273B\" target=\"_blank\">Need help signing up?</a></div>";
+	echo $html;
+}
+
+add_filter( 'bp_after_registration_submit_buttons', 'prod_faq' );
+
+/**
+ * Setting a higher default for bookings capacity
+ *
+ * @return int
+ */
+function prod_set_default_spaces() {
+	$default = 100;
+
+	return $default;
+}
+
+add_filter( 'em_ticket_get_spaces', 'prod_set_default_spaces' );
+
+/**
+ * Adds up hours (if available) from an event attribute
+ * hooked into init, integrates with pro-d-actions.php
+ *
+ * @param $ids
+ *
+ * @return bool|int
+ */
+function prod_cumulative_hours( $ids ) {
+	if ( ! is_array( $ids ) ) {
+		return false;
+	}
+	$total = 0;
+	// input is radio buttons with boolean values
+	// true means they attended (default)
+	foreach ( $ids as $id => $bool ) {
+		if ( false == $bool ) {
+			continue;
+		}
+		$e = em_get_event( $id );
+		foreach ( $e->event_attributes as $key => $val ) {
+			if ( 0 === strcmp( 'Professional Development Certificate Credit Hours', $key ) ) {
+				$total = $total + intval( $val );
+			}
+		}
+	}
+
+	return intval( $total );
+}
+
+/**
+ * URL to member profile
+ */
+function prod_get_my_bookings_url() {
+	global $bp;
+	if ( ! empty( $bp->events->link ) ) {
+		//get member url
+		return $bp->events->link;
+	} else {
+		return '#';
+	}
+}
+
+/*
+|--------------------------------------------------------------------------
+| Customize TinyMCE and Media Panel
+|--------------------------------------------------------------------------
+|
+| For the edit-events and post-event pages only
+|
+*/
+
+/**
+ *  Add stylesheet to TinyMCE, allows us to style the content of the editor
+ */
+add_filter( 'tiny_mce_before_init', function ( $in ) {
+	if ( is_page( 'edit-events' ) or is_page( 'post-event' ) ) {
+		$in['content_css'] = get_stylesheet_directory_uri() . '/dist/styles/tinymce.css';
+
+		return $in;
+	}
+
+	return $in;
+} );
+
+/**
+ * Force visual editor as default
+ */
+function prod_force_default_editor() {
+	if ( is_page( 'edit-events' ) or is_page( 'post-event' ) ) {
+		return 'tinymce';
+	}
+}
+
+add_filter( 'wp_default_editor', 'prod_force_default_editor' );
+
+/**
+ * Show only own items in media library panel
+ */
+function prod_my_images_only( $query ) {
+	if ( $user_id = get_current_user_id() ) {
+		// exclude administrator
+		if ( ! current_user_can( 'administrator' ) ) {
+			$query['author'] = $user_id;
+		}
+	}
+
+	return $query;
+}
+
+add_filter( 'ajax_query_attachments_args', 'prod_my_images_only' );
+
+/**
+ * Rename Add Media button
+ */
+function prod_rename_media_button( $translation, $text ) {
+	if ( is_page( 'edit-events' ) | is_page( 'post-event' ) && 'Add Media' === $text ) {
+		return 'Add Banner Image';
+	}
+
+	return $translation;
+}
+
+add_filter( 'gettext', 'prod_rename_media_button', 10, 2 );
+
+/**
+ * Rename items in media panel
+ */
+function prod_media_view_strings( $strings ) {
+	if ( is_page( 'edit-events' ) or is_page( 'post-event' ) ) {
+		$strings ['insertMediaTitle'] = 'Add Banner Image (Recommended size: 1000px by 217px )';
+		$strings ['insertIntoPost']   = 'Add Banner Image';
+	}
+
+	return $strings;
+}
+
+add_filter( 'media_view_strings', 'prod_media_view_strings' );
+
+/**
+ * Add a class to image html when inserted into TinyMCE
+ */
+function prod_image_tag_class( $class ) {
+	$class .= ' banner';
+
+	return $class;
+}
+
+add_filter( 'get_image_tag_class', 'prod_image_tag_class' );
+
+/*
+|--------------------------------------------------------------------------
+| Banner Image for events
+|--------------------------------------------------------------------------
+|
+| Use the image inserted into post as the banner image
+|
+|
+*/
+
+/**
+ * Sanitize and Save only the latest image inserted when creating or editing an event
+ */
+add_action( 'content_save_pre', function ( $content ) {
+	$maybe_latest_img = '';
+	global $post;
+
+	// Only sanitize event post_type
+	if ( ! empty( $content ) && 'event' === $post->post_type ) {
+
+		// find all images
+		preg_match_all( '/<img[^>]+\>/i', $content, $matches );
+
+		// get one image, maybe the latest
+		if ( isset( $matches[0][0] ) ) {
+			$maybe_latest_img = $matches [0] [0];
+		}
+
+		// remove all images
+		$content = preg_replace( '/<img[^>]+\>/i', '', $content );
+
+	}
+
+	return $maybe_latest_img . $content;
+} );
+
+/**
+ * Get the image and display it before the content
+ */
+add_filter( 'the_content', function ( $content ) {
+	$maybe_latest_img = '';
+
+	// make sure we are on a single event page and that there's content
+	if ( ! empty( $content ) && is_singular( 'event' ) ) {
+		$maybe_latest_img = '';
+
+		// find all images
+		preg_match_all( '/<img[^>]+\>/i', $content, $matches );
+
+		// save one, maybe the latest
+		if ( isset( $matches[0][0] ) ) {
+			$maybe_latest_img = $matches [0] [0];
+		}
+
+		// remove all images
+		$content = preg_replace( '/<img[^>]+\>/i', '', $content );
+	}
+
+	return $maybe_latest_img . $content;
+} );
+
+/**
+ * Date picker and countdown
+ */
+function prod_datepicker_countdown() {
+
+	// only if it's my own profile
+	if ( function_exists( 'bp_is_my_profile()' ) ) {
+		if ( bp_is_my_profile() ) {
+			// get the cert expiry date
+			global $bp;
+			$cert_expires = get_user_meta( $bp->displayed_user->id, 'prod_cert_expire', true );
+			?>
+            <!-- jQuery date picker as input for the countdown -->
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+                    $expirydate = '#expiry-date';   // input field where date picker will show up
+                    jQuery($expirydate).datepicker('hide');
+                    jQuery($expirydate).click(function () {
+
+                        jQuery($expirydate).datepicker({
+                            dateFormat: 'mm/dd/yy',
+                            changeMonth: true,
+                            changeYear: true
+                        });
+                        jQuery($expirydate).datepicker('show');
+                    });
+                    // end jQuery date picker
+
+                    // countdown functionality
+                    var countDownDate = new Date("<?php echo $cert_expires; ?>").getTime();
+
+                    // set interval at 1 second to start countdown and check for changes
+                    var x = setInterval(function () {
+
+                        // today's date and time
+                        var now = new Date().getTime();
+
+                        // distance between now and count down date
+                        var distance = countDownDate - now;
+
+                        // time calculations
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        // var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        // var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                        // expired
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById("certcoutdown").innerHTML = "<p>Your certificate has expired</p>";
+                        }
+                        // date in the future
+                        else if (countDownDate) {
+                            clearInterval(x);
+                            document.getElementById("certcoutdown").innerHTML = "<p>Your professional certification expires in <b>" + days + "</b>" + " days and " + "<b>" + hours + "</b>" + " hours " + "</p>";
+                        }
+                        // no date
+                        else {
+                            clearInterval(x);
+                            document.getElementById("certcoutdown").innerHTML = "<p>Please enter the expiry date of your professional certification.</p>";
+                        }
+                    }, 1000);
+                });
+            </script>
+		<?php }
+	}
+}
+
+add_action( 'wp_footer', 'prod_datepicker_countdown', 10 );
+
+add_action( 'admin_init', 'prod_dependencies_check' );
+
+/**
+ * Check for dependencies, add admin notice
+ */
+function prod_dependencies_check() {
+
+	if ( file_exists( $composer = get_stylesheet_directory() . '/vendor/autoload.php' ) ) {
+		include( $composer );
+	} else {
+		// Remind to install dependencies
+		add_action( 'admin_notices', function () {
+			echo '<div id="message" class="notice notice-warning is-dismissible"><p>' . __( 'pro-d theme dependency missing, please run composer install. ' ) . '</p></div>';
+		} );
+	}
+}
+
+/**
+ * Fires when there is an update to the web theme version
+ *
+ */
+function prod_maybe_update_editor_role() {
+	$theme           = wp_get_theme();
+	$current_version = $theme->get( 'Version' );
+	$last_version    = get_option( 'prod_theme_version' );
+	if ( version_compare( $current_version, $last_version ) > 0 ) {
+		prod_wpcodex_set_capabilities();
+	}
+}
+
+add_action( 'init', 'prod_maybe_update_editor_role' );
+
+/**
+ * Remove capabilities from editors.
+ * will leave the ability to
+ * read
+ * delete_posts
+ * edit_posts
+ * upload_files
+ * edit_published_pages
+ * edit_others_pages
+ *
+ * Call the function when your plugin/theme is activated.
+ */
+function prod_wpcodex_set_capabilities() {
+
+	// Get the role object.
+	$editor = get_role( 'editor' );
+
+	// A list of capabilities to remove from editors.
+	$caps = array(
+		'delete_others_pages',
+		'delete_others_posts',
+		'delete_pages',
+		'delete_private_pages',
+		'delete_private_posts',
+		'delete_published_pages',
+		'delete_published_posts',
+		'edit_others_posts',
+		'edit_published_posts',
+		'edit_pages',
+		'edit_private_pages',
+		'edit_private_posts',
+		'manage_categories',
+		'manage_links',
+		'moderate_comments',
+		'publish_pages',
+		'publish_posts',
+		'read_private_pages',
+		'read_private_posts',
+		'unfiltered_html',
+	);
+
+	foreach ( $caps as $cap ) {
+
+		// Remove the capability.
+		$editor->remove_cap( $cap );
+	}
+}
+
+/**
+ * counts and displays number of events
+ * @see http://wp-events-plugin.com/documentation/advanced-usage/
+ *
+ */
+function prod_display_count_events() {
+	if ( class_exists( 'EM_Events' ) ) {
+		$results = EM_Events::get( array( 'scope' => 'future', 'array' => '' ) );
+	}
+
+	if ( is_array( isset( $results ) ) ) {
+		$num = count( $results );
+	} else {
+		$num = '';
+	}
+
+	echo $num;
+}
+
+/**
+ * Allow users to upload webp
+ */
+add_filter( 'upload_mimes', function ( $mime_types ) {
+	$mime_types['webp'] = 'image/webp';
+
+	return $mime_types;
+} );
+
+/*
+|--------------------------------------------------------------------------
+| PWA
+|--------------------------------------------------------------------------
+|
+| all functions required for pwa
+|
+|
+*/
+
+define( 'prod_MANIFEST_ARG', 'manifest_json' );
+
+/**
+ *
+ */
+add_filter( 'query_vars', function ( $vars ) {
+	$vars[] = prod_MANIFEST_ARG;
+
+	return $vars;
+} );
+
+/**
+ * @return string
+ */
+function prod_get_manifest_path() {
+	return add_query_arg( prod_MANIFEST_ARG, '1', site_url() );
+}
+
+/**
+ *
+ */
+add_action( 'template_redirect', function () {
+	global $wp_query;
+	if ( $wp_query->get( prod_MANIFEST_ARG ) ) {
+		$theme_color = '#bee7fa';
+		$lang_dir    = ( is_rtl() ) ? 'rtl' : 'ltr';
+
+		$manifest = array(
+			'start_url'        => get_bloginfo( 'wpurl' ),
+			'short_name'       => 'pro-d',
+			'name'             => get_bloginfo( 'name' ),
+			'description'      => get_bloginfo( 'description' ),
+			'display'          => 'standalone',
+			'background_color' => $theme_color,
+			'theme_color'      => $theme_color,
+			'dir'              => $lang_dir,
+			'lang'             => get_bloginfo( 'language' ),
+			'orientation'      => 'portrait-primary',
+			'icons'            => array(
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-48.png',
+					'sizes' => '48x48',
+					'type'  => 'image/png'
+				),
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-72.png',
+					'sizes' => '72x72',
+					'type'  => 'image/png'
+				),
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-96.png',
+					'sizes' => '96x96',
+					'type'  => 'image/png'
+				),
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-144.png',
+					'sizes' => '144x144',
+					'type'  => 'image/png'
+				),
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-168.png',
+					'sizes' => '168x168',
+					'type'  => 'image/png'
+				),
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-192.png',
+					'sizes' => '192x192',
+					'type'  => 'image/png'
+				),
+				array(
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/pro-d-512.png',
+					'sizes' => '512x512',
+					'type'  => 'image/png'
+				),
+			)
+		);
+
+
+		wp_send_json( $manifest );
+	}
+}, 2 );

@@ -1,0 +1,184 @@
+// Event Search
+// ====
+//
+// 1. Important to override specificity
+
+div.css-search,
+.em-search-main {
+  border: none !important;
+}
+
+.c-search {
+  margin-top: $unit*10 !important;
+  padding: $unit*3;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  @media (min-width: $large) {
+    padding: 0;
+  }
+
+  h2 {
+    margin-bottom: $unit*3;
+  }
+
+  .em-search-wrapper {
+    margin-bottom: $unit*10;
+  }
+
+  .em-search-main,
+  .em-search-scope {
+    display: flex;
+  }
+
+  .em-search-main {
+    flex-direction: column;
+
+    @media (min-width: $small) {
+      flex-direction: row;
+    }
+  }
+
+  .em-search-text,
+  .em-search-geo {
+    flex: 1;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .em-search-text {
+    @media (min-width: $small) {
+      padding-right: $unit*5;
+    }
+  }
+
+  .em-search-geo {
+    @media (min-width: $small) {
+      padding-left: $unit*5;
+    }
+  }
+
+  .em-search-category {
+    display: block;
+    padding-left: $unit*2;
+
+    @media (min-width: $medium) {
+      padding-left: $unit*6;
+    }
+  }
+
+  span,
+  label {
+    text-transform: inherit;
+  }
+
+  label + label {
+    margin-left: $unit*3;
+  }
+
+  .em-search-submit {
+    width: 100%;
+
+    @media (min-width: $small) {
+      width: auto;
+      margin-left: auto;
+    }
+  }
+
+  .em-search-scope {
+    width: 100%;
+    float: none;
+
+    @media (min-width: $medium) {
+      width: auto;
+      float: left;
+      margin-right: $unit*4;
+    }
+  }
+
+  .em-search-location-meta {
+    display: flex;
+    flex-direction: row;
+
+    .em-search-field {
+      flex: 1;
+
+      @media (min-width: $medium) {
+        flex: initial;
+      }
+
+      & + .em-search-field {
+        margin-left: $unit*4;
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+      }
+
+      select {
+        width: 100%;
+
+        @media (min-width: $medium) {
+          width: 250px;
+        }
+      }
+    }
+  }
+
+  .em-events-search-dates {
+    width: 100%;
+
+    @media (min-width: $medium) {
+      width: auto;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 100%;
+
+      @media (min-width: $medium) {
+        width: auto;
+      }
+    }
+
+    input {
+      width: 100%;
+
+      @media (min-width: $medium) {
+        width: auto;
+      }
+    }
+  }
+
+  .em-search-category {
+    width: 100%;
+    padding-left: 0;
+
+    @media (min-width: $medium) {
+      width: auto;
+      margin-left: $unit*8;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    select {
+      width: 100%;
+
+      @media (min-width: $small) {
+        min-width: 300px;
+      }
+
+      @media (min-width: 900px) {
+        min-width: 340px;
+      }
+    }
+  }
+}

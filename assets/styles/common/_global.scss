@@ -1,0 +1,105 @@
+/*
+|--------------------------------------------------------------------------
+| Global
+|--------------------------------------------------------------------------
+|
+| Common, global elements
+|
+|
+*/
+// 1. This is probably the worst hack
+
+@media screen and (max-width: $medium) {
+  html.no-js,
+  html.js { // 1
+    margin-top: 46px !important;
+  }
+}
+
+
+body, body.theme-option {
+  background: none no-repeat;
+  #content{
+    background-color: $color-neutral-00;
+  }
+}
+
+body {
+  border: none;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, span.label {
+  font-family: $font-family;
+  color: $color-neutral-80;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 36px;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 32px;
+  font-family: $font-family-slab;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: capitalize;
+}
+
+h5 {
+  font-size: $font-size;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+p, label, li, span.label {
+  font-size: $font-size;
+  line-height: 24px;
+}
+
+// Inputs
+// ---
+
+// All Text and Select inputs
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  padding: $unit*2.5 $unit*3;
+  box-shadow: none;
+  border: 1px solid $color-neutral-50;
+  border-radius: $border-radius;
+  margin: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 17px;
+  height: 17px;
+}
+
+select {
+  -webkit-appearance: none;
+  padding: $unit*1.8 $unit*3;
+
+  box-shadow: none;
+  border: 1px solid $color-neutral-50;
+  border-radius: $border-radius;
+
+  background-image: url('../images/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position-x: 95%;
+  background-position-y: 50%;
+}
+
+

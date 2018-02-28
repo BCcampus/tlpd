@@ -1,0 +1,101 @@
+// Sidebar
+// ====
+
+
+#sidebar {
+  background: $color-neutral-10;
+  border-right: 1px solid $color-neutral-40;
+  border-bottom: 1px solid $color-neutral-40;
+  box-shadow: none;
+
+  .widget_calendar,
+  .widget_em_calendar  {
+    display: none;
+
+    @media (min-width: $large) {
+      display: block;
+    }
+
+    .month_name,
+    .em-calnav {
+      color: $color-neutral-80 !important;
+    }
+  }
+}
+
+#item-header-avatar img.avatar {
+  box-shadow: none;
+  border-radius: $border-radius;
+  border: 1px solid $color-neutral-20;
+}
+
+#profile-nav-menu a {
+  color: $color-brand-blue;
+  text-align: left;
+}
+
+#profile-sidebar {
+  margin-bottom: $unit*6;
+}
+
+.sidebar-activity-tabs {
+  border-top: 1px solid $color-neutral-20;
+
+  ul:first-child {
+    margin-top: 0 !important;
+  }
+
+  li {
+    background-image: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    border: none !important;
+
+    &.current a,
+    &.selected a {
+      color: $color-neutral-80 !important;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.current,
+    &.selected {
+      background-color: $color-neutral-20 !important;
+    }
+
+    &.current,
+    &.selected {
+      border-top: 1px solid $color-neutral-40 !important;
+      border-bottom: 1px solid $color-neutral-40 !important;
+    }
+
+    .profile-subnav {
+      border-top: none !important;
+
+      li {
+        &:hover {
+          background-color: $color-neutral-40 !important;
+          border: none !important;
+        }
+
+        &.current,
+        &.selected {
+          background-color: $color-neutral-40 !important;
+          border: none !important;
+        }
+      }
+    }
+  }
+
+  a {
+    font-family: $font-family;
+    font-weight: 400 !important;
+    color: $color-neutral-80 !important;
+    text-shadow: none;
+
+    &:before {
+      color: $color-neutral-80;
+    }
+  }
+}

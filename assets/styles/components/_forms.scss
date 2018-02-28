@@ -1,0 +1,156 @@
+/*
+|--------------------------------------------------------------------------
+| Forms
+|--------------------------------------------------------------------------
+|
+|
+|
+|
+*/
+
+// hides message about field visibility
+.field-visibility-settings-notoggle {
+  display: none;
+}
+
+// hides unused booking fields in single event page
+.em-booking-form p {
+  display: none;
+}
+
+// Switch order of columns on Sign Up form
+form.standard-form #profile-details-section {
+  float: left;
+}
+
+form.standard-form #basic-details-section {
+  float: right;
+}
+
+#event-form {
+  #em-editor-content_ifr {
+    height: 200px !important;
+  }
+}
+
+// hides Region from registration form
+tr.em-location-data-region {
+  display: none;
+}
+
+// increases line height for time picker
+div.time-picker li {
+  height: auto;
+}
+
+.event-categories select {
+  background: none;
+  width: 100%;
+}
+
+#event-form, .css-events-admin {
+  p.margin-up {
+    margin-top: 0;
+  }
+  #event-name {
+    padding: 8px 11px;
+  }
+  .mce-path-item {
+    display: none;
+  }
+}
+
+.field-visibility-settings-toggle {
+  display: none;
+}
+
+// Post Event Page
+// ---
+// 1. Remove large margin under title
+//
+.entry {
+  margin-top: 0; // 1
+
+  em {
+    font-size: 16px;
+  }
+}
+
+// Content Editor
+// ---
+// 1. Add a border around the edit box
+//
+.mce-tinymce.mce-container.mce-panel {
+  border: 1px solid $color-gray-mercury; // 1
+}
+
+// Post Event Form
+// ---
+.entry,
+#event-form {
+  em, .margin-up {
+    font-size: 16px;
+  }
+
+  label {
+    text-transform: capitalize;
+  }
+
+  h3 {
+    font-weight: 800;
+    font-size: 22px;
+    margin-bottom: $unit;
+    margin-top: $unit*10;
+  }
+
+  .event-extra-details label {
+    font-weight: 600;
+  }
+
+  // Submit button
+  // ---
+  // 1. Important to override p style
+  //
+
+  .submit.button.orange {
+    margin-top: $unit*10 !important;
+    background: none;
+    border: none;
+    padding: 0;
+
+    &:active,
+    &:hover,
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+  }
+  .event-form-bookings {
+    display: none;
+  }
+}
+
+// Form Table
+// ---
+// 1. important t ooverride dynamic styles
+//
+
+.form-table th,
+.events-table th {
+  color: $color-neutral-80 !important; //1
+}
+
+// Search form
+
+div.em-search-category.em-search-field {
+  margin-left: 0;
+}
+
+.c-search .em-search-text input, .c-search .em-search-geo input {
+  min-width: 200px;
+}
+
+select#category.em-events-search-category {
+  max-width: 50%;
+}

@@ -1,0 +1,55 @@
+// Homepage banner
+// ===
+//
+
+.c-banner {
+  display: flex;
+  height: auto;
+  position: relative;
+  background-color: $color-blue-sail;
+  background-size: cover;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (max-width: $medium) {
+    min-height: 207px;
+  }
+
+  .center {
+    display: block;
+    margin: 0 auto;
+
+    img {
+      display: inline-block;
+      padding: 0;
+
+      &.prod_logo {
+        width: 225px;
+        @media (max-width: $small) {
+          width: 100%;
+          max-height: 207px;
+        }
+
+      }
+
+      &.prod_logo_text {
+        width: 375px;
+        @media (max-width: $small) {
+          width: 100%;
+          max-height: 207px;
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: $small) {
+  #icext {
+    display: none;
+  }
+}
+
+

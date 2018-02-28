@@ -1,0 +1,64 @@
+/*
+|--------------------------------------------------------------------------
+| Global Classes
+|--------------------------------------------------------------------------
+|
+| Common elements with a bit of class
+|
+|
+*/
+
+html, body.home-page {
+  height: 100%;
+}
+
+body.home-page .top-wrap.row {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#wrapper {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin: 0 !important;
+}
+
+h2.page-title, h2.post-title, h1.page-title, h1.post-title {
+  color: $color-black-mineshaft;
+}
+
+.author-box,.category-box,.tag-box,.info-box,#sidebar,.activity-inner,div.activity-comments form.ac-form,.postthumb img,span.activity,h1#site-title,div#site-title,#inner-sidebar,.sidebar-activity-tabs ul li,div#subnav.item-list-tabs,#top-homepage,.fluid-width-video-wrapper,#bbpress-forums .bbp-breadcrumb, #bbpress-forums li.bbp-footer, .bbp-reply-header {
+  text-shadow: none;
+}
+
+#content-full {
+  max-width: $large;
+  margin: 0 auto;
+}
+
+.text-blue {
+  color: $color-brand-blue;
+}
+
+.text-gray{
+  color: $color-gray-boulder;
+}
+
+.em-ticket-select {
+  background-size: 13px;
+}
+
+.row {
+  width: 100% !important;
+  margin: 0px !important;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.clear{
+  clear: both;
+}

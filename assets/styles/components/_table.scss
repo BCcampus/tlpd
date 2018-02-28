@@ -1,0 +1,26 @@
+/*
+|--------------------------------------------------------------------------
+| Tables
+|--------------------------------------------------------------------------
+|
+|
+|
+|
+*/
+table.em-calendar thead {
+  font-weight: normal;
+}
+
+thead:first-child tr th {
+  color: inherit;
+}
+
+[class*="column"] + [class*="lastfix"]:last-child {
+  float: none;
+}
+
+@media (min-width: $small) {
+  table.widefat.events-table {
+    table-layout: fixed;
+  }
+}

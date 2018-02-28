@@ -1,0 +1,134 @@
+/*
+|--------------------------------------------------------------------------
+| Nav
+|--------------------------------------------------------------------------
+|
+|
+|
+|
+*/
+
+// inner header nav
+.main-menu ul a {
+  color: $color-blue-boston;
+  &:hover {
+    background: none;
+  }
+}
+
+.base-menu ul li.current-cat a,
+.base-menu ul li.current_page_item a,
+.base-menu ul li.current-menu-item a {
+  background: none;
+  font-weight: normal;
+}
+
+.top-menu,
+.top-wrap .sub-menu,
+.item-list-tabs,
+thead:first-child tr th,
+thead:first-child tr td,
+.base-menu ul ul,
+.sidebar-activity-tabs ul li.current,
+.sidebar-activity-tabs ul li.selected,
+.docs .toggle-switch,
+.post-title:before,
+.doc-content-wrapper .toggle-switch,
+.mobile-menu-container,
+.info-box h3,
+#bbpress-forums li.bbp-header {
+  background: $color-neutral-20;
+  border: none;
+  box-shadow: none;
+}
+
+.base-menu ul a, div.item-list-tabs ul li a, div.item-list-tabs ul li span, #footer-menu ul li a {
+  text-shadow: none;
+  font-weight: normal;
+}
+
+/****************************************
+	Main Menu buttons - Inside Header
+*****************************************/
+
+#logo-menu-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: $medium) {
+    flex-direction: row;
+    align-items: center;
+      justify-content: space-between;
+  }
+
+  h1 {
+    position: static !important;
+  }
+
+  a {
+    width: auto !important;
+  }
+}
+
+#main-menu-wrap {
+  margin-top: $unit*5 !important;
+
+  @media (min-width: $medium) {
+    margin: 0 !important;
+    padding: 0;
+  }
+}
+
+nav.main-menu {
+  padding: 0 !important;
+
+  @media (min-width: $medium) {
+    padding-left: $unit*9;
+  }
+}
+
+#main-menu-wrap .main-menu ul {
+  display: flex !important;
+  align-items: center;
+  padding: 0 10px 10px;
+
+  @media (min-width: $medium) {
+    padding: 0;
+  }
+
+  & a:hover span {
+    color: darken($color-brand-blue, 10%);
+  }
+
+  li:first-child {
+    @extend .c-button;
+    @extend .c--ghost;
+  }
+  a {
+    font-size: 14px;
+    margin: 0;
+    color: $color-brand-blue !important;
+
+    @media (min-width: $small) {
+      font-size: 16px;
+    }
+
+    @media (min-width: 840px) {
+      font-size: 18px;
+    }
+  }
+}
+
+#infinity-base .icext-feature {
+  position: static !important;
+}
+
+
+// Mobile Nav
+// ---
+//
+
+.mobile-menu-container {
+  display: none !important;
+}

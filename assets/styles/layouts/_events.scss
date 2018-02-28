@@ -1,0 +1,57 @@
+// Add new button
+a.em-button {
+  padding: $unit*2 $unit*4 !important;
+  margin: 0;
+  background: none;
+  border: none;
+  color: $color-brand-blue;
+  float: none;
+  font-size: 16px;
+  padding: 0 !important;
+
+  &:before {
+    content: '+';
+    font-weight: 400 !important;
+    font-family: 'Roboto' !important;
+  }
+}
+
+// Upcoming/Paste events
+.subsubsub {
+  display: none;
+}
+
+// Search events box
+.search-box {
+  display: none;
+
+  @media (min-width: $xsmall) {
+    // display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  label {
+    text-transform: capitalize;
+  }
+
+  label,
+  input {
+    margin-right: $unit*2;
+  }
+}
+
+// move event location map over to the right
+.entry {
+  .single-event-map {
+    float: right;
+    clear: right;
+    margin: 0px 0px 15px 15px;
+  }
+}
+
+// remove evil edit hand
+a.post-edit-link {
+  display: none;
+}
