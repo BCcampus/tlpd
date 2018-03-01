@@ -3,7 +3,7 @@
  * Modified from original events manager plugin version: 5.7.3
  *
  * @author Alex Paredes
- * @package pro-d
+ * @package early-years
  * @since 0.9.6
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *

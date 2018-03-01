@@ -2,7 +2,7 @@
 /**
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package pro-d
+ * @package early-years
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -134,9 +134,9 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 				<th><?php _e( 'Province:', 'events-manager' ) ?><?php echo $required; ?></th>
 				<td>
 					<select id="location-state" name="location_state">
-						<?php foreach ( prod_get_provinces() as $province_name ) : ?>
+						<?php foreach ( eypd_get_provinces() as $province_name ) : ?>
 							<option
-									value="<?php echo esc_attr( $province_name ); ?>" <?php echo ( get_option( 'prod_location_default_province' ) == $province_name ) ? 'selected="selected"' : ''; ?>><?php echo esc_html( $province_name ); ?></option>
+									value="<?php echo esc_attr( $province_name ); ?>" <?php echo ( get_option( 'eypd_location_default_province' ) == $province_name ) ? 'selected="selected"' : ''; ?>><?php echo esc_html( $province_name ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</td>

@@ -5,7 +5,7 @@
  *
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package pro-d
+ * @package early-years
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -20,7 +20,7 @@
  *
  * @return mixed|void
  */
-function prod_content( $page_content ) {
+function eypd_content( $page_content ) {
 	global $post, $wpdb, $wp_query, $EM_Event, $EM_Location, $EM_Category;
 	if ( empty( $post ) ) {
 		return $page_content;
@@ -170,4 +170,4 @@ function prod_content( $page_content ) {
 	return $page_content;
 }
 
-add_filter( 'the_content', 'prod_content' );
+add_filter( 'the_content', 'eypd_content' );

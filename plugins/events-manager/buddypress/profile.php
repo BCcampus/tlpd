@@ -4,7 +4,7 @@
  * events-manager/templates/buddypress/profile.php
  *
  * @author Brad Payne
- * @package pro-d
+ * @package early-years
  * @since 0.9.2
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -133,7 +133,7 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 
 	<div class='table-wrap'>
-		<form id="prod_cert_hours" class="pro-d-cert-hours" action="" method="post">
+		<form id="eypd_cert_hours" class="eypd-cert-hours" action="" method="post">
 			<table id='dbem-bookings-table' class='widefat post fixed'>
 				<thead>
 				<tr>
@@ -148,10 +148,10 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 				</thead>
 				<tbody>
 				<?php
-				$nonce = wp_create_nonce( 'prod_cert_hours' );
+				$nonce = wp_create_nonce( 'eypd_cert_hours' );
 				$count = 0;
 				// save number of hours in the users profile
-				$user_hours = get_user_meta( $bp->displayed_user->id, 'prod_cert_hours', true );
+				$user_hours = get_user_meta( $bp->displayed_user->id, 'eypd_cert_hours', true );
 
 				foreach ( $EM_Bookings
 
@@ -171,8 +171,8 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 					</td>
 					<?php if ( bp_is_my_profile() ) { ?>
 					<td>
-						<input id="pro-d-cert-hours-<?php echo $event_id; ?>"
-							   name=prod_cert_hours[<?php echo $event_id; ?>]
+						<input id="eypd-cert-hours-<?php echo $event_id; ?>"
+							   name=eypd_cert_hours[<?php echo $event_id; ?>]
 							   value="1"
 							   type='radio' <?php if ( ! isset( $user_hours[ $event_id ] ) ) {
 									$user_hours[ $event_id ] = '';
@@ -181,8 +181,8 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 					</td>
 
 					<td>
-						<input id="pro-d-cert-hours-<?php echo $event_id; ?>"
-							   name=prod_cert_hours[<?php echo $event_id; ?>]
+						<input id="eypd-cert-hours-<?php echo $event_id; ?>"
+							   name=eypd_cert_hours[<?php echo $event_id; ?>]
 							   value="0"
 							   type='radio' <?php if ( ! isset( $user_hours[ $event_id ] ) ) {
 									$user_hours[ $event_id ] = '';
@@ -197,7 +197,7 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 			</table>
 			<input type="hidden" name="_wpnonce" value="<?php echo $nonce; ?>"/>
 			<input type="hidden" name="user_id" value="<?php echo $bp->displayed_user->id; ?>"/>
-			<input type="hidden" name="action" value="prod_cert_hours"/>
+			<input type="hidden" name="action" value="eypd_cert_hours"/>
 
 			<!-- calculate hours -->
 			<?php if ( bp_is_my_profile() ) { ?>
@@ -205,7 +205,7 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 				<input class="right" type="submit" value="Calculate My Hours"/>
 				<?php
 				// tally up the hours
-				$num = prod_cumulative_hours( $user_hours );
+				$num = eypd_cumulative_hours( $user_hours );
 				echo '<p>Total Certificate Hours: ';
 				echo '<b>';
 				echo ( $num ) ? $num : '0';
@@ -226,13 +226,13 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 if ( isset( $_POST['expiry-date'] ) ) {
 	$newdate = $_POST['expiry-date'];
 	// Update/Create User Meta
-	update_user_meta( $bp->displayed_user->id, 'prod_cert_expire', $newdate );
+	update_user_meta( $bp->displayed_user->id, 'eypd_cert_expire', $newdate );
 }
 //get expiry date
-$cert_expires = get_user_meta( $bp->displayed_user->id, 'prod_cert_expire', true );
+$cert_expires = get_user_meta( $bp->displayed_user->id, 'eypd_cert_expire', true );
 if ( bp_is_my_profile() ) {
 	?>
-	<form id="prod_countdown" class="pro-d-countdown" action="" method="post">
+	<form id="eypd_countdown" class="eypd-countdown" action="" method="post">
 		<div class="certexpire">
 			<p>Keep track of when your professional certification expires.</p>
 			<input id="expiry-date" value="<?php if ( $cert_expires ) {

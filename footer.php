@@ -1,10 +1,10 @@
 <?php
 /**
- * pro-d Theme: footer template
+ * Early-Years Theme: footer template
  *
  * Modified from original header template in cbox theme
  * @author Alex Paredes
- * @package pro-d
+ * @package early-years
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *

@@ -1,10 +1,10 @@
 <?php
 /**
- * Pro-D Theme: Header Content
+ * Early Years Theme: Header Content
  *
  * Modified from original header template in cbox theme
  * @author Brad Payne
- * @package pro-d
+ * @package early-years
  * @since 0.9.5
  * @license http://www.gnu.org/licenses/gpl.html GPLv3 or later
  */
@@ -34,9 +34,9 @@
                 </picture>
 
                 <picture>
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/pro-d-logomark.webp" type="image/webp">
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/pro-d-logomark.png">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/pro-d-logomark.png" width="135" height="92" alt="Professional Development">
+                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logomark.webp" type="image/webp">
+                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logomark.png">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logomark.png" width="135" height="92" alt="Early Years Professional Development">
                 </picture>
 			</a>
 		</<?php echo $heading_tag; ?>>

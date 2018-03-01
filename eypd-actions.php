@@ -4,7 +4,7 @@
  *
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne, Shawn DeWolfe
- * @package pro-d
+ * @package early-years
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -13,7 +13,7 @@
  * @copyright Copyright Marcus Sykes
  */
 
-function prod_init_actions() {
+function eypd_init_actions() {
 	global $wpdb, $EM_Notices, $EM_Event;
 
 	update_option( 'dbem_location_event_list_item_format', '<li class="category-#_EVENTPOSTID">#_EVENTLINK - #_EVENTDATES - #_EVENTTIMES</li>', true );
@@ -56,11 +56,11 @@ function prod_init_actions() {
 			foreach ( $EM_Locations as $location_key => $EM_Location ) {
 				$json_locations[ $location_key ] = $EM_Location->to_array();
 
-				$prod_edit                                           = $EM_Location->output( get_option( 'dbem_map_text_format' ) );
-				$prod_edit                                           = prod_event_etc_output( $prod_edit );
-				$json_locations[ $location_key ]['location_balloon'] = $prod_edit;
+				$eypd_edit                                           = $EM_Location->output( get_option( 'dbem_map_text_format' ) );
+				$eypd_edit                                           = eypd_event_etc_output( $eypd_edit );
+				$json_locations[ $location_key ]['location_balloon'] = $eypd_edit;
 				// toss venues without events
-				if ( ( substr_count( $prod_edit, '<li' ) < 2 ) && ( substr_count( $prod_edit, 'No events in this location' ) > 0 ) ) {
+				if ( ( substr_count( $eypd_edit, '<li' ) < 2 ) && ( substr_count( $eypd_edit, 'No events in this location' ) > 0 ) ) {
 					unset( $json_locations[ $location_key ] );
 				}
 				$output = 0;
@@ -717,12 +717,12 @@ WHERE ( `location_name` LIKE %s ) AND location_status=1 $location_cond LIMIT 10
 		exit();
 	}
 
-	// pro-d certificate hours
-	if ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'prod_cert_hours' && wp_verify_nonce( $_REQUEST['_wpnonce'], 'prod_cert_hours' ) ) {
+	// EYPD certificate hours
+	if ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'eypd_cert_hours' && wp_verify_nonce( $_REQUEST['_wpnonce'], 'eypd_cert_hours' ) ) {
 
 		if ( is_user_logged_in() ) {
 			// add the data
-			update_user_meta( $_POST['user_id'], 'prod_cert_hours', $_POST['prod_cert_hours'] );
+			update_user_meta( $_POST['user_id'], 'eypd_cert_hours', $_POST['eypd_cert_hours'] );
 		}
 
 		// redirect back to the page
@@ -731,4 +731,4 @@ WHERE ( `location_name` LIKE %s ) AND location_status=1 $location_cond LIMIT 10
 	}
 }
 
-add_action( 'init', 'prod_init_actions', 10 );
+add_action( 'init', 'eypd_init_actions', 10 );

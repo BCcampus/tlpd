@@ -5,7 +5,7 @@
  *
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package pro-d
+ * @package early-years
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -39,7 +39,7 @@ if ( ! empty( $_REQUEST['success'] ) ) {
 
 if ( empty( $_REQUEST['success'] ) ) {
 	echo "<p class='margin-up'>";
-	_e( 'This form is to be completed in order to post events on this web portal. To add your event, fill in the fields below. Fields marked with an * are mandatory. If you have multiple events to post please contact earlyyears[at]bccampus.ca for assistance.', 'pro-d' );
+	_e( 'This form is to be completed in order to post events on this web portal. To add your event, fill in the fields below. Fields marked with an * are mandatory. If you have multiple events to post please contact earlyyears[at]bccampus.ca for assistance.', 'early-years' );
 	echo '</p>';
 }
 ?>

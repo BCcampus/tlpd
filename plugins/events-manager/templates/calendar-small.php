@@ -9,7 +9,7 @@
  *
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package pro-d
+ * @package early-years
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *

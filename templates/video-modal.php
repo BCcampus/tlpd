@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="close" type="button" data-dismiss="modal">×</button>
-                <h4 class="modal-title">pro-d Overview</h4>
+                <h4 class="modal-title">EYPD Overview</h4>
             </div>
             <div class="modal-body vid">
                 <iframe src="https://player.vimeo.com/video/211567638" width=100% height="360" frameborder="0"

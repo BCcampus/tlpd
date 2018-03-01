@@ -1,6 +1,6 @@
 <?php
 /**
- * Class prodTest
+ * Class EypdTest
  *
  * @package Early_Years
  */
@@ -8,7 +8,7 @@
 /**
  * Sample test case.
  */
-class prodTest extends WP_UnitTestCase {
+class EypdTest extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();

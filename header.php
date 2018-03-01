@@ -1,6 +1,6 @@
 <?php
 /**
- * Project: pro-d
+ * Project: early-years
  * Project Sponsor: BCcampus <https://bccampus.ca>
  * Copyright 2012-2017 Brad Payne <https://bradpayne.ca>
  * Date: 2017-11-02
