@@ -374,7 +374,7 @@ function eypd_get_provinces() {
 function eypd_run_once() {
 
 	// change eypd_version value to run it again
-	$eypd_version        = 6.7;
+	$eypd_version        = 6.8;
 	$current_version     = get_option( 'eypd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -410,8 +410,6 @@ function eypd_run_once() {
 	);
 	$default_attributes  = '#_ATT{Target Audience}
 #_ATT{Online}{|Yes|No}
-#_ATT{Professional Development Certificate}{|Yes|No|Upon Request|Not Currently Available}
-#_ATT{Professional Development Certificate Credit Hours}
 #_ATT{Registration Fee}
 #_ATT{Registration Space}{|Filling Up!|FULL}
 #_ATT{Registration Contact Email}
@@ -784,10 +782,6 @@ function eypd_validate_attributes() {
 	// bail early if not an object
 	if ( ! is_object( $EM_Event ) ) {
 		return false;
-	}
-
-	if ( empty( $EM_Event->event_attributes['Professional Development Certificate'] ) ) {
-		$EM_Event->add_error( sprintf( __( '%s is required.', 'early-years' ), __( 'Professional Development Certificate', 'early-years' ) ) );
 	}
 
 	if ( empty( $EM_Event->event_attributes['Registration Fee'] ) ) {

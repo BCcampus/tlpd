@@ -15,7 +15,7 @@ global $EM_Event;
 /* @var $EM_Event EM_Event */
 $attributes     = em_get_attributes();
 $has_deprecated = false;
-$required_attributes = array( 'Registration Fee', 'Professional Development Certificate' );
+$required_attributes = array( '' );
 
 if ( count( $attributes['names'] ) > 0 ) : ?>
 	<?php foreach ( $attributes['names'] as $name ) : ?>
@@ -25,12 +25,6 @@ if ( count( $attributes['names'] ) > 0 ) : ?>
 			switch ( $name ) {
 				case 'Registration Link':
 					echo '<p class="margin-up"><i>(if available)</i></p>';
-					break;
-				case 'Professional Development Certificate Credit Hours':
-					echo '<p class="margin-up"><i>(Type a number)</i></p>';
-					break;
-				case 'Professional Development Certificate':
-					echo '<p class="margin-up"><i>(It is the responsibility of early childhood educators to follow professional development requirements as described by the <a href="http://www2.gov.bc.ca/gov/content/education-training/early-learning/teach/training-and-professional-development/become-an-early-childhood-educator/renew-maintain-ece-certification" target="_blank">ECE Registry</a>)</i></p>';
 					break;
 				default:
 					echo '';
