@@ -855,36 +855,6 @@ function eypd_set_default_spaces() {
 add_filter( 'em_ticket_get_spaces', 'eypd_set_default_spaces' );
 
 /**
- * Adds up hours (if available) from an event attribute
- * hooked into init, integrates with eypd-actions.php
- *
- * @param $ids
- *
- * @return bool|int
- */
-function eypd_cumulative_hours( $ids ) {
-	if ( ! is_array( $ids ) ) {
-		return false;
-	}
-	$total = 0;
-	// input is radio buttons with boolean values
-	// true means they attended (default)
-	foreach ( $ids as $id => $bool ) {
-		if ( false == $bool ) {
-			continue;
-		}
-		$e = em_get_event( $id );
-		foreach ( $e->event_attributes as $key => $val ) {
-			if ( 0 === strcmp( 'Professional Development Certificate Credit Hours', $key ) ) {
-				$total = $total + intval( $val );
-			}
-		}
-	}
-
-	return intval( $total );
-}
-
-/**
  * URL to member profile
  */
 function eypd_get_my_bookings_url() {
