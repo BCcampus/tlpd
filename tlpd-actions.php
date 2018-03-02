@@ -13,7 +13,7 @@
  * @copyright Copyright Marcus Sykes
  */
 
-function eypd_init_actions() {
+function tlpd_init_actions() {
 	global $wpdb, $EM_Notices, $EM_Event;
 
 	update_option( 'dbem_location_event_list_item_format', '<li class="category-#_EVENTPOSTID">#_EVENTLINK - #_EVENTDATES - #_EVENTTIMES</li>', true );
@@ -56,11 +56,11 @@ function eypd_init_actions() {
 			foreach ( $EM_Locations as $location_key => $EM_Location ) {
 				$json_locations[ $location_key ] = $EM_Location->to_array();
 
-				$eypd_edit                                           = $EM_Location->output( get_option( 'dbem_map_text_format' ) );
-				$eypd_edit                                           = eypd_event_etc_output( $eypd_edit );
-				$json_locations[ $location_key ]['location_balloon'] = $eypd_edit;
+				$tlpd_edit                                           = $EM_Location->output( get_option( 'dbem_map_text_format' ) );
+				$tlpd_edit                                           = tlpd_event_etc_output( $tlpd_edit );
+				$json_locations[ $location_key ]['location_balloon'] = $tlpd_edit;
 				// toss venues without events
-				if ( ( substr_count( $eypd_edit, '<li' ) < 2 ) && ( substr_count( $eypd_edit, 'No events in this location' ) > 0 ) ) {
+				if ( ( substr_count( $tlpd_edit, '<li' ) < 2 ) && ( substr_count( $tlpd_edit, 'No events in this location' ) > 0 ) ) {
 					unset( $json_locations[ $location_key ] );
 				}
 				$output = 0;
@@ -717,12 +717,12 @@ WHERE ( `location_name` LIKE %s ) AND location_status=1 $location_cond LIMIT 10
 		exit();
 	}
 
-	// EYPD certificate hours
-	if ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'eypd_cert_hours' && wp_verify_nonce( $_REQUEST['_wpnonce'], 'eypd_cert_hours' ) ) {
+	// TLPD certificate hours
+	if ( ! empty( $_REQUEST['action'] ) && $_REQUEST['action'] == 'tlpd_cert_hours' && wp_verify_nonce( $_REQUEST['_wpnonce'], 'tlpd_cert_hours' ) ) {
 
 		if ( is_user_logged_in() ) {
 			// add the data
-			update_user_meta( $_POST['user_id'], 'eypd_cert_hours', $_POST['eypd_cert_hours'] );
+			update_user_meta( $_POST['user_id'], 'tlpd_cert_hours', $_POST['tlpd_cert_hours'] );
 		}
 
 		// redirect back to the page
@@ -731,4 +731,4 @@ WHERE ( `location_name` LIKE %s ) AND location_status=1 $location_cond LIMIT 10
 	}
 }
 
-add_action( 'init', 'eypd_init_actions', 10 );
+add_action( 'init', 'tlpd_init_actions', 10 );

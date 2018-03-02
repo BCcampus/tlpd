@@ -1,8 +1,8 @@
 {
   "name": "early-years",
   "version": "0.9.6",
-  "description": "Custom Theme for the Early Years Professional Development Project",
-  "repository": "https://github.com/BCcampus/eypd.git",
+  "description": "Custom Theme for the Teaching and Learning Professional Development Project",
+  "repository": "https://github.com/BCcampus/tlpd.git",
   "license": "GPL-2.0",
   "scripts": {
     "build": "NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",

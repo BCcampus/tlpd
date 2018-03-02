@@ -132,7 +132,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'bootstrap-style', $template_dir . '/dist/styles/bootstrap.min.css' );
 	wp_enqueue_script( 'modal-video', $template_dir . '/dist/scripts/modal-video.js', array( 'jquery' ), null, true );
 
-	// load styling for datepicker in myEYPD profile page only
+	// load styling for datepicker in myTLPD profile page only
 	if ( function_exists( 'bp_is_my_profile' ) ) {
 		if ( bp_is_my_profile() ) {
 			wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
@@ -165,7 +165,7 @@ add_action( 'wp_enqueue_scripts', function () {
 */
 
 add_action( 'admin_enqueue_scripts', function () {
-	wp_enqueue_style( 'eypd_admin_css', get_stylesheet_directory_uri() . '/dist/styles/admin.css', false, false, 'screen' );
+	wp_enqueue_style( 'tlpd_admin_css', get_stylesheet_directory_uri() . '/dist/styles/admin.css', false, false, 'screen' );
 } );
 
 // remove from parent theme
@@ -197,8 +197,8 @@ if ( function_exists( 'em_content' ) ) {
 if ( function_exists( 'em_content' ) ) {
 	remove_filter( 'init', 'em_init_actions' );
 }
-include( get_stylesheet_directory() . '/eypd-actions.php' );
-include( get_stylesheet_directory() . '/eypd-events.php' );
+include( get_stylesheet_directory() . '/tlpd-actions.php' );
+include( get_stylesheet_directory() . '/tlpd-events.php' );
 
 /*
 |--------------------------------------------------------------------------
@@ -218,7 +218,7 @@ include( get_stylesheet_directory() . '/eypd-events.php' );
  *
  * @return mixed
  */
-function eypd_em_scope_conditions( $conditions, $args ) {
+function tlpd_em_scope_conditions( $conditions, $args ) {
 	if ( ! empty( $args['scope'] ) && $args['scope'] == 'after-today' ) {
 		$current_date        = date( 'Y-m-d', current_time( 'timestamp' ) );
 		$conditions['scope'] = " (event_start_date > CAST('$current_date' AS DATE))";
@@ -227,7 +227,7 @@ function eypd_em_scope_conditions( $conditions, $args ) {
 	return $conditions;
 }
 
-add_filter( 'em_events_build_sql_conditions', 'eypd_em_scope_conditions', 1, 2 );
+add_filter( 'em_events_build_sql_conditions', 'tlpd_em_scope_conditions', 1, 2 );
 
 
 /**
@@ -236,7 +236,7 @@ add_filter( 'em_events_build_sql_conditions', 'eypd_em_scope_conditions', 1, 2 )
  *
  * @return array
  */
-function eypd_em_scopes( $scopes ) {
+function tlpd_em_scopes( $scopes ) {
 	$my_scopes = array(
 		'after-today' => 'After Today',
 	);
@@ -244,7 +244,7 @@ function eypd_em_scopes( $scopes ) {
 	return $scopes + $my_scopes;
 }
 
-add_filter( 'em_get_scopes', 'eypd_em_scopes', 1, 1 );
+add_filter( 'em_get_scopes', 'tlpd_em_scopes', 1, 1 );
 
 /*
 |--------------------------------------------------------------------------
@@ -288,30 +288,30 @@ add_filter( 'login_headertitle', function () {
  *
  * @return string
  */
-function eypd_login_message( $message ) {
+function tlpd_login_message( $message ) {
 	if ( empty( $message ) ) {
 		$imgdir = get_stylesheet_directory_uri();
-		$html   = '<p class="login-logo"><picture><source srcset="' . $imgdir . '/dist/images/eypd-logo-small.webp" type="image/webp"><source srcset="' . $imgdir . '/dist/images/eypd-logo-small.png"><img src="' . $imgdir . '/dist/images/eypd-logo-small.png" width="101" height="92" alt="BC Provincial Government"></picture></p>';
-		$html   .= '<p class="logintext">Log in To Your EYPD Account</p>';
+		$html   = '<p class="login-logo"><picture><source srcset="' . $imgdir . '/dist/images/tlpd-logo-small.webp" type="image/webp"><source srcset="' . $imgdir . '/dist/images/tlpd-logo-small.png"><img src="' . $imgdir . '/dist/images/tlpd-logo-small.png" width="101" height="92" alt="BC Provincial Government"></picture></p>';
+		$html   .= '<p class="logintext">Log in To Your TLPD Account</p>';
 		echo $html;
 	} else {
 		return $message;
 	}
 }
 
-add_filter( 'login_message', 'eypd_login_message' );
+add_filter( 'login_message', 'tlpd_login_message' );
 
 /**
  * Adds Sign Up button and Forgot lost password link
  */
-function eypd_login_form() {
-	$html = '<p class="signuptext">New to EYPD?</p><p><a class ="button button-primary button-large signup" href="' . home_url() . '/sign-up" title="Sign Up">Sign Up</a></p>';
+function tlpd_login_form() {
+	$html = '<p class="signuptext">New to TLPD?</p><p><a class ="button button-primary button-large signup" href="' . home_url() . '/sign-up" title="Sign Up">Sign Up</a></p>';
 	$html .= '&nbsp; &#45; &nbsp;<a class ="forgot" href="' . wp_lostpassword_url() . '" title="Lost Password">Forgot Password?</a>';
 
 	echo $html;
 }
 
-add_action( 'login_form', 'eypd_login_form' );
+add_action( 'login_form', 'tlpd_login_form' );
 
 /*
 |--------------------------------------------------------------------------
@@ -328,13 +328,13 @@ add_action( 'login_form', 'eypd_login_form' );
  *
  * @return string
  */
-function eypd_read_more( $more ) {
+function tlpd_read_more( $more ) {
 	global $post;
 
 	return ' <a href="' . get_the_permalink( $post->ID ) . '">...[Read full article]</a>';
 }
 
-add_filter( 'excerpt_more', 'eypd_read_more' );
+add_filter( 'excerpt_more', 'tlpd_read_more' );
 
 /*
 |--------------------------------------------------------------------------
@@ -346,7 +346,7 @@ add_filter( 'excerpt_more', 'eypd_read_more' );
 |
 */
 
-function eypd_get_provinces() {
+function tlpd_get_provinces() {
 	$provinces = array(
 		'Alberta',
 		'British Columbia',
@@ -369,13 +369,13 @@ function eypd_get_provinces() {
 
 /**
  * Runs once to set up defaults
- * increase variable $eypd_version to ensure it runs again
+ * increase variable $tlpd_version to ensure it runs again
  */
-function eypd_run_once() {
+function tlpd_run_once() {
 
-	// change eypd_version value to run it again
-	$eypd_version        = 6.8;
-	$current_version     = get_option( 'eypd_version', 0 );
+	// change tlpd_version value to run it again
+	$tlpd_version        = 6.8;
+	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
 	$img_max_size        = 8388608;
@@ -468,7 +468,7 @@ function eypd_run_once() {
 
 	$format_event_list_footer = '</tbody></table>';
 
-	if ( $current_version < $eypd_version ) {
+	if ( $current_version < $tlpd_version ) {
 
 		update_option( 'dbem_placeholders_custom', $default_attributes );
 		update_option( 'dbem_image_max_width', $img_max_dimension );
@@ -510,7 +510,7 @@ function eypd_run_once() {
 		/**
 		 * Most events will be in British Columbia
 		 */
-		update_option( 'eypd_location_default_province', 'British Columbia' );
+		update_option( 'tlpd_location_default_province', 'British Columbia' );
 
 		/**
 		 * Booking submit button text
@@ -520,7 +520,7 @@ function eypd_run_once() {
 		/**
 		 * Booking submit success
 		 */
-		update_option( 'dbem_booking_feedback', 'Event added! Click on myEYPD (top right of your screen) to find this saved event.' );
+		update_option( 'dbem_booking_feedback', 'Event added! Click on myTLPD (top right of your screen) to find this saved event.' );
 
 		/**
 		 * Manage bookings link text
@@ -530,12 +530,12 @@ function eypd_run_once() {
 		/**
 		 * Update option to current version
 		 */
-		update_option( 'eypd_version', $eypd_version );
+		update_option( 'tlpd_version', $tlpd_version );
 
 	}
 }
 
-add_action( 'wp_loaded', 'eypd_run_once' );
+add_action( 'wp_loaded', 'tlpd_run_once' );
 
 /**
  * Changing state to province and other customizations
@@ -546,7 +546,7 @@ add_action( 'wp_loaded', 'eypd_run_once' );
  *
  * @return mixed
  */
-function eypd_terminology_modify( $translated, $original, $domain ) {
+function tlpd_terminology_modify( $translated, $original, $domain ) {
 
 	if ( 'events-manager' == $domain ) {
 		$modify = array(
@@ -556,7 +556,7 @@ function eypd_terminology_modify( $translated, $original, $domain ) {
 			'Submit %s'                                                                      => 'Post %s',
 			'You must log in to view and manage your events.'                                => 'You are using this site in the role as a Learner. Learners may search for, share, and print events. Only Organizers may post and edit events.',
 			'You are currently viewing your public page, this is what other users will see.' => 'This is your professional development activity page - a personal record of your training events, events you plan on </br> attending, and record of professional development hours you have accumulated. <p>To officially register for a professional development event you must contact the agency responsible for the training event.</p>',
-			'Events'                                                                         => 'myEYPD',
+			'Events'                                                                         => 'myTLPD',
 		);
 	}
 
@@ -575,11 +575,11 @@ function eypd_terminology_modify( $translated, $original, $domain ) {
 	return $translated;
 }
 
-add_filter( 'gettext', 'eypd_terminology_modify', 11, 3 );
+add_filter( 'gettext', 'tlpd_terminology_modify', 11, 3 );
 
 /**
  * Howdy message needs a higher priority and different logic
- * than @see eypd_terminology_modify()
+ * than @see tlpd_terminology_modify()
  *
  * @param $translated_text
  * @param $text
@@ -587,13 +587,13 @@ add_filter( 'gettext', 'eypd_terminology_modify', 11, 3 );
  *
  * @return mixed
  */
-function eypd_howdy_message( $translated_text, $text, $domain ) {
+function tlpd_howdy_message( $translated_text, $text, $domain ) {
 	$new_message = str_replace( 'Howdy,', '', $text );
 
 	return $new_message;
 }
 
-add_filter( 'gettext', 'eypd_howdy_message', 10, 3 );
+add_filter( 'gettext', 'tlpd_howdy_message', 10, 3 );
 
 /**
  *
@@ -602,7 +602,7 @@ add_filter( 'gettext', 'eypd_howdy_message', 10, 3 );
  *
  * @return array
  */
-function eypd_event_output( $post_id = 0, $data = array() ) {
+function tlpd_event_output( $post_id = 0, $data = array() ) {
 	// get the data
 	if ( is_array( $data ) ) {
 		$data = get_post_custom( $post_id );
@@ -620,7 +620,7 @@ function eypd_event_output( $post_id = 0, $data = array() ) {
  *
  * @return mixed|string
  */
-function eypd_event_etc_output( $input = '' ) {
+function tlpd_event_etc_output( $input = '' ) {
 	$output = $input;
 	preg_match_all( '/<li class="category-(\d+)">/', $input, $output_array );
 	foreach ( $output_array[1] as $index => $post_id ) {
@@ -649,7 +649,7 @@ function eypd_event_etc_output( $input = '' ) {
  */
 function et_fetch( $post_id = - 1, $ajax = true ) {
 	if ( $ajax == true ) {
-		$output = eypd_event_output( $post_id );
+		$output = tlpd_event_output( $post_id );
 		echo json_encode( $output ); //encode into JSON format and output
 		die(); //stop "0" from being output
 	}
@@ -662,7 +662,7 @@ add_action( 'wp_ajax_cyop_lookup', 'et_fetch' );
  * remove links/menus from the admin bar,
  * if you are not an admin
  */
-function eypd_admin_bar_render() {
+function tlpd_admin_bar_render() {
 	global $wp_admin_bar;
 
 	// check if the admin panel is attempting to be displayed
@@ -683,10 +683,10 @@ function eypd_admin_bar_render() {
 		$wp_admin_bar->remove_node( 'itsec_admin_bar_menu' );
 
 		// add my profile link
-		$profileurl = eypd_get_my_bookings_url();
+		$profileurl = tlpd_get_my_bookings_url();
 		$wp_admin_bar->add_node( array(
 			'id'     => 'my_profile',
-			'title'  => 'myEYPD',
+			'title'  => 'myTLPD',
 			'href'   => $profileurl,
 			'parent' => 'user-actions',
 			'meta'   => array( 'class' => 'my-profile-page' ),
@@ -706,7 +706,7 @@ function eypd_admin_bar_render() {
 		if ( current_user_can( 'activate_plugins' ) ) {
 			$url = get_admin_url();
 			$wp_admin_bar->add_node( array(
-				'id'    => 'eypd_dashboard',
+				'id'    => 'tlpd_dashboard',
 				'title' => 'Dashboard',
 				'href'  => $url,
 				'meta'  => array(
@@ -717,12 +717,12 @@ function eypd_admin_bar_render() {
 	}
 }
 
-add_action( 'wp_before_admin_bar_render', 'eypd_admin_bar_render' );
+add_action( 'wp_before_admin_bar_render', 'tlpd_admin_bar_render' );
 
 /**
  * Remove BP sidebar menu items
  */
-function eypd_bp_nav() {
+function tlpd_bp_nav() {
 	global $bp;
 	bp_core_remove_nav_item( 'activity' );
 	bp_core_remove_nav_item( 'forums' );
@@ -737,35 +737,35 @@ function eypd_bp_nav() {
 
 }
 
-add_action( 'bp_setup_nav', 'eypd_bp_nav', 1000 );
+add_action( 'bp_setup_nav', 'tlpd_bp_nav', 1000 );
 
 
 // Filter wp_nav_menu() to add pop-overs to links in header menu
-function eypd_nav_menu_items( $nav, $args ) {
+function tlpd_nav_menu_items( $nav, $args ) {
 	if ( $args->theme_location == 'main-menu' ) {
 		if ( is_user_logged_in() ) {
 			$nav = '<li class="home"><a href=' . home_url() . '/post-event>Post an Event</a></li>';
 			$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
-			$nav .= '<li class="home"><a href="' . eypd_get_my_bookings_url() . '">' . __( '<i>my</i>EYPD' ) . '</a></li>';
+			$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i>TLPD' ) . '</a></li>';
 		} else {
 			//add popover with a message, and login and sign-up links
 			$popover = '<li class="home"><a href="#" data-container="body"  role="button"  data-toggle="popover" data-placement="bottom" data-html="true" data-original-title="" data-content="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
 			$nav     = $popover . 'post events.">Post an Event</a></li>';
 			$nav     .= $popover . 'edit your events.">Edit Event</a></li>';
-			$nav     .= $popover . ' view your events."><i>my</i>EYPD</a></li>';
+			$nav     .= $popover . ' view your events."><i>my</i>TLPD</a></li>';
 		}
 	}
 
 	return $nav;
 }
 
-add_filter( 'wp_nav_menu_items', 'eypd_nav_menu_items', 10, 2 );
+add_filter( 'wp_nav_menu_items', 'tlpd_nav_menu_items', 10, 2 );
 
 /**
  * Add favicon, theme color, PWA manifest
  */
 add_action( 'wp_head', function () {
-	$manifest = eypd_get_manifest_path();
+	$manifest = tlpd_get_manifest_path();
 	echo '<meta name="theme-color" content="#bee7fa"/>' . "\n";
 	echo '<link rel="shortcut icon" type="image/x-icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon.ico" />' . "\n";
 	echo '<link rel="manifest" href="' . $manifest . '">';
@@ -776,7 +776,7 @@ add_action( 'wp_head', function () {
 /**
  * Validating that required attribute fields are not empty
  */
-function eypd_validate_attributes() {
+function tlpd_validate_attributes() {
 	global $EM_Event;
 
 	// bail early if not an object
@@ -792,13 +792,13 @@ function eypd_validate_attributes() {
 
 }
 
-add_action( 'em_event_validate', 'eypd_validate_attributes' );
+add_action( 'em_event_validate', 'tlpd_validate_attributes' );
 
 /**
  * Makes profile fields descriptions into modals,
- * content of modals are in eypd/templates/*-modal.php
+ * content of modals are in tlpd/templates/*-modal.php
  */
-function eypd_profile_field_modals() {
+function tlpd_profile_field_modals() {
 
 	// check xprofile is activated
 	if ( bp_is_active( 'xprofile' ) ) {
@@ -823,35 +823,35 @@ function eypd_profile_field_modals() {
 	}
 }
 
-add_filter( 'bp_get_the_profile_field_description', 'eypd_profile_field_modals' );
+add_filter( 'bp_get_the_profile_field_description', 'tlpd_profile_field_modals' );
 
 /**
  * Display a link to FAQ after the submit button on the registration page
  */
-function eypd_faq() {
+function tlpd_faq() {
 	$html = "<div class='submit faq'><a href=\"https://BCCAMPUS.mycusthelp.ca/webapp/_rs/FindAnswers.aspx?coid=6CFA1D4B2B28F770A1273B\" target=\"_blank\">Need help signing up?</a></div>";
 	echo $html;
 }
 
-add_filter( 'bp_after_registration_submit_buttons', 'eypd_faq' );
+add_filter( 'bp_after_registration_submit_buttons', 'tlpd_faq' );
 
 /**
  * Setting a higher default for bookings capacity
  *
  * @return int
  */
-function eypd_set_default_spaces() {
+function tlpd_set_default_spaces() {
 	$default = 100;
 
 	return $default;
 }
 
-add_filter( 'em_ticket_get_spaces', 'eypd_set_default_spaces' );
+add_filter( 'em_ticket_get_spaces', 'tlpd_set_default_spaces' );
 
 /**
  * URL to member profile
  */
-function eypd_get_my_bookings_url() {
+function tlpd_get_my_bookings_url() {
 	global $bp;
 	if ( ! empty( $bp->events->link ) ) {
 		//get member url
@@ -864,14 +864,14 @@ function eypd_get_my_bookings_url() {
 /**
  * Check for dependencies, add admin notice
  */
-function eypd_dependencies_check() {
+function tlpd_dependencies_check() {
 
 	if ( file_exists( $composer = get_stylesheet_directory() . '/vendor/autoload.php' ) ) {
 		include( $composer );
 	} else {
 		// Remind to install dependencies
 		add_action( 'admin_notices', function () {
-			echo '<div id="message" class="notice notice-warning is-dismissible"><p>' . __( 'EYPD theme dependency missing, please run composer install. ' ) . '</p></div>';
+			echo '<div id="message" class="notice notice-warning is-dismissible"><p>' . __( 'TLPD theme dependency missing, please run composer install. ' ) . '</p></div>';
 		} );
 	}
 }
@@ -880,16 +880,16 @@ function eypd_dependencies_check() {
  * Fires when there is an update to the web theme version
  *
  */
-function eypd_maybe_update_editor_role() {
+function tlpd_maybe_update_editor_role() {
 	$theme           = wp_get_theme();
 	$current_version = $theme->get( 'Version' );
-	$last_version    = get_option( 'eypd_theme_version' );
+	$last_version    = get_option( 'tlpd_theme_version' );
 	if ( version_compare( $current_version, $last_version ) > 0 ) {
-		eypd_wpcodex_set_capabilities();
+		tlpd_wpcodex_set_capabilities();
 	}
 }
 
-add_action( 'init', 'eypd_maybe_update_editor_role' );
+add_action( 'init', 'tlpd_maybe_update_editor_role' );
 
 /**
  * Remove capabilities from editors.
@@ -903,7 +903,7 @@ add_action( 'init', 'eypd_maybe_update_editor_role' );
  *
  * Call the function when your plugin/theme is activated.
  */
-function eypd_wpcodex_set_capabilities() {
+function tlpd_wpcodex_set_capabilities() {
 
 	// Get the role object.
 	$editor = get_role( 'editor' );
@@ -944,7 +944,7 @@ function eypd_wpcodex_set_capabilities() {
  * @see http://wp-events-plugin.com/documentation/advanced-usage/
  *
  */
-function eypd_display_count_events() {
+function tlpd_display_count_events() {
 	if ( class_exists( 'EM_Events' ) ) {
 		$results = EM_Events::get( array( 'scope' => 'future', 'array' => '' ) );
 	}
@@ -977,13 +977,13 @@ add_filter( 'upload_mimes', function ( $mime_types ) {
 |
 */
 
-define( 'EYPD_MANIFEST_ARG', 'manifest_json' );
+define( 'TLPD_MANIFEST_ARG', 'manifest_json' );
 
 /**
  *
  */
 add_filter( 'query_vars', function ( $vars ) {
-	$vars[] = EYPD_MANIFEST_ARG;
+	$vars[] = TLPD_MANIFEST_ARG;
 
 	return $vars;
 } );
@@ -991,8 +991,8 @@ add_filter( 'query_vars', function ( $vars ) {
 /**
  * @return string
  */
-function eypd_get_manifest_path() {
-	return add_query_arg( EYPD_MANIFEST_ARG, '1', site_url() );
+function tlpd_get_manifest_path() {
+	return add_query_arg( TLPD_MANIFEST_ARG, '1', site_url() );
 }
 
 /**
@@ -1000,13 +1000,13 @@ function eypd_get_manifest_path() {
  */
 add_action( 'template_redirect', function () {
 	global $wp_query;
-	if ( $wp_query->get( EYPD_MANIFEST_ARG ) ) {
+	if ( $wp_query->get( TLPD_MANIFEST_ARG ) ) {
 		$theme_color = '#bee7fa';
 		$lang_dir    = ( is_rtl() ) ? 'rtl' : 'ltr';
 
 		$manifest = array(
 			'start_url'        => get_bloginfo( 'wpurl' ),
-			'short_name'       => 'EYPD',
+			'short_name'       => 'TLPD',
 			'name'             => get_bloginfo( 'name' ),
 			'description'      => get_bloginfo( 'description' ),
 			'display'          => 'standalone',
@@ -1017,37 +1017,37 @@ add_action( 'template_redirect', function () {
 			'orientation'      => 'portrait-primary',
 			'icons'            => array(
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-48.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-48.png',
 					'sizes' => '48x48',
 					'type'  => 'image/png'
 				),
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-72.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-72.png',
 					'sizes' => '72x72',
 					'type'  => 'image/png'
 				),
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-96.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-96.png',
 					'sizes' => '96x96',
 					'type'  => 'image/png'
 				),
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-144.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-144.png',
 					'sizes' => '144x144',
 					'type'  => 'image/png'
 				),
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-168.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-168.png',
 					'sizes' => '168x168',
 					'type'  => 'image/png'
 				),
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-192.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-192.png',
 					'sizes' => '192x192',
 					'type'  => 'image/png'
 				),
 				array(
-					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/eypd-512.png',
+					'src'   => get_stylesheet_directory_uri() . '/dist/images/pwa/tlpd-512.png',
 					'sizes' => '512x512',
 					'type'  => 'image/png'
 				),

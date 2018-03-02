@@ -20,7 +20,7 @@
  *
  * @return mixed|void
  */
-function eypd_content( $page_content ) {
+function tlpd_content( $page_content ) {
 	global $post, $wpdb, $wp_query, $EM_Event, $EM_Location, $EM_Category;
 	if ( empty( $post ) ) {
 		return $page_content;
@@ -170,4 +170,4 @@ function eypd_content( $page_content ) {
 	return $page_content;
 }
 
-add_filter( 'the_content', 'eypd_content' );
+add_filter( 'the_content', 'tlpd_content' );

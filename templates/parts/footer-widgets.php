@@ -16,14 +16,14 @@
     <div class="footer-widgets row">
         <div class="seven columns">
             <picture>
-                <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logo-small.webp"
+                <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-small.webp"
                         type="image/webp">
-                <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logo-small.png">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logo-small.png"
-                     alt="BC Provincial Office for the Early Years">
+                <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-small.png">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-small.png"
+                     alt="BC Provincial Office for the Teaching and Learning Professional Development">
             </picture>
-            <p>EYPD aims to support the B.C. Early Years sector by hosting, developing and evaluating a professional
-                development web portal. <a href="about-us" class="text-blue">Learn more about EYPD</a></p>
+            <p>TLPD aims to support the B.C. Teaching and Learning Professional Development sector by hosting, developing and evaluating a professional
+                development web portal. <a href="about-us" class="text-blue">Learn more about TLPD</a></p>
         </div>
 		<?php if ( is_active_sidebar( 'Footer Left' ) ) : ?>
             <!-- footer widgets -->
@@ -58,7 +58,7 @@
                     type="image/webp">
             <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png" width="329"
-                 height="78" alt="BC Provincial Office for the Early Years">
+                 height="78" alt="BC Provincial Office for the Teaching and Learning Professional Development">
         </picture>
     </div>
 </div>

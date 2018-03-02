@@ -1,9 +1,9 @@
 {
-  "name": "bccampus/eypd",
-  "description": "Theme and functionality to support Early Years Professional Development",
+  "name": "bccampus/tlpd",
+  "description": "Theme and functionality to support Teaching and Learning Professional Development",
   "type": "wordpress-theme",
   "version": "0.9.6",
-  "homepage": "https://github.com/bccampus/eypd",
+  "homepage": "https://github.com/bccampus/tlpd",
   "authors": [
     {
       "name": "Brad Payne",

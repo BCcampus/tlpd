@@ -19,12 +19,12 @@ infinity_get_header();
 <div class="row">
     <div class="c-banner">
         <div class="center">
-            <img class="eypd_logo"
-                 src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logo-final.svg"
-                 alt="EYPD logo">
-            <img class="eypd_logo_text"
-                 src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logo-final-text.svg"
-                 alt="EYPD logo text">
+            <img class="tlpd_logo"
+                 src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-final.svg"
+                 alt="TLPD logo">
+            <img class="tlpd_logo_text"
+                 src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-final-text.svg"
+                 alt="TLPD logo text">
         </div>
     </div>
 </div>
@@ -74,7 +74,7 @@ infinity_get_header();
 		<?php
 		infinity_load_template( 'templates/google-map.php' );
 		?>
-        <h2 class="text-center"><a class="text-gray" href="events"><?php eypd_display_count_events(); ?> Training Events
+        <h2 class="text-center"><a class="text-gray" href="events"><?php tlpd_display_count_events(); ?> Training Events
                 Currently Posted</a></h2>
     </div>
 </div>

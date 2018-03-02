@@ -134,9 +134,9 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 				<th><?php _e( 'Province:', 'events-manager' ) ?><?php echo $required; ?></th>
 				<td>
 					<select id="location-state" name="location_state">
-						<?php foreach ( eypd_get_provinces() as $province_name ) : ?>
+						<?php foreach ( tlpd_get_provinces() as $province_name ) : ?>
 							<option
-									value="<?php echo esc_attr( $province_name ); ?>" <?php echo ( get_option( 'eypd_location_default_province' ) == $province_name ) ? 'selected="selected"' : ''; ?>><?php echo esc_html( $province_name ); ?></option>
+									value="<?php echo esc_attr( $province_name ); ?>" <?php echo ( get_option( 'tlpd_location_default_province' ) == $province_name ) ? 'selected="selected"' : ''; ?>><?php echo esc_html( $province_name ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</td>

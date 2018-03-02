@@ -1,6 +1,6 @@
 <?php
 /**
- * Early Years Theme: Header Content
+ * Teaching and Learning Professional Development Theme: Header Content
  *
  * Modified from original header template in cbox theme
  * @author Brad Payne
@@ -34,9 +34,9 @@
                 </picture>
 
                 <picture>
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logomark.webp" type="image/webp">
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logomark.png">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/eypd-logomark.png" width="135" height="92" alt="Early Years Professional Development">
+                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logomark.webp" type="image/webp">
+                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logomark.png">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logomark.png" width="135" height="92" alt="Teaching and Learning Professional Development">
                 </picture>
 			</a>
 		</<?php echo $heading_tag; ?>>
