@@ -118,12 +118,12 @@ if ( empty( $_REQUEST['success'] ) ) {
 			</div>
 		</div>
 
-		<?php if ( $EM_Event->can_manage( 'upload_event_images', 'upload_event_images' ) ) : ?>
+		<?php  /**  if ( $EM_Event->can_manage( 'upload_event_images', 'upload_event_images' ) ) : ?>
 			<h3><?php esc_html_e( 'Event Image', 'events-manager' ); ?></h3>
 			<div class="inside event-form-image">
 				<?php em_locate_template( 'forms/event/featured-image-public.php', true ); ?>
 			</div>
-		<?php endif; ?>
+		<?php endif; */?>
 
 		<?php if ( get_option( 'dbem_rsvp_enabled' ) && $EM_Event->can_manage( 'manage_bookings', 'manage_others_bookings' ) ) : ?>
 			<!-- START Bookings -->
