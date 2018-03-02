@@ -18,7 +18,7 @@ echo $EM_Notices;
 if ( user_can( $bp->displayed_user->id, 'edit_events' ) ) {
 	?>
 
-    <h4><?php _e( 'My Events', 'events-manager' ); ?></h4>
+	<h4><?php _e( 'My Events', 'events-manager' ); ?></h4>
 	<?php
 	$args          = array(
 		'owner'         => $bp->displayed_user->id,
@@ -33,17 +33,17 @@ if ( user_can( $bp->displayed_user->id, 'edit_events' ) ) {
 		echo EM_Events::output( $args );
 	} else {
 		?>
-        <p><?php _e( 'No Events', 'events-manager' ); ?>.
+		<p><?php _e( 'No Events', 'events-manager' ); ?>.
 			<?php if ( get_current_user_id() == $bp->displayed_user->id ) : ?>
-                <a href="<?php echo home_url() . '/post-event'; ?>"><?php _e( 'Add Event', 'events-manager' ); ?></a>
+				<a href="<?php echo home_url() . '/post-event'; ?>"><?php _e( 'Add Event', 'events-manager' ); ?></a>
 			<?php endif; ?>
-        </p>
+		</p>
 		<?php
 	}
 }
 ?>
 
-    <h4><?php _e( "Events I'm Attending", 'events-manager' ); ?></h4>
+	<h4><?php _e( "Events I'm Attending", 'events-manager' ); ?></h4>
 <?php
 
 $EM_Person   = new EM_Person( $bp->displayed_user->id );
@@ -69,19 +69,19 @@ if ( count( $EM_Bookings->bookings ) > 0 ) {
 // Future Events Only
 if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 
-    <table cellpadding="0" cellspacing="0" class="events-table">
-        <thead>
-        <tr>
-            <th class="event-time" width="150">Date/Time</th>
-            <th class="event-description" width="*">Upcoming Event</th>
+	<table cellpadding="0" cellspacing="0" class="events-table">
+		<thead>
+		<tr>
+			<th class="event-time" width="150">Date/Time</th>
+			<th class="event-description" width="*">Upcoming Event</th>
 			<?php if ( is_user_logged_in() ) {
 				echo '<th class="event-delete">Delete this event from my profile</th>';
-			}
+}
 			?>
-            <th class="event-ical" width="*">Add to Calendar</th>
-        </tr>
-        </thead>
-        <tbody>
+			<th class="event-ical" width="*">Add to Calendar</th>
+		</tr>
+		</thead>
+		<tbody>
 		<?php
 		foreach ( $EM_Bookings as $EM_Booking ) {
 			// skip over if it's not in the future
@@ -89,9 +89,9 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 				continue;
 			}
 			$EM_Event = $EM_Booking->get_event(); ?>
-            <tr>
-                <td><?php echo $EM_Event->output( '#_EVENTDATES<br/>#_EVENTTIMES' ); ?></td>
-                <td><?php echo $EM_Event->output( '#_EVENTLINK
+			<tr>
+				<td><?php echo $EM_Event->output( '#_EVENTDATES<br/>#_EVENTTIMES' ); ?></td>
+				<td><?php echo $EM_Event->output( '#_EVENTLINK
                 {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}' ); ?></td>
 
 				<?php if ( is_user_logged_in() ) {
@@ -100,7 +100,7 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 					if ( ! in_array( $EM_Booking->booking_status, array(
 							2,
 							3,
-						) ) && get_option( 'dbem_bookings_user_cancellation' ) && $EM_Event->get_bookings()->has_open_time()
+					) ) && get_option( 'dbem_bookings_user_cancellation' ) && $EM_Event->get_bookings()->has_open_time()
 					) {
 						$cancel_url  = em_add_get_params( $_SERVER['REQUEST_URI'], array(
 							'action'     => 'booking_cancel',
@@ -111,41 +111,38 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 					}
 					echo apply_filters( 'em_my_bookings_booking_actions', $cancel_link, $EM_Booking );
 					echo '</td>';
-				}
+}
 				?>
-                <td><?php echo $EM_Event->output( '#_EVENTICALLINK' ); ?></td>
-            </tr>
+				<td><?php echo $EM_Event->output( '#_EVENTICALLINK' ); ?></td>
+			</tr>
 			<?php
 		} ?>
-        </tbody>
-    </table>
+		</tbody>
+	</table>
 	<?php
 
 } else {
 	?>
-    <p><?php _e( 'Not attending any events yet.', 'events-manager' ); ?></p>
+	<p><?php _e( 'Not attending any events yet.', 'events-manager' ); ?></p>
 	<?php
 }
 ?>
-    <!-- Past Events Only -->
-    <h4><?php _e( "Past Events I've Attended", 'events-manager' ); ?></h4>
+	<!-- Past Events Only -->
+	<h4><?php _e( "Past Events I've Attended", 'events-manager' ); ?></h4>
 <?php
 if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 
-    <div class='table-wrap'>
-        <form id="eypd_cert_hours" class="eypd-cert-hours" action="" method="post">
-            <table id='dbem-bookings-table' class='widefat post fixed'>
-                <thead>
-                <tr>
-                    <th class='event-time' scope='col'><?php _e( 'Date/Time', 'events-manager' ); ?></th>
-                    <th class='event-description'
-                        scope='col'><?php _e( 'Event Description', 'events-manager' ); ?></th>
-                    <th class='event-attendance' scope='col'><?php _e( 'Attended', 'events-manager' ); ?></th>
-                    <th class='event-attendance' scope='col'><?php _e( 'Did Not Attend', 'events-manager' ); ?></th>
-
-                </tr>
-                </thead>
-                <tbody>
+	<div class='table-wrap'>
+		<form id="eypd_cert_hours" class="eypd-cert-hours" action="" method="post">
+			<table id='dbem-bookings-table' class='widefat post fixed'>
+				<thead>
+				<tr>
+					<th class='event-time' scope='col'><?php _e( 'Date/Time', 'events-manager' ); ?></th>
+					<th class='event-description'
+						scope='col'><?php _e( 'Event Description', 'events-manager' ); ?></th>
+				</tr>
+				</thead>
+				<tbody>
 				<?php
 				$nonce = wp_create_nonce( 'eypd_cert_hours' );
 				$count = 0;
@@ -155,20 +152,23 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 				foreach ( $EM_Bookings
 
 				as $EM_Booking ) {
-				// skip over if it's not in the past
-				if ( ! in_array( $EM_Booking->event_id, $past_ids ) ) {
-					continue;
-				}
-				$EM_Event = $EM_Booking->get_event();
-				$event_id = $past_ids[ $count ]; ?>
-                <tr>
-                    <td><?php echo $EM_Event->output( '#_EVENTDATES<br/>#_EVENTTIMES' ); ?></td>
-                    <td><?php echo $EM_Event->output( '#_EVENTLINK
+					// skip over if it's not in the past
+					if ( ! in_array( $EM_Booking->event_id, $past_ids ) ) {
+						continue;
+					}
+					$EM_Event = $EM_Booking->get_event();
+					$event_id = $past_ids[ $count ]; ?>
+				<tr>
+					<td><?php echo $EM_Event->output( '#_EVENTDATES<br/>#_EVENTTIMES' ); ?></td>
+					<td><?php echo $EM_Event->output( '#_EVENTLINK
                 {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}' ); ?></td>
-					<?php } ?>
-                </tbody>
-            </table>
-    </div>
+
+
+				<?php }
+						?>
+				</tbody>
+			</table>
+	</div>
 	<?php
 } else {
 	_e( 'No past events attended yet.', 'events-manager' );
