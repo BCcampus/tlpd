@@ -133,7 +133,6 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 
 	<div class='table-wrap'>
-		<form id="tlpd_cert_hours" class="tlpd-cert-hours" action="" method="post">
 			<table id='dbem-bookings-table' class='widefat post fixed'>
 				<thead>
 				<tr>
@@ -144,10 +143,7 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 				</thead>
 				<tbody>
 				<?php
-				$nonce = wp_create_nonce( 'tlpd_cert_hours' );
 				$count = 0;
-				// save number of hours in the users profile
-				$user_hours = get_user_meta( $bp->displayed_user->id, 'tlpd_cert_hours', true );
 
 				foreach ( $EM_Bookings
 
