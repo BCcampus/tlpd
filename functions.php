@@ -132,13 +132,6 @@ add_action( 'wp_enqueue_scripts', function () {
 	wp_enqueue_style( 'bootstrap-style', $template_dir . '/dist/styles/bootstrap.min.css' );
 	wp_enqueue_script( 'modal-video', $template_dir . '/dist/scripts/modal-video.js', array( 'jquery' ), null, true );
 
-	// load styling for datepicker in myTLPD profile page only
-	if ( function_exists( 'bp_is_my_profile' ) ) {
-		if ( bp_is_my_profile() ) {
-			wp_enqueue_style( 'jquery-style', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/jquery-ui.css' );
-		}
-	}
-
 	if ( is_front_page() ) {
 		wp_enqueue_script( 'jquery-tabs', $template_dir . '/dist/scripts/tabs.js', array( 'jquery' ), null, true );
 		wp_enqueue_script( 'jquery-ui-tabs' );
