@@ -284,7 +284,7 @@ add_filter( 'login_headertitle', function () {
 function tlpd_login_message( $message ) {
 	if ( empty( $message ) ) {
 		$imgdir = get_stylesheet_directory_uri();
-		$html   = '<p class="login-logo"><picture><source srcset="' . $imgdir . '/dist/images/tlpd-logo-small.webp" type="image/webp"><source srcset="' . $imgdir . '/dist/images/tlpd-logo-small.png"><img src="' . $imgdir . '/dist/images/tlpd-logo-small.png" width="101" height="92" alt="BC Provincial Government"></picture></p>';
+		$html   = '<p class="login-logo"><picture><source srcset="' . $imgdir . '/dist/images/bccampus-logo.png"><img src="' . $imgdir . '/dist/images/bccampus-logo.png" width="249" height="96" alt="BCcampus"></picture></p>';
 		$html   .= '<p class="logintext">Log in To Your TLPD Account</p>';
 		echo $html;
 	} else {
