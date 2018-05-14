@@ -21,7 +21,7 @@ mix.setPublicPath(dist);
 // BrowserSync
 mix.browserSync({
     host: 'localhost',
-    proxy: 'https://secure.test.ca/pd',
+    proxy: 'https://secure.test.ca/tlpd',
     port: 3000,
     files: [
         `${temp}/**/*.php`,
