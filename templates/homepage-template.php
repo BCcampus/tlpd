@@ -29,12 +29,12 @@ infinity_get_header();
     </div>
 </div>
 <div class="c-search">
-    <h2 class="text-blue text-center">Search for training events</h2>
+    <h2 class="text-blue text-center">Search for learning events</h2>
     <p class="text-center">Fill in one or more of the fields below</p>
 	<?php echo do_shortcode( '[events_search]' ); ?>
 </div>
 <div class="c-map row">
-    <h2 class="text-blue text-center">Find training events near you</h2>
+    <h2 class="text-blue text-center">Find learning events near you</h2>
     <div class="six columns">
 
         <!-- tabs start -->
@@ -74,7 +74,7 @@ infinity_get_header();
 		<?php
 		infinity_load_template( 'templates/google-map.php' );
 		?>
-        <h2 class="text-center"><a class="text-gray" href="events"><?php tlpd_display_count_events(); ?> Training Events
+        <h2 class="text-center"><a class="text-gray" href="events"><?php tlpd_display_count_events(); ?> Learning Events
                 Currently Posted</a></h2>
     </div>
 </div>
