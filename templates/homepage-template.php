@@ -19,12 +19,12 @@ infinity_get_header();
 <div class="row">
     <div class="c-banner">
         <div class="center">
-            <img class="tlpd_logo"
-                 src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-final.svg"
-                 alt="TLPD logo">
-            <img class="tlpd_logo_text"
-                 src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-final-text.svg"
-                 alt="TLPD logo text">
+<!--            <img class="tlpd_logo"-->
+<!--                 src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-final.svg"-->
+<!--                 alt="TLPD logo">-->
+<!--            <img class="tlpd_logo_text"-->
+<!--                 src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-final-text.svg"-->
+<!--                 alt="TLPD logo text">-->
         </div>
     </div>
 </div>

@@ -15,13 +15,13 @@
 <?php if ( is_active_sidebar( 'Footer Left' ) || is_active_sidebar( 'Footer Middle' ) || is_active_sidebar( 'Footer Right' ) ) : ?>
     <div class="footer-widgets row">
         <div class="seven columns">
-            <picture>
-                <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-small.webp"
-                        type="image/webp">
-                <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-small.png">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo-small.png"
-                     alt="BC Provincial Office for the Teaching and Learning Professional Development">
-            </picture>
+<!--            <picture>-->
+<!--                <source srcset="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.webp"-->
+<!--                        type="image/webp">-->
+<!--                <source srcset="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.png">-->
+<!--                <img src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.png"-->
+<!--                     alt="BC Provincial Office for the Teaching and Learning Professional Development">-->
+<!--            </picture>-->
             <p>TLPD aims to support the B.C. Teaching and Learning Professional Development sector by hosting, developing and evaluating a professional
                 development web portal. <a href="about-us" class="text-blue">Learn more about TLPD</a></p>
         </div>
@@ -49,17 +49,5 @@
 		<?php endif; ?>
     </div>
 <?php endif; ?>
-<div class="row">
-    <div class="ten columns"></div>
-    <div class="widget six columns">
-        <h4>Funded by</h4>
-        <picture>
-            <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.webp"
-                    type="image/webp">
-            <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png" width="329"
-                 height="78" alt="BC Provincial Office for the Teaching and Learning Professional Development">
-        </picture>
-    </div>
-</div>
+
 <div style="clear:both;"></div>

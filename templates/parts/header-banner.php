@@ -28,16 +28,15 @@
 			<<?php echo $heading_tag; ?> id="icext" class="icext-feature icext-header-logo">
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
                 <picture>
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcid-logo.webp" type="image/webp">
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcid-logo.png">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcid-logo.png" width="101" height="92" alt="BC Provincial Government">
+                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png" width="249" height="96" alt="BCcampus">
                 </picture>
 
-                <picture>
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logomark.webp" type="image/webp">
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logomark.png">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logomark.png" width="135" height="92" alt="Teaching and Learning Professional Development">
-                </picture>
+<!--                <picture>-->
+<!--                    <source srcset="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logomark.webp" type="image/webp">-->
+<!--                    <source srcset="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logomark.png">-->
+<!--                    <img src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logomark.png" width="135" height="92" alt="Teaching and Learning Professional Development">-->
+<!--                </picture>-->
 			</a>
 		</<?php echo $heading_tag; ?>>
 		<?php
