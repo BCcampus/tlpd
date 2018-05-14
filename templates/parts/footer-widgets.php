@@ -49,5 +49,13 @@
 		<?php endif; ?>
     </div>
 <?php endif; ?>
-
+<div class="row">
+    <div class="eight columns"></div>
+    <div class="widget four columns">
+        <picture>
+            <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png"width="249" height="96" alt="BCcampus logo">
+        </picture>
+    </div>
+</div>
 <div style="clear:both;"></div>

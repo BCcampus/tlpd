@@ -78,21 +78,7 @@ infinity_get_header();
                 Currently Posted</a></h2>
     </div>
 </div>
-<div id="content" role="main" class="sixteen columns">
-	<?php
-	do_action( 'open_content' );
-	do_action( 'open_home' );
-	?>
 
-    <h2 class="text-blue text-center">Explore the professional learning showcase</h2>
-	<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
-
-	<?php
-	do_action( 'close_home' );
-	do_action( 'close_content' );
-
-	?>
-</div>
 <?php
 infinity_get_footer();
 ?>
