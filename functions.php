@@ -819,16 +819,6 @@ function tlpd_profile_field_modals() {
 add_filter( 'bp_get_the_profile_field_description', 'tlpd_profile_field_modals' );
 
 /**
- * Display a link to FAQ after the submit button on the registration page
- */
-function tlpd_faq() {
-	$html = "<div class='submit faq'><a href=\"https://BCCAMPUS.mycusthelp.ca/webapp/_rs/FindAnswers.aspx?coid=6CFA1D4B2B28F770A1273B\" target=\"_blank\">Need help signing up?</a></div>";
-	echo $html;
-}
-
-add_filter( 'bp_after_registration_submit_buttons', 'tlpd_faq' );
-
-/**
  * Setting a higher default for bookings capacity
  *
  * @return int
