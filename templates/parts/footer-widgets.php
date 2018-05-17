@@ -22,7 +22,7 @@
 <!--                <img src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.png"-->
 <!--                     alt="BC Provincial Office for the Teaching and Learning Professional Development">-->
 <!--            </picture>-->
-            <p>The Teaching Learning Professional Development (TLPD) web portal is an initiative developed by BCcampus with the B.C. postsecondary educator community.
+            <p>The Teaching Learning Professional Development (TLPD) web portal is an initiative developed by BCcampus with the B.C. post-secondary educator community.
                 The web portal aims to support post-secondary educators in promoting and finding teaching and learning professional development opportunities and support the building of community connections.</p>
         </div>
 		<?php if ( is_active_sidebar( 'Footer Left' ) ) : ?>
@@ -54,7 +54,7 @@
     <div class="widget four columns">
         <picture>
             <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png"width="249" height="96" alt="BCcampus logo">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png" width="249" height="96" alt="BCcampus logo">
         </picture>
     </div>
 </div>

@@ -1,8 +1,8 @@
 ### Teaching and Learning Professional Development Child Theme ###
 
 #### About ####
-The Teaching and Learning Professional Development Website is intended to support access and coordination of professional development opportunities for those who work in the early years sector in British Columbia.
-It is a development project led by BCcampus and sponsored by the Ministry of Advanced Education and the Provincial Office for the Teaching and Learning Professional Development in the Ministry of Children and Family Development.
+The Teaching Learning Professional Development (TLPD) web portal is an initiative developed by BCcampus with the B.C. post-secondary educator community. 
+The web portal aims to support post-secondary educators in promoting and finding teaching and learning professional development opportunities and support the building of community connections.
 
 #### Installation ####
 This is a child theme of [CBox Theme](https://github.com/cuny-academic-commons/cbox-theme) which is the default theme for the plugin [Commons in a Box](https://github.com/cuny-academic-commons/commons-in-a-box) which is "a 
