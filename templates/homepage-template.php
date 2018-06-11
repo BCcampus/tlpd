@@ -33,6 +33,20 @@ infinity_get_header();
     <p class="text-center">Fill in one or more of the fields below</p>
 	<?php echo do_shortcode( '[events_search]' ); ?>
 </div>
+<div id="content" role="main" class="sixteen columns">
+    <?php
+    do_action( 'open_content' );
+    do_action( 'open_home' );
+    ?>
+
+    <h2 class="text-blue text-center">New + Noteworthy</h2>
+    <?php infinity_load_template( 'templates/featured-stories.php' ); ?>
+
+    <?php
+    do_action( 'close_home' );
+    do_action( 'close_content' );
+    ?>
+</div>
 <div class="c-map row">
     <h2 class="text-blue text-center">Find learning events near you</h2>
     <div class="six columns">
