@@ -367,7 +367,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.8;
+	$tlpd_version        = 6.9;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -402,6 +402,7 @@ function tlpd_run_once() {
 		'dbem_bookings_approval_overbooking',
 	);
 	$default_attributes  = '#_ATT{Target Audience}
+#_ATT{Event is open to external}{|Yes|No}
 #_ATT{Online}{|Yes|No}
 #_ATT{Registration Fee}
 #_ATT{Registration Space}{|Filling Up!|FULL}
