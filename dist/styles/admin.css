@@ -1,1 +1,4 @@
-.em-location-data-region{display:none}
+/* Hides Region from location form */
+.em-location-data-region {
+  display: none;
+}
