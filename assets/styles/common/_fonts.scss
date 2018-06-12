@@ -8,12 +8,12 @@
 |
 */
 
-// Roboto
-@include font-face( 'Roboto', url('../fonts/Roboto-Regular.ttf'), 'truetype', 400, normal);
-@include font-face( 'Roboto', url('../fonts/Roboto-Bold.ttf'), 'truetype', 800, normal);
-
-// Roboto Slab
-@include font-face( 'RobotoSlab', url('../fonts/RobotoSlab-Regular.ttf'), 'truetype', 400, normal);
+// Montserrat
+@include font-face( 'Montserrat', url('../fonts/Montserrat-Regular.ttf'), 'truetype', normal, normal);
+@include font-face( 'Montserrat', url('../fonts/Montserrat-Bold.ttf'), 'truetype', bold, normal);
+@include font-face( 'Montserrat', url('../fonts/Montserrat-BoldItalic.ttf'), 'truetype', bold, italic);
+@include font-face( 'Montserrat', url('../fonts/Montserrat-Light.ttf'), 'truetype', lighter, normal);
+@include font-face( 'Montserrat', url('../fonts/Montserrat-Italic.ttf'), 'truetype', normal, italic);
 
 // Bootstrap
 @font-face {
