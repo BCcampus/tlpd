@@ -757,7 +757,10 @@ function tlpd_nav_menu_items( $nav, $args ) {
 	return $nav;
 }
 
-add_filter( 'wp_nav_menu_items', 'tlpd_nav_menu_items', 10, 2 );
+/**
+ * Leave the default menu functionality for now. See https://github.com/BCcampus/tlpd/issues/36#issuecomment-396754255
+ * add_filter( 'wp_nav_menu_items', 'tlpd_nav_menu_items', 10, 2 );
+ */
 
 /**
  * Add favicon, theme color, PWA manifest
