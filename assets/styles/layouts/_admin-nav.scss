@@ -1,6 +1,6 @@
 // Admin Bar
 #wpadminbar {
-  background-color: $color-blue-sail;
+  background-color: $color-neutral-10;
   display: block !important;
 
   @media screen and (max-width: $small){
@@ -19,8 +19,8 @@
   ul li a {
     color: $color-neutral-80 !important;
     &:hover {
-      background-color: $color-blue-sail !important;
-      color: $color-brand-blue !important;
+      background-color: $color-brand-green !important;
+      color: $color-neutral-00 !important;
     }
   }
 }
@@ -34,13 +34,13 @@
 }
 
 #wp-admin-bar-my-account * {
-  background-color: $color-blue-sail !important;
+  background-color: $color-brand-green !important;
 }
 
 #wp-admin-bar-user-actions li a:hover span,
 #wp-admin-bar-user-actions li:hover a,
 #wp-admin-bar-user-actions li a:hover  {
-  color: darken($color-brand-blue, 10%) !important;
+  color: darken($color-brand-green, 10%) !important;
 }
 
 .mobile-menu-container a.button {
@@ -66,7 +66,7 @@
 #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item,
 #wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item {
   &:focus {
-    background: $color-blue-sail;
+    background: $color-brand-green;
   }
 }
 
