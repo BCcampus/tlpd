@@ -40,18 +40,24 @@ infinity_get_header();
         <!-- tabs start -->
         <div id="tabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
 
-            <ul role="tablist" class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
-                <li role="tab" tabindex="1"><a
-                            href="#tabs-1"
-                            role="presentation"
-                            tabindex="-1"
-                            class="ui-tabs-anchor"
-                            id="ui-id-1">Upcoming Events</a>
+            <ul role="tablist"
+                class="ui-tabs-nav ui-corner-all ui-helper-reset ui-helper-clearfix ui-widget-header">
+                <li role="tab" tabindex="1">
+                    <a href="#tabs-1" role="presentation" tabindex="-1"
+                        class="ui-tabs-anchor" id="ui-id-1">Upcoming Events</a>
                 </li>
-                <li role="tab" tabindex="2" aria-controls="tabs-2"><a href="#tabs-2" role="presentation" tabindex="-1"
-                                                                      class="ui-tabs-anchor" id="ui-id-2">Recently
-                        Posted</a></li>
-
+                <li role="tab" tabindex="2" aria-controls="tabs-2">
+                    <a href="#tabs-2" role="presentation" tabindex="0"
+                        class="ui-tabs-anchor" id="ui-id-2">Recently Posted</a>
+                </li>
+                <li role="tab" tabindex="3" aria-controls="tabs-3">
+                    <a href="#tabs-3" role="presentation" tabindex="1"
+                        class="ui-tabs-anchor" id="ui-id-3">New Resources</a>
+                </li>
+                <li role="tab" tabindex="4" aria-controls="tabs-4">
+                    <a href="#tabs-3" role="presentation" tabindex="2"
+                        class="ui-tabs-anchor" id="ui-id-4">New Events</a>
+                </li>
             </ul>
             <div id="tabs-1">
 				<?php
@@ -60,22 +66,21 @@ infinity_get_header();
 				?>
             </div>
             <div id="tabs-2">
-				<?php
-				// documentation http://wp-events-plugin.com/documentation/event-search-attributes/event-location-grouping-ordering/
-				$events_recent = '[events_list orderby="event_date_created" order="DESC" groupby="location_id" groupby_orderby="event_date_created" groupby_order="DESC" limit="4"]';
-				echo do_shortcode( $events_recent );
-				?>
+                <?php
+                // documentation http://wp-events-plugin.com/documentation/event-search-attributes/event-location-grouping-ordering/
+                $events_recent = '[events_list orderby="event_date_created" order="DESC" groupby="location_id" groupby_orderby="event_date_created" groupby_order="DESC" limit="4"]';
+                echo do_shortcode( $events_recent );
+                ?>
+            </div>
+            <div id="tabs-3">
+
+            </div>
+            <div id="tabs-4">
+
             </div>
         </div>
         <!-- tabs end -->
 
-    </div>
-    <div class="ten columns">
-		<?php
-		infinity_load_template( 'templates/google-map.php' );
-		?>
-        <h2 class="text-center"><a class="text-gray" href="events"><?php tlpd_display_count_events(); ?> Learning Events
-                Currently Posted</a></h2>
     </div>
 </div>
 
