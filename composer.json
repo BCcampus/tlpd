@@ -7,14 +7,21 @@
   "authors": [
     {
       "name": "Brad Payne",
-      "email": "brad@bradpayne.ca",
-      "homepage": "https://bradpayne.ca"
+      "homepage": "https://github.com/bdolor"
     },
     {
       "name": "Alex Paredes",
-      "email": "aparedes@bccampus.ca"
+      "homepage": "https://github.com/alex-418"
     }
   ],
+  "config": {
+    "platform": {
+      "php": "7.0.30"
+    }
+  },
+  "require": {
+    "php": ">=7.0"
+  },
   "require-dev": {
     "phpunit/phpunit": "^5.7",
     "humanmade/coding-standards": "^0.2.1"
