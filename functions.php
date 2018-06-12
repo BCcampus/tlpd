@@ -504,6 +504,11 @@ function tlpd_run_once() {
 		/**
 		 * Most events will be in British Columbia
 		 */
+		update_option( 'tlpd_location_default_province', 'British Columbia' );
+
+		/**
+		 * Set BC as the default province on the search form
+		 */
 		update_option( 'dbem_search_form_states_label', 'British Columbia' );
 
 		/**
