@@ -17,7 +17,7 @@ $color-blue-sail: #bee7fa;
 
 // Neutrals
 $color-neutral-00: #FFF;
-$color-neutral-10: #F4F5F7;
+$color-neutral-10: #F7F8FC;
 $color-neutral-20: #E6E7E8;
 $color-neutral-30: #E2E2E1;
 $color-neutral-40: #D1D2D4;
@@ -26,6 +26,7 @@ $color-neutral-80: #333334;
 
 // Brand Colors
 $color-brand-blue: #068CC4;
+$color-brand-green: #74c044;
 
 // Fonts
 $font-size: 16px;
@@ -35,7 +36,7 @@ $font-family-bold: 'Montserrat-Bold';
 
 // Borders
 $border-radius: $unit*1.5;
-$border: 1px solid $color-brand-blue;
+$border: 1px solid $color-brand-green;
 
 $tap-size: 44px;
 $slow-animation: 0.25s ease-in-out all;

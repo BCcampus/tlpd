@@ -98,7 +98,7 @@ nav.main-menu {
   }
 
   & a:hover span {
-    color: darken($color-brand-blue, 10%);
+    color: darken($color-brand-green, 10%);
   }
 
   li:first-child {
@@ -108,7 +108,7 @@ nav.main-menu {
   a {
     font-size: 14px;
     margin: 0;
-    color: $color-brand-blue !important;
+    color: $color-brand-green !important;
 
     @media (min-width: $small) {
       font-size: 16px;

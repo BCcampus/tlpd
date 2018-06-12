@@ -85,45 +85,48 @@ body #content, body.theme-option #content {
 
 body {
   border: none;
+  font-family: "Montserrat";
+}
+
+a {
+  color: #74c044;
+}
+
+a:hover {
+  color: #5d9c35;
 }
 
 h1, h2, h3, h4, h5, h6, p, label, span.label {
   font-family: "Montserrat";
   color: #333334;
   font-weight: 400;
+  line-height: 1.2em;
 }
 
 h1 {
-  font-size: 32px;
-  line-height: 36px;
+  font-size: 48px;
 }
 
 h2 {
-  font-size: 28px;
-  line-height: 32px;
-  font-family: "Montserrat";
+  font-size: 32px;
 }
 
 h3 {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 22px;
 }
 
 h4 {
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 18px;
   text-transform: capitalize;
 }
 
 h5 {
   font-size: 16px;
-  line-height: 20px;
   font-weight: bold;
 }
 
 p, label, li, span.label {
   font-size: 16px;
-  line-height: 24px;
 }
 
 input[type="text"],
@@ -200,6 +203,10 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
   color: #068CC4;
 }
 
+.text-green {
+  color: #74c044;
+}
+
 .text-gray {
   color: #777777;
 }
@@ -231,7 +238,7 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
 |
 */
 .c-map {
-  background-color: #F4F5F7;
+  background-color: #F7F8FC;
   padding: 30px 0;
   margin-top: 30px;
 }
@@ -264,7 +271,6 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
 */
 .c-button, .button-primary, .button, #main-menu-wrap .main-menu ul li:first-child {
   min-width: 44px;
-  min-height: 44px;
   margin: 0;
   padding: 10px 20px;
   display: block;
@@ -291,17 +297,26 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
   -moz-appearance: none;
 }
 
-input.c-button.c--primary, input.button-primary, input.button {
-  background: #068CC4;
+input.c-button.c--primary, input.button-primary, input.button, button {
+  background: #74c044;
+  padding: .6em 1.25em .5em;
   color: #FFF;
+  font-family: "Montserrat";
+  font-size: 14px;
+  border: none;
+  text-shadow: none;
 }
 
-input.c-button.c--primary:active, input.button-primary:active, input.button:active, input.c-button.c--primary:hover, input.button-primary:hover, input.button:hover, input.c-button.c--primary:focus, input.button-primary:focus, input.button:focus {
-  background: #046993;
+input.c-button.c--primary:active, input.button-primary:active, input.button:active, input.c-button.c--primary:hover, input.button-primary:hover, input.button:hover, input.c-button.c--primary:focus, input.button-primary:focus, input.button:focus, button:active, button:hover, button:focus {
+  background: #5d9c35;
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
   border: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  padding: .5em 1.25em .6em;
+  color: #FFF;
 }
 
 .c-button.c--ghost, .c--ghost.button-primary, .c--ghost.button, #main-menu-wrap .main-menu ul li:first-child {
@@ -309,7 +324,7 @@ input.c-button.c--primary:active, input.button-primary:active, input.button:acti
 }
 
 .c-button.c--ghost a:active, .c--ghost.button-primary a:active, .c--ghost.button a:active, #main-menu-wrap .main-menu ul li:first-child a:active, .c-button.c--ghost a:hover, .c--ghost.button-primary a:hover, .c--ghost.button a:hover, #main-menu-wrap .main-menu ul li:first-child a:hover, .c-button.c--ghost a:focus, .c--ghost.button-primary a:focus, .c--ghost.button a:focus, #main-menu-wrap .main-menu ul li:first-child a:focus {
-  color: #046993 !important;
+  color: #5d9c35 !important;
 }
 
 /*
@@ -855,7 +870,7 @@ img.wp-smiley, img.emoji {
 #tabs .ui-button.ui-state-active:hover {
   background-color: #e6f4fb;
   color: #333333;
-  border-top: solid 2px #068CC4;
+  border-top: solid 2px #74c044;
 }
 
 #tabs .ui-state-active a,
@@ -865,7 +880,7 @@ img.wp-smiley, img.emoji {
 }
 
 #tabs .ui-widget-header {
-  background: #F4F5F7;
+  background: #F7F8FC;
   border: none;
 }
 
@@ -884,11 +899,11 @@ img.wp-smiley, img.emoji {
 }
 
 #tabs.ui-widget-content {
-  background: #F4F5F7;
+  background: #F7F8FC;
 }
 
 #tabs.ui-widget-content a {
-  color: #068CC4;
+  color: #74c044;
 }
 
 @media (min-width: 768px) {
@@ -1031,13 +1046,13 @@ nav.main-menu {
 }
 
 #main-menu-wrap .main-menu ul a:hover span {
-  color: #046993;
+  color: #5d9c35;
 }
 
 #main-menu-wrap .main-menu ul a {
   font-size: 14px;
   margin: 0;
-  color: #068CC4 !important;
+  color: #74c044 !important;
 }
 
 @media (min-width: 667px) {
@@ -1126,7 +1141,7 @@ nav.main-menu {
 }
 
 #sidebar {
-  background: #F4F5F7;
+  background: #F7F8FC;
   border-right: 1px solid #D1D2D4;
   border-bottom: 1px solid #D1D2D4;
   -webkit-box-shadow: none;
@@ -1160,7 +1175,7 @@ nav.main-menu {
 }
 
 #profile-nav-menu a {
-  color: #068CC4;
+  color: #74c044;
   text-align: left;
 }
 
@@ -1233,7 +1248,7 @@ nav.main-menu {
 |
 */
 .footer-wrap {
-  background: #bee7fa !important;
+  background: #F7F8FC !important;
   color: #333334;
   border: none;
   -webkit-box-shadow: none;
@@ -1250,7 +1265,7 @@ nav.main-menu {
 }
 
 .footer-wrap a:hover {
-  color: #068CC4;
+  color: #74c044;
 }
 
 #powered-by {
@@ -1322,7 +1337,7 @@ a.em-button {
   margin: 0;
   background: none;
   border: none;
-  color: #068CC4;
+  color: #74c044;
   float: none;
   font-size: 16px;
   padding: 0 !important;
@@ -1377,7 +1392,7 @@ a.post-edit-link {
 }
 
 #wpadminbar {
-  background-color: #bee7fa;
+  background-color: #F7F8FC;
   display: block !important;
 }
 
@@ -1405,8 +1420,8 @@ a.post-edit-link {
 }
 
 #wp-toolbar ul li a:hover, .base-menu ul li a:hover {
-  background-color: #bee7fa !important;
-  color: #068CC4 !important;
+  background-color: #74c044 !important;
+  color: #FFF !important;
 }
 
 #wp-toolbar > ul > li {
@@ -1418,13 +1433,13 @@ a.post-edit-link {
 }
 
 #wp-admin-bar-my-account * {
-  background-color: #bee7fa !important;
+  background-color: #74c044 !important;
 }
 
 #wp-admin-bar-user-actions li a:hover span,
 #wp-admin-bar-user-actions li:hover a,
 #wp-admin-bar-user-actions li a:hover {
-  color: #046993 !important;
+  color: #5d9c35 !important;
 }
 
 .mobile-menu-container a.button {
@@ -1452,7 +1467,7 @@ a.post-edit-link {
 
 #wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus,
 #wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item:focus {
-  background: #bee7fa;
+  background: #74c044;
 }
 
 #wp-admin-bar-my-account-buddypress li {
