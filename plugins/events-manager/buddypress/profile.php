@@ -20,14 +20,14 @@ if ( user_can( $bp->displayed_user->id, 'edit_events' ) ) {
 
 	<h4><?php _e( 'My Events', 'events-manager' ); ?></h4>
 	<?php
-	$args          = array(
+	$args          = [
 		'owner'         => $bp->displayed_user->id,
 		'format_header' => get_option( 'dbem_bp_events_list_format_header' ),
 		'format'        => get_option( 'dbem_bp_events_list_format' ),
 		'format_footer' => get_option( 'dbem_bp_events_list_format_footer' ),
 		'owner'         => $bp->displayed_user->id,
 		'pagination'    => 1,
-	);
+	];
 	$args['limit'] = ! empty( $args['limit'] ) ? $args['limit'] : get_option( 'dbem_events_default_limit' );
 	if ( EM_Events::count( $args ) > 0 ) {
 		echo EM_Events::output( $args );
@@ -67,16 +67,18 @@ if ( count( $EM_Bookings->bookings ) > 0 ) {
 }
 
 // Future Events Only
-if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
+if ( isset( $future_ids ) && count( $future_ids ) > 0 ) {
+	?>
 
 	<table cellpadding="0" cellspacing="0" class="events-table">
 		<thead>
 		<tr>
 			<th class="event-time" width="150">Date/Time</th>
 			<th class="event-description" width="*">Upcoming Event</th>
-			<?php if ( is_user_logged_in() ) {
+			<?php
+			if ( is_user_logged_in() ) {
 				echo '<th class="event-delete">Delete this event from my profile</th>';
-}
+			}
 			?>
 			<th class="event-ical" width="*">Add to Calendar</th>
 		</tr>
@@ -88,35 +90,48 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 			if ( ! in_array( $EM_Booking->event_id, $future_ids ) ) {
 				continue;
 			}
-			$EM_Event = $EM_Booking->get_event(); ?>
+			$EM_Event = $EM_Booking->get_event();
+			?>
 			<tr>
 				<td><?php echo $EM_Event->output( '#_EVENTDATES<br/>#_EVENTTIMES' ); ?></td>
-				<td><?php echo $EM_Event->output( '#_EVENTLINK
-                {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}' ); ?></td>
+				<td>
+				<?php
+				echo $EM_Event->output(
+					'#_EVENTLINK
+                {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}'
+				);
+				?>
+					</td>
 
-				<?php if ( is_user_logged_in() ) {
+				<?php
+				if ( is_user_logged_in() ) {
 					echo '<td>';
 					$cancel_link = '';
-					if ( ! in_array( $EM_Booking->booking_status, array(
+					if ( ! in_array(
+						$EM_Booking->booking_status, [
 							2,
 							3,
-					) ) && get_option( 'dbem_bookings_user_cancellation' ) && $EM_Event->get_bookings()->has_open_time()
+						]
+					) && get_option( 'dbem_bookings_user_cancellation' ) && $EM_Event->get_bookings()->has_open_time()
 					) {
-						$cancel_url  = em_add_get_params( $_SERVER['REQUEST_URI'], array(
-							'action'     => 'booking_cancel',
-							'booking_id' => $EM_Booking->booking_id,
-							'_wpnonce'   => $nonce,
-						) );
+						$cancel_url  = em_add_get_params(
+							$_SERVER['REQUEST_URI'], [
+								'action'     => 'booking_cancel',
+								'booking_id' => $EM_Booking->booking_id,
+								'_wpnonce'   => $nonce,
+							]
+						);
 						$cancel_link = '<a class="em-bookings-cancel" href="' . $cancel_url . '" onclick="if( !confirm(EM.booking_warning_cancel) ){ return false; }">' . __( 'Delete', 'events-manager' ) . '</a>';
 					}
 					echo apply_filters( 'em_my_bookings_booking_actions', $cancel_link, $EM_Booking );
 					echo '</td>';
-}
+				}
 				?>
 				<td><?php echo $EM_Event->output( '#_EVENTICALLINK' ); ?></td>
 			</tr>
 			<?php
-		} ?>
+		}
+		?>
 		</tbody>
 	</table>
 	<?php
@@ -130,7 +145,8 @@ if ( isset( $future_ids ) && count( $future_ids ) > 0 ) { ?>
 	<!-- Past Events Only -->
 	<h4><?php _e( "Past Events I've Attended", 'events-manager' ); ?></h4>
 <?php
-if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
+if ( isset( $past_ids ) && count( $past_ids ) > 0 ) {
+	?>
 
 	<div class='table-wrap'>
 			<table id='dbem-bookings-table' class='widefat post fixed'>
@@ -153,15 +169,23 @@ if ( isset( $past_ids ) && count( $past_ids ) > 0 ) { ?>
 						continue;
 					}
 					$EM_Event = $EM_Booking->get_event();
-					$event_id = $past_ids[ $count ]; ?>
+					$event_id = $past_ids[ $count ];
+					?>
 				<tr>
 					<td><?php echo $EM_Event->output( '#_EVENTDATES<br/>#_EVENTTIMES' ); ?></td>
-					<td><?php echo $EM_Event->output( '#_EVENTLINK
-                {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}' ); ?></td>
+					<td>
+					<?php
+					echo $EM_Event->output(
+						'#_EVENTLINK
+                {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}'
+					);
+					?>
+						</td>
 
 
-				<?php }
-						?>
+					<?php
+				}
+				?>
 				</tbody>
 			</table>
 	</div>
