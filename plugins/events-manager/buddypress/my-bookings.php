@@ -7,7 +7,7 @@ if ( is_user_logged_in() ) :
 	$bookings_count = count( $EM_Bookings->bookings );
 	if ( $bookings_count > 0 ) {
 		//Get events here in one query to speed things up
-		$event_ids = array();
+		$event_ids = [];
 		foreach ( $EM_Bookings as $EM_Booking ) {
 			$event_ids[] = $EM_Booking->event_id;
 		}
@@ -22,7 +22,11 @@ if ( is_user_logged_in() ) :
 			<div class='tablenav'>
 				<?php
 				if ( $bookings_count >= $limit ) {
-					$link         = em_add_get_params( $_SERVER['REQUEST_URI'], array( 'pno' => '%PAGE%' ), false ); //don't html encode, so em_paginate does its thing
+					$link         = em_add_get_params(
+						$_SERVER['REQUEST_URI'], [
+							'pno' => '%PAGE%',
+						], false
+					); //don't html encode, so em_paginate does its thing
 					$bookings_nav = em_paginate( $link, $bookings_count, $limit, $page );
 					echo $bookings_nav;
 				}
@@ -57,7 +61,7 @@ if ( is_user_logged_in() ) :
 							<tr>
 								<td><?php echo $EM_Event->output( '#_EVENTLINK' ); ?></td>
 								<td><?php echo date_i18n( get_option( 'dbem_date_format' ), $EM_Event->start ); ?></td>
-								<td><?php echo $EM_Booking->get_spaces() ?></td>
+								<td><?php echo $EM_Booking->get_spaces(); ?></td>
 								<td><?php echo $EM_Booking->get_status(); ?></td>
 							</tr>
 							<?php
@@ -81,5 +85,5 @@ if ( is_user_logged_in() ) :
 	</div>
 	<?php do_action( 'em_template_my_bookings_footer', $EM_Bookings ); ?>
 <?php else : ?>
-	<p><?php echo sprintf( __( 'Please <a href="%s">Log In</a> to view your bookings.', 'events-manager' ), site_url( 'wp-login.php?redirect_to=' . urlencode( get_permalink() ), 'login' ) ) ?></p>
+	<p><?php echo sprintf( __( 'Please <a href="%s">Log In</a> to view your bookings.', 'events-manager' ), site_url( 'wp-login.php?redirect_to=' . urlencode( get_permalink() ), 'login' ) ); ?></p>
 <?php endif; ?>

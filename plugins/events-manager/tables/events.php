@@ -29,36 +29,72 @@ global $wpdb, $bp, $EM_Notices;
 <?php
 //add new button will only appear if called from em_event_admin template tag, or if the $show_add_new var is set
 if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
-	echo '<a class="em-button button add-new-h2" href="' . em_add_get_params( $_SERVER['REQUEST_URI'], array(
+	echo '<a class="em-button button add-new-h2" href="' . em_add_get_params(
+		$_SERVER['REQUEST_URI'], [
 			'action'   => 'edit',
 			'scope'    => null,
 			'status'   => null,
 			'event_id' => null,
 			'success'  => null,
-	) ) . '">' . __( 'Add New', 'events-manager' ) . '</a>';
+		]
+	) . '">' . __( 'Add New', 'events-manager' ) . '</a>';
 }
 ?>
 <div class="wrap">
 	<?php echo $EM_Notices; ?>
 	<form id="posts-filter" action="" method="get">
 		<div class="subsubsub">
-			<?php $default_params = array(
+			<?php
+			$default_params = [
 				'scope'     => null,
 				'status'    => null,
 				'em_search' => null,
 				'pno'       => null,
-			); //template for cleaning the link for each view below ?>
-			<a href='<?php echo em_add_get_params( $_SERVER['REQUEST_URI'], $default_params + array( 'view' => 'future' ) ); ?>' <?php echo ( ! isset( $_GET['view'] ) ) ? 'class="current"' : ''; ?>><?php _e( 'Upcoming', 'events-manager' ); ?>
+			]; //template for cleaning the link for each view below
+			?>
+			<a href='
+			<?php
+			echo em_add_get_params(
+				$_SERVER['REQUEST_URI'], $default_params + [
+					'view' => 'future',
+				]
+			);
+			?>
+			' <?php echo ( ! isset( $_GET['view'] ) ) ? 'class="current"' : ''; ?>><?php _e( 'Upcoming', 'events-manager' ); ?>
 				<span class="count">(<?php echo $future_count; ?>)</span></a> &nbsp;|&nbsp;
 			<?php if ( $pending_count > 0 ) : ?>
-				<a href='<?php echo em_add_get_params( $_SERVER['REQUEST_URI'], $default_params + array( 'view' => 'pending' ) ); ?>' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'pending' ) ? 'class="current"' : ''; ?>><?php _e( 'Pending', 'events-manager' ); ?>
+				<a href='
+				<?php
+				echo em_add_get_params(
+					$_SERVER['REQUEST_URI'], $default_params + [
+						'view' => 'pending',
+					]
+				);
+				?>
+							' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'pending' ) ? 'class="current"' : ''; ?>><?php _e( 'Pending', 'events-manager' ); ?>
 					<span class="count">(<?php echo $pending_count; ?>)</span></a> &nbsp;|&nbsp;
 			<?php endif; ?>
 			<?php if ( $draft_count > 0 ) : ?>
-				<a href='<?php echo em_add_get_params( $_SERVER['REQUEST_URI'], $default_params + array( 'view' => 'draft' ) ); ?>' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'draft' ) ? 'class="current"' : ''; ?>><?php _e( 'Draft', 'events-manager' ); ?>
+				<a href='
+				<?php
+				echo em_add_get_params(
+					$_SERVER['REQUEST_URI'], $default_params + [
+						'view' => 'draft',
+					]
+				);
+				?>
+							' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'draft' ) ? 'class="current"' : ''; ?>><?php _e( 'Draft', 'events-manager' ); ?>
 					<span class="count">(<?php echo $draft_count; ?>)</span></a> &nbsp;|&nbsp;
 			<?php endif; ?>
-			<a href='<?php echo em_add_get_params( $_SERVER['REQUEST_URI'], $default_params + array( 'view' => 'past' ) ); ?>' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'past' ) ? 'class="current"' : ''; ?>><?php _e( 'Past Events', 'events-manager' ); ?>
+			<a href='
+			<?php
+			echo em_add_get_params(
+				$_SERVER['REQUEST_URI'], $default_params + [
+					'view' => 'past',
+				]
+			);
+			?>
+			' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'past' ) ? 'class="current"' : ''; ?>><?php _e( 'Past Events', 'events-manager' ); ?>
 				<span class="count">(<?php echo $past_count; ?>)</span></a>
 		</div>
 		<p class="search-box">
@@ -90,11 +126,13 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 			<table class="widefat events-table">
 				<thead>
 				<tr>
-					<?php /*
+					<?php
+					/*
 						<th class='manage-column column-cb check-column' scope='col'>
 							<input class='select-all' type="checkbox" value='1' />
 						</th>
-						*/ ?>
+						*/
+					?>
 					<th><?php _e( 'Name', 'events-manager' ); ?></th>
 					<th>&nbsp;</th>
 					<th><?php _e( 'Location', 'events-manager' ); ?></th>
@@ -124,12 +162,14 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 					}
 					?>
 					<tr class="event <?php echo trim( $class ); ?>" <?php echo $style; ?>
-						id="event_<?php echo $EM_Event->event_id ?>">
-						<?php /*
+						id="event_<?php echo $EM_Event->event_id; ?>">
+						<?php
+						/*
 							<td>
 								<input type='checkbox' class='row-selector' value='<?php echo $EM_Event->event_id; ?>' name='events[]' />
 							</td>
-							*/ ?>
+							*/
+						?>
 						<td>
 							<strong>
 								<a class="row-title"
@@ -137,11 +177,19 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 							</strong>
 							<div class="row-actions">
 								<?php if ( current_user_can( 'delete_events' ) ) : ?>
-									<span class="trash"><a href="<?php echo esc_url( add_query_arg( array(
-											'action'   => 'event_delete',
-											'event_id' => $EM_Event->event_id,
-											'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->event_id ),
-									) ) ); ?>"
+									<span class="trash"><a href="
+									<?php
+									echo esc_url(
+										add_query_arg(
+											[
+												'action'   => 'event_delete',
+												'event_id' => $EM_Event->event_id,
+												'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->event_id ),
+											]
+										)
+									);
+									?>
+									"
 														   class="em-event-delete"><?php _e( 'Delete', 'events-manager' ); ?></a></span>
 								<?php endif; ?>
 							</div>
@@ -158,7 +206,7 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 
 						<td>
 							<?php echo $localised_start_date; ?>
-							<?php echo ( $localised_end_date != $localised_start_date ) ? " - $localised_end_date" : '' ?>
+							<?php echo ( $localised_end_date != $localised_start_date ) ? " - $localised_end_date" : ''; ?>
 							<br/>
 							<?php
 							if ( ! $EM_Event->event_all_day ) {
@@ -177,11 +225,19 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 									<?php echo $EM_Event->get_recurrence_description(); ?> <br/>
 									<a href="<?php echo esc_url( $EM_Event->get_edit_reschedule_url() ); ?>"><?php _e( 'Edit Recurring Events', 'events-manager' ); ?></a>
 									<?php if ( current_user_can( 'delete_events' ) ) : ?>
-										<span class="trash"><a href="<?php echo esc_url( add_query_arg( array(
-												'action'   => 'event_delete',
-												'event_id' => $EM_Event->recurrence_id,
-												'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->recurrence_id ),
-										) ) ); ?>" class="em-event-rec-delete"
+										<span class="trash"><a href="
+										<?php
+										echo esc_url(
+											add_query_arg(
+												[
+													'action'   => 'event_delete',
+													'event_id' => $EM_Event->recurrence_id,
+													'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->recurrence_id ),
+												]
+											)
+										);
+										?>
+										" class="em-event-rec-delete"
 															   onclick="if( !confirm('<?php echo $recurrence_delete_confirm; ?>') ){ return false; }"><?php _e( 'Delete', 'events-manager' ); ?></a></span>
 									<?php endif; ?>
 								</strong>
