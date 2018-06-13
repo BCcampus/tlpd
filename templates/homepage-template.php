@@ -52,7 +52,7 @@ infinity_get_header();
                 </li>
                 <li role="tab" tabindex="2" aria-controls="tabs-2">
                     <a href="#tabs-2" role="presentation" tabindex="0"
-                       class="ui-tabs-anchor" id="ui-id-2">Recently Posted</a>
+                       class="ui-tabs-anchor" id="ui-id-2">New Events</a>
                 </li>
                 <li role="tab" tabindex="3" aria-controls="tabs-3">
                     <a href="#tabs-3" role="presentation" tabindex="1"
@@ -94,18 +94,16 @@ infinity_get_header();
                 $resource_posts    = get_posts( $args_r );
                 $opportunity_posts = get_posts( $args_o );
 
-                echo '<div class="table-responsive"><table class="table">';
-
-                foreach ( $resource_posts as $post ) : setup_postdata( $post );
-
-                    ?>
+                echo '<div class="table-responsive"><table class="table">
                     <thead>
                     <tr>
                         <th>Date/Time</th>
-                        <th>Title</th>
+                        <th>Resource Title</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody>';
+
+                foreach ( $resource_posts as $post ) : setup_postdata( $post );?>
                     <tr>
                         <td><?php echo get_the_date(); ?></td>
                         <td>
@@ -116,26 +114,23 @@ infinity_get_header();
                             </p>
                         </td>
                     </tr>
-                    </tbody>
                 <?php endforeach;
 
-                echo '</table></div>';
-
-                ?>
+                echo '</tbody></table></div>';?>
             </div> <!-- tab 3 end -->
 
             <div id="tabs-4">
                 <?php
-                echo '<div class="table-responsive"><table class="table">';
-
-                foreach ( $opportunity_posts as $post ) : setup_postdata( $post ); ?>
+                echo '<div class="table-responsive"><table class="table">
                     <thead>
                     <tr>
                         <th>Date/Time</th>
-                        <th>Title</th>
+                        <th>Opportunity Title</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody>';
+
+                foreach ( $opportunity_posts as $post ) : setup_postdata( $post ); ?>
                     <tr>
                         <td><?php echo get_the_date(); ?></td>
                         <td>
@@ -146,12 +141,11 @@ infinity_get_header();
                             </p>
                         </td>
                     </tr>
-                    </tbody>
                 <?php endforeach;
 
-                echo '</table></div>';
-
+                echo '</tbody></table></div>';
                 wp_reset_postdata(); ?>
+
             </div> <!-- tabs 4 end -->
         </div> <!-- tabs end -->
     </div>
