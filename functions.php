@@ -108,7 +108,6 @@ add_action(
 		remove_action( 'close_body', 'cbox_theme_flex_slider_script' );
 
 		wp_enqueue_script( 'jquery-ui-draggable' );
-		wp_enqueue_script( 'markerclusterer', $template_dir . '/dist/scripts/markerclusterer.js', [], false, true );
 
 		$script_deps = [
 			'jquery'                 => 'jquery',
@@ -119,7 +118,6 @@ add_action(
 			'jquery-ui-datepicker'   => 'jquery-ui-datepicker',
 			'jquery-ui-autocomplete' => 'jquery-ui-autocomplete',
 			'jquery-ui-dialog'       => 'jquery-ui-dialog',
-			'markerclusterer'        => 'markerclusterer',
 		];
 		wp_enqueue_script( 'events-manager', $template_dir . '/dist/scripts/events-manager.js', array_values( $script_deps ), isset( $EM_VERSION ) );
 		wp_enqueue_script( 'tinyscrollbar', $template_dir . '/dist/scripts/jquery.tinyscrollbar.min.js', [ 'jquery' ], '1.0', true );
