@@ -28,8 +28,8 @@
 			<<?php echo $heading_tag; ?> id="icext" class="icext-feature icext-header-logo">
 			<a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
                 <picture>
-                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png" width="249" height="96" alt="BCcampus">
+                    <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo.png">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo.png" width="450" height="200" alt="Teaching and Learning Professional Development">
                 </picture>
 
 <!--                <picture>-->
