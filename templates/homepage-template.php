@@ -59,8 +59,8 @@ infinity_get_header();
                        class="ui-tabs-anchor" id="ui-id-3">New Resources</a>
                 </li>
                 <li role="tab" tabindex="4" aria-controls="tabs-4">
-                    <a href="#tabs-3" role="presentation" tabindex="2"
-                       class="ui-tabs-anchor" id="ui-id-4">New Events</a>
+                    <a href="#tabs-4" role="presentation" tabindex="2"
+                       class="ui-tabs-anchor" id="ui-id-4">New Opportunities</a>
                 </li>
             </ul>
             <div id="tabs-1">
@@ -79,18 +79,25 @@ infinity_get_header();
             <div id="tabs-3">
                 <?php
                 global $post;
-                $args    = [
+                $args_r            = [
                     'posts_per_page' => 4,
                     'category_name'  => 'Resources',
                     'post_status'    => 'publish',
                     'order'          => 'DESC',
                 ];
-                $myposts = get_posts( $args );
+                $args_o            = [
+                    'posts_per_page' => 4,
+                    'category_name'  => 'Opportunities',
+                    'post_status'    => 'publish',
+                    'order'          => 'DESC',
+                ];
+                $resource_posts    = get_posts( $args_r );
+                $opportunity_posts = get_posts( $args_o );
 
                 echo '<div class="table-responsive"><table class="table">';
 
-                foreach ( $myposts as $post ) : setup_postdata( $post );
-                    $child_theme_uri = get_stylesheet_directory_uri();
+                foreach ( $resource_posts as $post ) : setup_postdata( $post );
+
                     ?>
                     <thead>
                     <tr>
@@ -100,7 +107,7 @@ infinity_get_header();
                     </thead>
                     <tbody>
                     <tr>
-                        <td><?php the_date(); ?></td>
+                        <td><?php echo get_the_date(); ?></td>
                         <td>
                             <p>
                                 <a href="<?php the_permalink(); ?>"
@@ -108,22 +115,45 @@ infinity_get_header();
                                    title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
                             </p>
                         </td>
-
                     </tr>
+                    </tbody>
+                <?php endforeach;
 
+                echo '</table></div>';
+
+                ?>
+            </div> <!-- tab 3 end -->
+
+            <div id="tabs-4">
+                <?php
+                echo '<div class="table-responsive"><table class="table">';
+
+                foreach ( $opportunity_posts as $post ) : setup_postdata( $post ); ?>
+                    <thead>
+                    <tr>
+                        <th>Date/Time</th>
+                        <th>Title</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><?php echo get_the_date(); ?></td>
+                        <td>
+                            <p>
+                                <a href="<?php the_permalink(); ?>"
+                                   rel="bookmark"
+                                   title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                            </p>
+                        </td>
+                    </tr>
                     </tbody>
                 <?php endforeach;
 
                 echo '</table></div>';
 
                 wp_reset_postdata(); ?>
-            </div> <!-- tab 3 end -->
-            <div id="tabs-4">
-
-            </div>
-        </div>
-        <!-- tabs end -->
-
+            </div> <!-- tabs 4 end -->
+        </div> <!-- tabs end -->
     </div>
 </div>
 
