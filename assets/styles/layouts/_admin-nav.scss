@@ -1,80 +1,43 @@
 // Admin Bar
+
 #wpadminbar {
   background-color: $color-neutral-10;
   display: block !important;
 
-  @media screen and (max-width: $small){
+  @media screen and (max-width: $small) {
     position: fixed;
   }
-}
+  #wp-admin-bar-root-default {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-#wp-admin-bar-root-default {
-  display: flex;
-  justify-content: flex-end;
-}
+  #wp-toolbar > ul > li {
+    display: block !important;
 
-#wp-toolbar, .base-menu {
-  padding: 0px;
-
-  ul li a {
-    color: $color-neutral-80 !important;
-    &:hover {
-      background-color: $color-brand-green !important;
-      color: $color-neutral-00 !important;
+    a {
+      padding: 0 8px 0 7px !important;
     }
   }
-}
-
-#wp-toolbar>ul>li {
-  display: block !important;
-
-  a {
-    padding: 0 8px 0 7px !important;
+  #wp-admin-bar-my-account .ab-sub-wrapper * {
+    background-color: $color-brand-green !important;
   }
-}
 
-#wp-admin-bar-my-account * {
-  background-color: $color-brand-green !important;
-}
-
-#wp-admin-bar-user-actions li a:hover span,
-#wp-admin-bar-user-actions li:hover a,
-#wp-admin-bar-user-actions li a:hover  {
-  color: darken($color-brand-green, 10%) !important;
-}
-
-.mobile-menu-container a.button {
-  background-color: transparent;
-  color: $color-neutral-80;
-  box-shadow: none;
-}
-
-#logo-menu-wrap div a {
-  width: 200px;
-
-  @media (min-width: $small) {
-    width: auto;
+  #wp-admin-bar-user-actions li a:hover span,
+  #wp-admin-bar-user-actions li:hover a,
+  #wp-admin-bar-user-actions li a:hover {
+    background-color: $color-brand-green !important;
   }
-}
 
-#wpadminbar #wp-admin-bar-my-account .ab-item {
-  text-indent: initial !important;
-  width: auto !important;
-  position: static !important;
-}
-
-#wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item,
-#wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item {
-  &:focus {
-    background: $color-brand-green;
+  #wp-admin-bar-my-account .ab-item {
+    text-indent: initial !important;
+    width: auto !important;
+    position: static !important;
   }
-}
 
-#wp-admin-bar-my-account-buddypress li {
-  padding-left: $unit*4 !important;
-}
-
-#wpadminbar {
+  #wp-admin-bar-my-account-buddypress li {
+    padding-left: $unit*4 !important;
+  }
 
   .quicklinks {
 
@@ -106,3 +69,25 @@
     }
   }
 }
+
+.mobile-menu-container a.button {
+  background-color: transparent;
+  color: $color-neutral-80;
+  box-shadow: none;
+}
+
+#logo-menu-wrap div a {
+  width: 200px;
+
+  @media (min-width: $small) {
+    width: auto;
+  }
+}
+
+#wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item,
+#wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item {
+  &:focus {
+    background: $color-brand-green;
+  }
+}
+

@@ -8,11 +8,15 @@
 |
 */
 
-// inner header nav
-.main-menu ul a {
-  color: $color-blue-boston;
-  &:hover {
-    background: none;
+#wp-toolbar, .base-menu {
+  padding: 0px;
+
+  ul li a {
+    color: $color-black-mineshaft !important;
+    &:hover {
+      background-color: $color-brand-green !important;
+      color: $color-neutral-00 !important;
+    }
   }
 }
 
@@ -59,7 +63,7 @@ thead:first-child tr td,
   @media (min-width: $medium) {
     flex-direction: row;
     align-items: center;
-      justify-content: space-between;
+    justify-content: space-between;
   }
 
   h1 {
@@ -96,20 +100,11 @@ nav.main-menu {
   @media (min-width: $medium) {
     padding: 0;
   }
-
-  & a:hover span {
-    color: darken($color-brand-green, 10%);
-  }
-
-  li:first-child {
-    @extend .c-button;
-    @extend .c--ghost;
-  }
   a {
     font-size: 14px;
+    font-weight: bold;
     margin: 0;
     color: $color-brand-green !important;
-
     @media (min-width: $small) {
       font-size: 16px;
     }
@@ -117,13 +112,24 @@ nav.main-menu {
     @media (min-width: 840px) {
       font-size: 18px;
     }
+    &:hover {
+      background: none;
+      color: $color-neutral-00;
+      span {
+        color: $color-neutral-00;
+      }
+    }
+  }
+
+  li:first-child {
+    @extend .c-button;
+    @extend .c--ghost;
   }
 }
 
 #infinity-base .icext-feature {
   position: static !important;
 }
-
 
 // Mobile Nav
 // ---
