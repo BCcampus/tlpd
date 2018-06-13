@@ -97,7 +97,7 @@ infinity_get_header();
                 echo '<div class="table-responsive"><table class="table">
                     <thead>
                     <tr>
-                        <th>Date/Time</th>
+                        <th>Date Posted</th>
                         <th>Resource Title</th>
                     </tr>
                     </thead>
@@ -124,7 +124,7 @@ infinity_get_header();
                 echo '<div class="table-responsive"><table class="table">
                     <thead>
                     <tr>
-                        <th>Date/Time</th>
+                        <th>Date Posted</th>
                         <th>Opportunity Title</th>
                     </tr>
                     </thead>
