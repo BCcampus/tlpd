@@ -1051,6 +1051,7 @@ nav.main-menu {
 #main-menu-wrap .main-menu ul a {
   font-size: 14px;
   font-weight: bold;
+  text-transform: uppercase;
   margin: 0;
   color: #74c044 !important;
 }
@@ -1286,9 +1287,10 @@ nav.main-menu {
 }
 
 #footer .widget h4 {
-  color: #333334;
+  color: #74c044;
   text-shadow: none;
   font-weight: bold;
+  text-transform: uppercase;
   border-bottom: none;
   margin-top: 0;
   padding-top: 0;

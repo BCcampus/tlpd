@@ -103,6 +103,7 @@ nav.main-menu {
   a {
     font-size: 14px;
     font-weight: bold;
+    text-transform: uppercase;
     margin: 0;
     color: $color-brand-green !important;
     @media (min-width: $small) {

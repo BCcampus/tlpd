@@ -19,7 +19,7 @@ infinity_get_header();
 ?>
 <div class="row c-map">
     <div class="c-search">
-        <h2 class="text-green text-center">Search for learning events</h2>
+        <h2 class="text-green text-center">Find learning events</h2>
         <p class="text-center">Fill in one or more of the fields below</p>
         <?php echo do_shortcode( '[events_search]' ); ?>
     </div>
