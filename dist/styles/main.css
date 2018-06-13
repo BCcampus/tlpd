@@ -239,7 +239,6 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
 */
 .c-map {
   background-color: #F7F8FC;
-  padding: 30px 0;
   margin-top: 30px;
 }
 
@@ -494,7 +493,6 @@ div.css-search,
 }
 
 .c-search {
-  margin-top: 50px !important;
   padding: 15px;
   max-width: 1024px;
   margin: 0 auto;
@@ -827,7 +825,7 @@ img.wp-smiley, img.emoji {
 
 #tabs.ui-widget .ui-widget-content {
   border: none;
-  background: inherit;
+  background: #FFF;
   color: inherit;
 }
 
@@ -849,7 +847,7 @@ img.wp-smiley, img.emoji {
 #tabs .ui-widget-content .ui-state-focus,
 #tabs .ui-widget-header .ui-state-focus {
   border: 0;
-  background: #E5E5E5;
+  background: #FFF;
   font-weight: normal;
 }
 
@@ -880,7 +878,7 @@ img.wp-smiley, img.emoji {
 }
 
 #tabs .ui-widget-header {
-  background: #F7F8FC;
+  background: #FFF;
   border: none;
 }
 
@@ -899,7 +897,7 @@ img.wp-smiley, img.emoji {
 }
 
 #tabs.ui-widget-content {
-  background: #F7F8FC;
+  background: #FFF;
 }
 
 #tabs.ui-widget-content a {

@@ -17,10 +17,12 @@
 infinity_get_header();
 
 ?>
-<div class="c-search">
-    <h2 class="text-green text-center">Search for learning events</h2>
-    <p class="text-center">Fill in one or more of the fields below</p>
-    <?php echo do_shortcode( '[events_search]' ); ?>
+<div class="row c-map">
+    <div class="c-search">
+        <h2 class="text-green text-center">Search for learning events</h2>
+        <p class="text-center">Fill in one or more of the fields below</p>
+        <?php echo do_shortcode( '[events_search]' ); ?>
+    </div>
 </div>
 <div id="content" role="main" class="sixteen columns">
     <?php
@@ -28,7 +30,7 @@ infinity_get_header();
     do_action( 'open_home' );
     ?>
 
-    <h2 class="text-blue text-center">New + Noteworthy</h2>
+    <h2 class="text-green text-center">New + Noteworthy</h2>
     <?php infinity_load_template( 'templates/featured-stories.php' ); ?>
 
     <?php
@@ -36,7 +38,7 @@ infinity_get_header();
     do_action( 'close_content' );
     ?>
 </div>
-<div class="c-map row">
+<div class="row">
     <h2 class="text-green text-center">Find learning events near you</h2>
     <div class="sixteen columns">
 

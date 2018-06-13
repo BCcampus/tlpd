@@ -15,7 +15,7 @@
     font-size: inherit;
     .ui-widget-content {
       border: none;
-      background: inherit;
+      background: $color-neutral-00;
       color: inherit;
     }
   }
@@ -37,7 +37,7 @@
   .ui-widget-content .ui-state-focus,
   .ui-widget-header .ui-state-focus {
     border: 0;
-    background: $color-gray-mercury;
+    background: $color-neutral-00;
     font-weight: normal;
     a {
       color: $color-gray-boulder;
@@ -62,7 +62,7 @@
   }
 
   .ui-widget-header {
-    background: $color-neutral-10;
+    background: $color-neutral-00;
     border: none;
   }
 
@@ -84,7 +84,7 @@
   }
 
   &.ui-widget-content {
-    background: $color-neutral-10;
+    background: $color-neutral-00;
 
     a {
       color: $color-brand-green;
