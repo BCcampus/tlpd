@@ -16,25 +16,27 @@
 infinity_get_header();
 
 ?>
-<div class="row">
-    <div class="c-banner">
-        <div class="center">
-<!--            <img class="tlpd_logo"-->
-<!--                 src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-final.svg"-->
-<!--                 alt="TLPD logo">-->
-<!--            <img class="tlpd_logo_text"-->
-<!--                 src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-final-text.svg"-->
-<!--                 alt="TLPD logo text">-->
-        </div>
-    </div>
-</div>
 <div class="c-search">
-    <h2 class="text-blue text-center">Search for learning events</h2>
+    <h2 class="text-green text-center">Search for learning events</h2>
     <p class="text-center">Fill in one or more of the fields below</p>
 	<?php echo do_shortcode( '[events_search]' ); ?>
 </div>
+<div id="content" role="main" class="sixteen columns">
+    <?php
+    do_action( 'open_content' );
+    do_action( 'open_home' );
+    ?>
+
+    <h2 class="text-blue text-center">New + Noteworthy</h2>
+    <?php infinity_load_template( 'templates/featured-stories.php' ); ?>
+
+    <?php
+    do_action( 'close_home' );
+    do_action( 'close_content' );
+    ?>
+</div>
 <div class="c-map row">
-    <h2 class="text-blue text-center">Find learning events near you</h2>
+    <h2 class="text-green text-center">Find learning events near you</h2>
     <div class="six columns">
 
         <!-- tabs start -->

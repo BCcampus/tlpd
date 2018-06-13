@@ -100,30 +100,42 @@ if ( empty( $_REQUEST['success'] ) ) {
 		<div class="inside event-form-details">
 			<div class="event-editor">
 				<?php if ( get_option( 'dbem_events_form_editor' ) && function_exists( 'wp_editor' ) ) : ?>
-					<?php wp_editor( $EM_Event->post_content, 'em-editor-content', array( 'textarea_name' => 'content' ) ); ?>
+					<?php
+					wp_editor(
+						$EM_Event->post_content, 'em-editor-content', [
+							'textarea_name' => 'content',
+						]
+					);
+					?>
 				<?php else : ?>
 					<textarea name="content" rows="10"
-							  style="width:100%"><?php echo $EM_Event->post_content ?></textarea>
+							  style="width:100%"><?php echo $EM_Event->post_content; ?></textarea>
 					<br/>
-					<?php esc_html_e( 'Details about the event.', 'events-manager' ) ?><?php esc_html_e( 'HTML allowed.', 'events-manager' ) ?>
+					<?php esc_html_e( 'Details about the event.', 'events-manager' ); ?><?php esc_html_e( 'HTML allowed.', 'events-manager' ); ?>
 				<?php endif; ?>
 			</div>
 			<div class="event-extra-details">
-				<?php if ( get_option( 'dbem_categories_enabled' ) ) {
+				<?php
+				if ( get_option( 'dbem_categories_enabled' ) ) {
 					em_locate_template( 'forms/event/categories-public.php', true );
-} ?>
-				<?php if ( get_option( 'dbem_attributes_enabled' ) ) {
+				}
+				?>
+				<?php
+				if ( get_option( 'dbem_attributes_enabled' ) ) {
 					em_locate_template( 'forms/event/attributes-public.php', true );
-} ?>
+				}
+				?>
 			</div>
 		</div>
 
-		<?php  /**  if ( $EM_Event->can_manage( 'upload_event_images', 'upload_event_images' ) ) : ?>
+		<?php
+		 /**  if ( $EM_Event->can_manage( 'upload_event_images', 'upload_event_images' ) ) : ?>
 			<h3><?php esc_html_e( 'Event Image', 'events-manager' ); ?></h3>
 			<div class="inside event-form-image">
 				<?php em_locate_template( 'forms/event/featured-image-public.php', true ); ?>
 			</div>
-		<?php endif; */?>
+		<?php endif; */
+		?>
 
 		<?php if ( get_option( 'dbem_rsvp_enabled' ) && $EM_Event->can_manage( 'manage_bookings', 'manage_others_bookings' ) ) : ?>
 			<!-- START Bookings -->

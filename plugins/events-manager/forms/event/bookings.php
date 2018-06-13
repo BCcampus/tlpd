@@ -17,9 +17,9 @@ global $EM_Event, $post, $allowedposttags, $EM_Ticket, $col_count;
 <div id="event-rsvp-box">
 	<input id="event-rsvp" name='event_rsvp' value='1' type='checkbox' checked='checked' />
 	&nbsp;
-	<?php _e( 'Enable registration for this event', 'events-manager' )?>
+	<?php _e( 'Enable registration for this event', 'events-manager' ); ?>
 </div>
-<div id="event-rsvp-options" style="<?php echo ($EM_Event->event_rsvp) ? '':'display:none;' ?>">
+<div id="event-rsvp-options" style="<?php echo ($EM_Event->event_rsvp) ? '' : 'display:none;'; ?>">
 	<?php do_action( 'em_events_admin_bookings_header', $EM_Event ); ?>
 	<div id="em-tickets-form">
 		<?php
@@ -67,13 +67,30 @@ global $EM_Event, $post, $allowedposttags, $EM_Ticket, $col_count;
 				foreach ( $EM_Tickets->tickets as $EM_Ticket ) {
 					/* @var $EM_Ticket EM_Ticket */
 					?>
-					<tbody id="em-ticket-<?php echo $col_count ?>" <?php if ( $col_count == 0 ) { echo 'style="display:none;"'; } ?>>
+					<tbody id="em-ticket-<?php echo $col_count; ?>" 
+													<?php
+													if ( $col_count == 0 ) {
+														echo 'style="display:none;"'; }
+													?>
+					>
 					<tr class="em-tickets-row">
-						<td class="ticket-status"><span class="<?php if ( $EM_Ticket->ticket_id && $EM_Ticket->is_available() ) { echo 'ticket_on';
-} elseif ( $EM_Ticket->ticket_id > 0 ) { echo 'ticket_off';
-} else { echo 'ticket_new'; } ?>"></span></td>
+						<td class="ticket-status"><span class="
+						<?php
+						if ( $EM_Ticket->ticket_id && $EM_Ticket->is_available() ) {
+							echo 'ticket_on';
+						} elseif ( $EM_Ticket->ticket_id > 0 ) {
+							echo 'ticket_off';
+						} else {
+							echo 'ticket_new'; }
+						?>
+						"></span></td>
 						<td class="ticket-name">
-							<span class="ticket_name"><?php if ( $EM_Ticket->ticket_members ) { echo '* ';}?><?php echo wp_kses_data( $EM_Ticket->ticket_name ); ?></span>
+							<span class="ticket_name">
+							<?php
+							if ( $EM_Ticket->ticket_members ) {
+								echo '* ';}
+							?>
+							<?php echo wp_kses_data( $EM_Ticket->ticket_name ); ?></span>
 							<div class="ticket_description"><?php echo wp_kses( $EM_Ticket->ticket_description,$allowedposttags ); ?></div>
 							<div class="ticket-actions">
 								<a href="#" class="ticket-actions-edit"><?php esc_html_e( 'Edit','events-manager' ); ?></a>
@@ -89,20 +106,40 @@ global $EM_Event, $post, $allowedposttags, $EM_Ticket, $col_count;
 						</td>
 						<td class="ticket-limit">
 								<span class="ticket_min">
-									<?php  echo ( ! empty( $EM_Ticket->ticket_min ) ) ? esc_html( $EM_Ticket->ticket_min ):'-'; ?>
+									<?php echo ( ! empty( $EM_Ticket->ticket_min ) ) ? esc_html( $EM_Ticket->ticket_min ) : '-'; ?>
 								</span> /
-							<span class="ticket_max"><?php echo ( ! empty( $EM_Ticket->ticket_max ) ) ? esc_html( $EM_Ticket->ticket_max ):'-'; ?></span>
+							<span class="ticket_max"><?php echo ( ! empty( $EM_Ticket->ticket_max ) ) ? esc_html( $EM_Ticket->ticket_max ) : '-'; ?></span>
 						</td>
 						<td class="ticket-time">
-							<span class="ticket_start ticket-dates-from-normal"><?php echo ( ! empty( $EM_Ticket->ticket_start ) ) ? date( get_option( 'dbem_date_format' ), $EM_Ticket->start_timestamp ):''; ?></span>
-							<span class="ticket_start_recurring_days ticket-dates-from-recurring"><?php if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) ) { echo $EM_Ticket->ticket_meta['recurrences']['start_days'];} ?></span>
-							<span class="ticket_start_recurring_days_text ticket-dates-from-recurring <?php if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) && ! is_numeric( $EM_Ticket->ticket_meta['recurrences']['start_days'] ) ) { echo 'hidden';} ?>"><?php _e( 'day(s)','events-manager' ); ?></span>
-							<span class="ticket_start_time"><?php echo ( ! empty( $EM_Ticket->ticket_start ) ) ? date( em_get_hour_format(), $EM_Ticket->start_timestamp ):''; ?></span>
+							<span class="ticket_start ticket-dates-from-normal"><?php echo ( ! empty( $EM_Ticket->ticket_start ) ) ? date( get_option( 'dbem_date_format' ), $EM_Ticket->start_timestamp ) : ''; ?></span>
+							<span class="ticket_start_recurring_days ticket-dates-from-recurring">
+							<?php
+							if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) ) {
+								echo $EM_Ticket->ticket_meta['recurrences']['start_days'];}
+							?>
+							</span>
+							<span class="ticket_start_recurring_days_text ticket-dates-from-recurring 
+							<?php
+							if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) && ! is_numeric( $EM_Ticket->ticket_meta['recurrences']['start_days'] ) ) {
+								echo 'hidden';}
+							?>
+							"><?php _e( 'day(s)','events-manager' ); ?></span>
+							<span class="ticket_start_time"><?php echo ( ! empty( $EM_Ticket->ticket_start ) ) ? date( em_get_hour_format(), $EM_Ticket->start_timestamp ) : ''; ?></span>
 							<br />
-							<span class="ticket_end ticket-dates-from-normal"><?php echo ( ! empty( $EM_Ticket->ticket_end ) ) ? date( get_option( 'dbem_date_format' ), $EM_Ticket->end_timestamp ):''; ?></span>
-							<span class="ticket_end_recurring_days ticket-dates-from-recurring"><?php if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) ) { echo $EM_Ticket->ticket_meta['recurrences']['end_days'];} ?></span>
-							<span class="ticket_end_recurring_days_text ticket-dates-from-recurring <?php if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) && ! is_numeric( $EM_Ticket->ticket_meta['recurrences']['end_days'] ) ) { echo 'hidden';} ?>"><?php _e( 'day(s)','events-manager' ); ?></span>
-							<span class="ticket_end_time"><?php echo ( ! empty( $EM_Ticket->ticket_end ) ) ? date( em_get_hour_format(), $EM_Ticket->end_timestamp ):''; ?></span>
+							<span class="ticket_end ticket-dates-from-normal"><?php echo ( ! empty( $EM_Ticket->ticket_end ) ) ? date( get_option( 'dbem_date_format' ), $EM_Ticket->end_timestamp ) : ''; ?></span>
+							<span class="ticket_end_recurring_days ticket-dates-from-recurring">
+							<?php
+							if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) ) {
+								echo $EM_Ticket->ticket_meta['recurrences']['end_days'];}
+							?>
+							</span>
+							<span class="ticket_end_recurring_days_text ticket-dates-from-recurring 
+							<?php
+							if ( ! empty( $EM_Ticket->ticket_meta['recurrences'] ) && ! is_numeric( $EM_Ticket->ticket_meta['recurrences']['end_days'] ) ) {
+								echo 'hidden';}
+							?>
+							"><?php _e( 'day(s)','events-manager' ); ?></span>
+							<span class="ticket_end_time"><?php echo ( ! empty( $EM_Ticket->ticket_end ) ) ? date( em_get_hour_format(), $EM_Ticket->end_timestamp ) : ''; ?></span>
 						</td>
 						<td class="ticket-qty">
 							<span class="ticket_available_spaces"><?php echo $EM_Ticket->get_available_spaces(); ?></span>/
@@ -117,7 +154,7 @@ global $EM_Event, $post, $allowedposttags, $EM_Ticket, $col_count;
 						<td colspan="<?php echo apply_filters( 'em_event_edit_ticket_td_colspan', 7 ); ?>">
 							<?php include( em_locate_template( 'forms/event/bookings-ticket-form.php' ) ); ?>
 							<div class="em-ticket-form-actions">
-								<button type="button" class="ticket-actions-edited"><?php esc_html_e( 'Close Ticket Editor','events-manager' )?></button>
+								<button type="button" class="ticket-actions-edited"><?php esc_html_e( 'Close Ticket Editor','events-manager' ); ?></button>
 							</div>
 						</td>
 					</tr>
@@ -137,12 +174,22 @@ global $EM_Event, $post, $allowedposttags, $EM_Ticket, $col_count;
 			<h4><?php esc_html_e( 'Event Options','events-manager' ); ?></h4>
 			<p>
 				<label><?php esc_html_e( 'Total Spaces','events-manager' ); ?></label>
-				<input type="text" name="event_spaces" value="<?php if ( $EM_Event->event_spaces > 0 ) { echo $EM_Event->event_spaces; } ?>" /><br />
+				<input type="text" name="event_spaces" value="
+				<?php
+				if ( $EM_Event->event_spaces > 0 ) {
+					echo $EM_Event->event_spaces; }
+				?>
+				" /><br />
 				<em><?php esc_html_e( 'Individual tickets with remaining spaces will not be available if total booking spaces reach this limit. Leave blank for no limit.','events-manager' ); ?></em>
 			</p>
 			<p>
 				<label><?php esc_html_e( 'Maximum Spaces Per Booking','events-manager' ); ?></label>
-				<input type="text" name="event_rsvp_spaces" value="<?php if ( $EM_Event->event_rsvp_spaces > 0 ) { echo $EM_Event->event_rsvp_spaces; } ?>" /><br />
+				<input type="text" name="event_rsvp_spaces" value="
+				<?php
+				if ( $EM_Event->event_rsvp_spaces > 0 ) {
+					echo $EM_Event->event_rsvp_spaces; }
+				?>
+				" /><br />
 				<em><?php esc_html_e( 'If set, the total number of spaces for a single booking to this event cannot exceed this amount.','events-manager' ); ?><?php esc_html_e( 'Leave blank for no limit.','events-manager' ); ?></em>
 			</p>
 			<p>
@@ -157,8 +204,18 @@ global $EM_Event, $post, $allowedposttags, $EM_Ticket, $col_count;
 			<input type="text" name="recurrence_rsvp_days" size="3" value="<?php echo absint( $EM_Event->recurrence_rsvp_days ); ?>" />
 					<?php _e( 'day(s)','events-manager' ); ?>
 					<select name="recurrence_rsvp_days_when">
-				<option value="before" <?php if ( ! empty( $EM_Event->recurrence_rsvp_days ) && $EM_Event->recurrence_rsvp_days <= 0 ) { echo 'selected="selected"';} ?>><?php echo sprintf( _x( '%s the event starts','before or after','events-manager' ),__( 'Before','events-manager' ) ); ?></option>
-				<option value="after" <?php if ( ! empty( $EM_Event->recurrence_rsvp_days ) && $EM_Event->recurrence_rsvp_days > 0 ) { echo 'selected="selected"';} ?>><?php echo sprintf( _x( '%s the event starts','before or after','events-manager' ),__( 'After','events-manager' ) ); ?></option>
+				<option value="before" 
+				<?php
+				if ( ! empty( $EM_Event->recurrence_rsvp_days ) && $EM_Event->recurrence_rsvp_days <= 0 ) {
+					echo 'selected="selected"';}
+				?>
+				><?php echo sprintf( _x( '%s the event starts','before or after','events-manager' ),__( 'Before','events-manager' ) ); ?></option>
+				<option value="after" 
+				<?php
+				if ( ! empty( $EM_Event->recurrence_rsvp_days ) && $EM_Event->recurrence_rsvp_days > 0 ) {
+					echo 'selected="selected"';}
+				?>
+				><?php echo sprintf( _x( '%s the event starts','before or after','events-manager' ),__( 'After','events-manager' ) ); ?></option>
 			</select>
 					<?php _e( 'at','events-manager' ); ?>
 		</span>
