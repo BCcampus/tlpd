@@ -15,13 +15,6 @@
 <?php if ( is_active_sidebar( 'Footer Left' ) || is_active_sidebar( 'Footer Middle' ) || is_active_sidebar( 'Footer Right' ) ) : ?>
     <div class="footer-widgets row">
         <div class="seven columns">
-<!--            <picture>-->
-<!--                <source srcset="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.webp"-->
-<!--                        type="image/webp">-->
-<!--                <source srcset="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.png">-->
-<!--                <img src="--><?php //echo get_stylesheet_directory_uri(); ?><!--/dist/images/tlpd-logo-small.png"-->
-<!--                     alt="BC Provincial Office for the Teaching and Learning Professional Development">-->
-<!--            </picture>-->
             <p>The Teaching Learning Professional Development (TLPD) web portal is an initiative developed by BCcampus with the B.C. post-secondary educator community.
                 The web portal aims to support post-secondary educators in promoting and finding teaching and learning professional development opportunities and support the building of community connections.</p>
         </div>
@@ -50,11 +43,11 @@
     </div>
 <?php endif; ?>
 <div class="row">
-    <div class="eight columns"></div>
-    <div class="widget four columns">
+    <div class="nine columns"></div>
+    <div class="widget three columns">
         <picture>
-            <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bccampus-logo.png">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bc-ministry-logo.png" width="249" height="96" alt="BCcampus logo">
+            <source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcc15-logo.png">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcc15-logo.png" width="240" height="200" alt="BCcampus logo">
         </picture>
     </div>
 </div>
