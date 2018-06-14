@@ -33,7 +33,6 @@ before_script:
 script:
   - yarn run build:production
   - vendor/bin/phpunit --configuration phpunit.xml
-  - vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php
 before_deploy:
   - export TRAVIS_PROJECT_SLUG="$(basename $TRAVIS_BUILD_DIR)"
   - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -47,7 +46,7 @@ before_deploy:
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key: "$GITHUB_OAUTH_TOKEN"
+  api_key: $GITHUB_OAUTH_TOKEN
   file: "tlpd-$TRAVIS_TAG.zip"
   on:
     tags: true
