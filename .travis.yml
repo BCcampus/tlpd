@@ -47,8 +47,7 @@ before_deploy:
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key:
-    secure:
+  api_key: "$GITHUB_OAUTH_TOKEN"
   file: "tlpd-$TRAVIS_TAG.zip"
   on:
     tags: true
