@@ -2,6 +2,5 @@
 .idea
 .sass-cache
 *.css.map
-.travis.yml
 vendor/
 node_modules/
