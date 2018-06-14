@@ -51,3 +51,4 @@ deploy:
   on:
     tags: true
     repo: BCcampus/tlpd
+    branch: dev
