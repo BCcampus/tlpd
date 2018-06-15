@@ -46,7 +46,6 @@ add_filter( /**
 			'events-manager',
 			'jquery-mobilemenu',
 			'jquery-fitvids',
-			'modal-video',
 		];
 
 		$async = [
@@ -132,7 +131,6 @@ add_action(
 
 		wp_enqueue_script( 'bootstrap-script', $template_dir . '/dist/scripts/bootstrap.min.js', [], null, true );
 		wp_enqueue_style( 'bootstrap-style', $template_dir . '/dist/styles/bootstrap.min.css' );
-		wp_enqueue_script( 'modal-video', $template_dir . '/dist/scripts/modal-video.js', [ 'jquery' ], null, true );
 
 		if ( is_front_page() ) {
 			wp_enqueue_script( 'jquery-tabs', $template_dir . '/dist/scripts/tabs.js', [ 'jquery' ], null, true );

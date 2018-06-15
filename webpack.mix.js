@@ -48,7 +48,6 @@ mix.js(`${node}/bootstrap/dist/js/bootstrap.min.js`, `${dist}/scripts`)
     .js(`${assets}/js/popover-dismiss.js`, `${dist}/scripts`)
     .js(`${assets}/js/jquery.tinyscrollbar.min.js`, `${dist}/scripts`)
     .js(`${assets}/js/events-manager.js`, `${dist}/scripts`)
-    .js(`${assets}/js/modal-video.js`, `${dist}/scripts`)
 
 // Sass
 mix.sass(`${assets}/styles/main.scss`, `${dist}/styles/main.css`)

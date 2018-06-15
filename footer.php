@@ -60,7 +60,6 @@ if ( is_page( 'Sign Up' ) ) {
 	get_template_part( 'templates/terms-modal' );
 	get_template_part( 'templates/roles-modal' );
 }
-get_template_part( 'templates/video-modal' );
 ?>
 
 <script>

@@ -76,17 +76,7 @@ module.exports = __webpack_require__(22);
 /***/ 22:
 /***/ (function(module, exports) {
 
-/**
- * Stop playing the video when modal is closed
- */
-
-(function ($) {
-    $(document).ready(function () {
-        jQuery('#video').on('hidden.bs.modal', function (e) {
-            jQuery('#video iframe').attr("src", jQuery("#video  iframe").attr("src"));
-        });
-    });
-})(jQuery);
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/bpayne/Sites/tlpd.test/site/web/app/themes/tlpd/assets/js/modal-video.js'");
 
 /***/ })
 
