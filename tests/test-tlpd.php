@@ -10,6 +10,7 @@
  */
 class TlpdTest extends WP_UnitTestCase {
 
+
 	public function setUp() {
 		parent::setUp();
 	}
@@ -18,11 +19,21 @@ class TlpdTest extends WP_UnitTestCase {
 		parent::tearDown();
 	}
 
-	/**
-	 * A single example test.
-	 */
-	function test_sample() {
-		// Replace this with some actual testing code.
-		$this->assertTrue( true );
+	function test_tlpd_howdy_message() {
+		$translated_text = 'Howdy';
+		$text            = 'Blar Howdy,Blar';
+		$domain          = 'tlpd';
+
+		$new_message = tlpd_howdy_message( $translated_text, $text, $domain );
+
+		$this->assertEquals( 'Blar Blar', $new_message );
+	}
+
+	function test_tlpd_event_output() {
+
+		$test_data = tlpd_event_output( 1 );
+
+		$this->assertTrue( is_array( $test_data ) );
+
 	}
 }

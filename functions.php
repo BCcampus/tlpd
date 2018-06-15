@@ -609,11 +609,9 @@ add_filter( 'gettext', 'tlpd_howdy_message', 10, 3 );
  *
  * @return array
  */
-function tlpd_event_output( $post_id = 0, $data = [] ) {
+function tlpd_event_output( $post_id = 0 ) {
 	// get the data
-	if ( is_array( $data ) ) {
-		$data = get_post_custom( $post_id );
-	}
+	$data = get_post_custom( $post_id );
 
 	// return the design
 	return $data;
@@ -867,23 +865,6 @@ function tlpd_get_my_bookings_url() {
 		return $bp->events->link;
 	} else {
 		return '#';
-	}
-}
-
-/**
- * Check for dependencies, add admin notice
- */
-function tlpd_dependencies_check() {
-
-	if ( file_exists( $composer = get_stylesheet_directory() . '/vendor/autoload.php' ) ) {
-		include( $composer );
-	} else {
-		// Remind to install dependencies
-		add_action(
-			'admin_notices', function () {
-				echo '<div id="message" class="notice notice-warning is-dismissible"><p>' . __( 'TLPD theme dependency missing, please run composer install. ' ) . '</p></div>';
-			}
-		);
 	}
 }
 
