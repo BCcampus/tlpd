@@ -115,7 +115,7 @@ nav.main-menu {
     }
     &:hover {
       background: none;
-      color: $color-neutral-00;
+      color: $color-neutral-00 !important;
       span {
         color: $color-neutral-00;
       }
@@ -123,8 +123,8 @@ nav.main-menu {
   }
 
   li:first-child {
-    @extend .c-button;
-    @extend .c--ghost;
+    //@extend .c-button;
+    //@extend .c--ghost;
   }
 }
 

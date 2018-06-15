@@ -760,28 +760,25 @@ add_action( 'bp_setup_nav', 'tlpd_bp_nav', 1000 );
 
 
 // Filter wp_nav_menu() to add pop-overs to links in header menu
-function tlpd_nav_menu_items( $nav, $args ) {
-	if ( $args->theme_location == 'main-menu' ) {
-		if ( is_user_logged_in() ) {
-			$nav = '<li class="home"><a href=' . home_url() . '/post-event>Post an Event</a></li>';
-			$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
-			//          $nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i>TLPD' ) . '</a></li>';
-		} else {
-			//add popover with a message, and login and sign-up links
-			$popover = '<li class="home"><a href="#" data-container="body"  role="button"  data-toggle="popover" data-placement="bottom" data-html="true" data-original-title="" data-content="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
-			$nav     = $popover . 'post events.">Post an Event</a></li>';
-			$nav     .= $popover . 'edit your events.">Edit Event</a></li>';
-			//          $nav     .= $popover . ' view your events."><i>my</i>TLPD</a></li>';
-		}
-	}
+add_filter( 'wp_nav_menu_items', function ( $nav, $args ) {
+    if ( $args->theme_location == 'main-menu' ) {
+        if ( is_user_logged_in() ) {
+            $nav = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+            $nav .= '<li class="home"><a href=' . home_url() . '/post-event>Add New</a></li>';
+            $nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
+            $nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i> Events' ) . '</a></li>';
+        } else {
+            //add popover with a message, and login and sign-up links
+            $popover = '<li class="home"><a href="#" data-container="body"  role="button"  data-toggle="popover" data-placement="bottom" data-html="true" data-original-title="" data-content="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
+            $nav     = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+            $nav     .= $popover . 'post events.">Add New</a></li>';
+            $nav     .= $popover . 'edit your events.">Edit Event</a></li>';
+            $nav     .= $popover . ' view your events."><i>my</i> Events</a></li>';
+        }
+    }
 
-	return $nav;
-}
-
-/**
- * Leave the default menu functionality for now. See https://github.com/BCcampus/tlpd/issues/36#issuecomment-396754255
- * add_filter( 'wp_nav_menu_items', 'tlpd_nav_menu_items', 10, 2 );
- */
+    return $nav;
+}, 10, 2 );
 
 /**
  * Add favicon, theme color, PWA manifest

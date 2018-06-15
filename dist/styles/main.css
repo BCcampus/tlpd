@@ -268,7 +268,7 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
 |
 |
 */
-.c-button, .button-primary, .button, #main-menu-wrap .main-menu ul li:first-child {
+.c-button, .button-primary, .button {
   min-width: 44px;
   margin: 0;
   padding: 10px 20px;
@@ -318,11 +318,11 @@ input.c-button.c--primary:active, input.button-primary:active, input.button:acti
   color: #FFF;
 }
 
-.c-button.c--ghost, .c--ghost.button-primary, .c--ghost.button, #main-menu-wrap .main-menu ul li:first-child {
+.c-button.c--ghost, .c--ghost.button-primary, .c--ghost.button {
   padding: 5px;
 }
 
-.c-button.c--ghost a:active, .c--ghost.button-primary a:active, .c--ghost.button a:active, #main-menu-wrap .main-menu ul li:first-child a:active, .c-button.c--ghost a:hover, .c--ghost.button-primary a:hover, .c--ghost.button a:hover, #main-menu-wrap .main-menu ul li:first-child a:hover, .c-button.c--ghost a:focus, .c--ghost.button-primary a:focus, .c--ghost.button a:focus, #main-menu-wrap .main-menu ul li:first-child a:focus {
+.c-button.c--ghost a:active, .c--ghost.button-primary a:active, .c--ghost.button a:active, .c-button.c--ghost a:hover, .c--ghost.button-primary a:hover, .c--ghost.button a:hover, .c-button.c--ghost a:focus, .c--ghost.button-primary a:focus, .c--ghost.button a:focus {
   color: #5d9c35 !important;
 }
 
@@ -1070,7 +1070,7 @@ nav.main-menu {
 
 #main-menu-wrap .main-menu ul a:hover {
   background: none;
-  color: #FFF;
+  color: #FFF !important;
 }
 
 #main-menu-wrap .main-menu ul a:hover span {

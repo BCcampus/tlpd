@@ -56,14 +56,14 @@ infinity_get_header();
                     <a href="#tabs-2" role="presentation" tabindex="0"
                        class="ui-tabs-anchor" id="ui-id-2">New Events</a>
                 </li>
-                <li role="tab" tabindex="3" aria-controls="tabs-3">
-                    <a href="#tabs-3" role="presentation" tabindex="1"
-                       class="ui-tabs-anchor" id="ui-id-3">New Resources</a>
-                </li>
-                <li role="tab" tabindex="4" aria-controls="tabs-4">
-                    <a href="#tabs-4" role="presentation" tabindex="2"
-                       class="ui-tabs-anchor" id="ui-id-4">New Opportunities</a>
-                </li>
+<!--                <li role="tab" tabindex="3" aria-controls="tabs-3">-->
+<!--                    <a href="#tabs-3" role="presentation" tabindex="1"-->
+<!--                       class="ui-tabs-anchor" id="ui-id-3">New Resources</a>-->
+<!--                </li>-->
+<!--                <li role="tab" tabindex="4" aria-controls="tabs-4">-->
+<!--                    <a href="#tabs-4" role="presentation" tabindex="2"-->
+<!--                       class="ui-tabs-anchor" id="ui-id-4">New Opportunities</a>-->
+<!--                </li>-->
             </ul>
             <div id="tabs-1">
                 <?php
@@ -78,77 +78,77 @@ infinity_get_header();
                 echo do_shortcode( $events_recent );
                 ?>
             </div>
-            <div id="tabs-3">
-                <?php
-                global $post;
-                $args_r            = [
-                    'posts_per_page' => 4,
-                    'category_name'  => 'Resources',
-                    'post_status'    => 'publish',
-                    'order'          => 'DESC',
-                ];
-                $args_o            = [
-                    'posts_per_page' => 4,
-                    'category_name'  => 'Opportunities',
-                    'post_status'    => 'publish',
-                    'order'          => 'DESC',
-                ];
-                $resource_posts    = get_posts( $args_r );
-                $opportunity_posts = get_posts( $args_o );
-
-                echo '<div class="table-responsive"><table class="table">
-                    <thead>
-                    <tr>
-                        <th>Date Posted</th>
-                        <th>Resource Title</th>
-                    </tr>
-                    </thead>
-                    <tbody>';
-
-                foreach ( $resource_posts as $post ) : setup_postdata( $post );?>
-                    <tr>
-                        <td><?php echo get_the_date(); ?></td>
-                        <td>
-                            <p>
-                                <a href="<?php the_permalink(); ?>"
-                                   rel="bookmark"
-                                   title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                            </p>
-                        </td>
-                    </tr>
-                <?php endforeach;
-
-                echo '</tbody></table></div>';?>
-            </div> <!-- tab 3 end -->
-
-            <div id="tabs-4">
-                <?php
-                echo '<div class="table-responsive"><table class="table">
-                    <thead>
-                    <tr>
-                        <th>Date Posted</th>
-                        <th>Opportunity Title</th>
-                    </tr>
-                    </thead>
-                    <tbody>';
-
-                foreach ( $opportunity_posts as $post ) : setup_postdata( $post ); ?>
-                    <tr>
-                        <td><?php echo get_the_date(); ?></td>
-                        <td>
-                            <p>
-                                <a href="<?php the_permalink(); ?>"
-                                   rel="bookmark"
-                                   title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-                            </p>
-                        </td>
-                    </tr>
-                <?php endforeach;
-
-                echo '</tbody></table></div>';
-                wp_reset_postdata(); ?>
-
-            </div> <!-- tabs 4 end -->
+<!--            <div id="tabs-3">-->
+<!--                --><?php
+//                global $post;
+//                $args_r            = [
+//                    'posts_per_page' => 4,
+//                    'category_name'  => 'Resources',
+//                    'post_status'    => 'publish',
+//                    'order'          => 'DESC',
+//                ];
+//                $args_o            = [
+//                    'posts_per_page' => 4,
+//                    'category_name'  => 'Opportunities',
+//                    'post_status'    => 'publish',
+//                    'order'          => 'DESC',
+//                ];
+//                $resource_posts    = get_posts( $args_r );
+//                $opportunity_posts = get_posts( $args_o );
+//
+//                echo '<div class="table-responsive"><table class="table">
+//                    <thead>
+//                    <tr>
+//                        <th>Date Posted</th>
+//                        <th>Resource Title</th>
+//                    </tr>
+//                    </thead>
+//                    <tbody>';
+//
+//                foreach ( $resource_posts as $post ) : setup_postdata( $post );?>
+<!--                    <tr>-->
+<!--                        <td>--><?php //echo get_the_date(); ?><!--</td>-->
+<!--                        <td>-->
+<!--                            <p>-->
+<!--                                <a href="--><?php //the_permalink(); ?><!--"-->
+<!--                                   rel="bookmark"-->
+<!--                                   title="--><?php //the_title_attribute(); ?><!--">--><?php //the_title(); ?><!--</a>-->
+<!--                            </p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                --><?php //endforeach;
+//
+//                echo '</tbody></table></div>';?>
+<!--            </div> <!-- tab 3 end -->
+<!---->
+<!--            <div id="tabs-4">-->
+<!--                --><?php
+//                echo '<div class="table-responsive"><table class="table">
+//                    <thead>
+//                    <tr>
+//                        <th>Date Posted</th>
+//                        <th>Opportunity Title</th>
+//                    </tr>
+//                    </thead>
+//                    <tbody>';
+//
+//                foreach ( $opportunity_posts as $post ) : setup_postdata( $post ); ?>
+<!--                    <tr>-->
+<!--                        <td>--><?php //echo get_the_date(); ?><!--</td>-->
+<!--                        <td>-->
+<!--                            <p>-->
+<!--                                <a href="--><?php //the_permalink(); ?><!--"-->
+<!--                                   rel="bookmark"-->
+<!--                                   title="--><?php //the_title_attribute(); ?><!--">--><?php //the_title(); ?><!--</a>-->
+<!--                            </p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                --><?php //endforeach;
+//
+//                echo '</tbody></table></div>';
+//                wp_reset_postdata(); ?>
+<!---->
+<!--            </div> <!-- tabs 4 end -->
         </div> <!-- tabs end -->
     </div>
 </div>

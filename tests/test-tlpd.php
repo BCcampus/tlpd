@@ -1,14 +1,14 @@
 <?php
 /**
- * Class EypdTest
+ * Class TlpdTest
  *
- * @package Early_Years
+ * @package TLPD
  */
 
 /**
  * Sample test case.
  */
-class EypdTest extends WP_UnitTestCase {
+class TlpdTest extends WP_UnitTestCase {
 
 	public function setUp() {
 		parent::setUp();
