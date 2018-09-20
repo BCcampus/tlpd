@@ -22,12 +22,18 @@ infinity_get_header();
         <p class="text-center">Fill in one or more of the fields below</p>
         <?php echo do_shortcode( '[events_search]' ); ?>
 </div>
+
+<div class="row justify-content-center align-self-center">
+    <h2 class="text-green text-center">New + Noteworthy</h2>
+	<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
+</div>
+
 <div class="c-map row">
     <div class="row justify-content-center align-self-center">
     <h2 class="text-green text-center">Find learning events near you</h2>
     </div>
     <!-- tabs start -->
-    <div id="tabs" class="col-sm-6">
+    <div id="tabs" class="col-sm">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab"
@@ -55,15 +61,6 @@ infinity_get_header();
         </div>
     </div>
     <!-- tabs end -->
-
-    <div class="col-sm-6">
-		<?php
-			infinity_load_template( 'templates/google-map.php' );
-		?>
-        <h2 class="text-center"><a class="text-gray" href="events"><?php tlpd_display_count_events(); ?> Training Events
-                Currently Posted</a></h2>
-    </div>
-</div>
 </div>
 
 <?php
