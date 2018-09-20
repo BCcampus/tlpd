@@ -11,8 +11,8 @@ $content = $page->post_content;
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
+                <h4 class="modal-title"><?php echo $title; ?></h4>
 				<button class="close" type="button" data-dismiss="modal">×</button>
-				<h4 class="modal-title"><?php echo $title; ?></h4>
 			</div>
 			<div class="modal-body"><?php echo $content; ?></div>
 			<div class="modal-footer">
