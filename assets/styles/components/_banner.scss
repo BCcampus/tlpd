@@ -46,10 +46,12 @@
 
 }
 
-@media (max-width: $small) {
-  #icext {
-    display: none;
-  }
+.tlpd-header-logo {
+  max-width: 315px;
 }
 
-
+@media(max-width: $medium) {
+  .tlpd-header-logo {
+    max-width: 220px;
+  }
+}
