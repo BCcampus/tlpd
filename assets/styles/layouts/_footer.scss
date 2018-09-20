@@ -8,7 +8,7 @@
 |
 */
 .footer-wrap {
-  background: $color-neutral-10 !important;
+  background: $color-blue-sail !important;
   color: $color-neutral-80;
   border: none;
   box-shadow: none;
@@ -17,30 +17,29 @@
   a {
     color: $color-neutral-80;
 
-    &.text-blue{
+    &.text-blue {
       color: $color-brand-blue;
     }
 
     &:hover {
-      color: $color-brand-green;
+      color: $color-brand-blue;
     }
   }
 }
 
-#powered-by{
+#powered-by {
+  background-color:$color-blue-sail;
   border-top: 1px solid $color-gray-boulder;
-  background-color: $color-neutral-00;
   color: inherit;
   font-weight: normal;
   padding-top: 0;
 }
 
 #footer {
-  .widget h4 {
-    color: $color-brand-green;
+  .widget h4, .funded {
+    color: $color-neutral-80;
     text-shadow: none;
     font-weight: bold;
-    text-transform: uppercase;
     border-bottom: none;
     margin-top: 0;
     padding-top: 0;
@@ -56,9 +55,16 @@
       margin-left: 20px;
     }
   }
-  & #copyright-info{
+  & #copyright-info {
     padding: $unit*2;
     text-align: left;
+  }
+  & #footer-info{
+    padding:15px;
+  }
+  & #powered-by ul li {
+    display: inline;
+    margin-left: 20px;
   }
 }
 
@@ -77,16 +83,14 @@
   padding-top: 19px;
   width: 100%;
   z-index: 2;
-
-  .container {
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    position: relative;
-    text-align: left;
-    width: 750px;
-  }
 }
 
-
+#filter-bar .container {
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  position: relative;
+  text-align: left;
+  width: 750px;
+}
