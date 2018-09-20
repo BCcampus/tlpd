@@ -35,14 +35,14 @@ mix.browserSync({
 
 // Assets
 mix.copy(`${assets}/fonts`, `${dist}/fonts`)
-    .copy(`${node}/bootstrap/fonts`, `${dist}/fonts`)
     .copy(`${node}/bootstrap/dist/css/bootstrap.min.css`, `${dist}/styles`)
     .copy(`${assets}/images`, `${dist}/images`)
 
 // compiled Javascript
-mix.js(`${node}/bootstrap/dist/js/bootstrap.min.js`, `${dist}/scripts`)
-    .js(`${node}/bootstrap/js/popover.js`, `${dist}/scripts`)
-    .js(`${node}/bootstrap/js/tooltip.js`, `${dist}/scripts`)
+mix.js(`${node}/bootstrap/dist/js/bootstrap.bundle.min.js`, `${dist}/scripts`)
+    .js(`${node}/jquery/dist/jquery.js`, `${dist}/scripts`)
+    .js(`${node}/bootstrap/js/dist/popover.js`, `${dist}/scripts`)
+    .js(`${node}/bootstrap/js/dist/tooltip.js`, `${dist}/scripts`)
     .js(`${assets}/js/tabs.js`, `${dist}/scripts`)
     .js(`${assets}/js/initpopover.js`, `${dist}/scripts`)
     .js(`${assets}/js/popover-dismiss.js`, `${dist}/scripts`)
