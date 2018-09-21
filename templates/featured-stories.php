@@ -11,32 +11,30 @@
  */
 global $post;
 $args    = [
-    'posts_per_page' => 2,
-    'category_name'  => 'Homepage',
-    'post_status'    => 'publish',
-    'order'          => 'DESC',
-    'post__in'       => get_option( 'sticky_posts' ),
+	'posts_per_page' => 2,
+	'category_name'  => 'Homepage',
+	'post_status'    => 'publish',
+	'order'          => 'DESC',
+	'post__in'       => get_option( 'sticky_posts' ),
 ];
 $myposts = get_posts( $args );
 
-echo '<article class="col">';
-
 foreach ( $myposts as $post ) : setup_postdata( $post );
-    $child_theme_uri = get_stylesheet_directory_uri();
-    $thumbnail       = ( empty( the_post_thumbnail() ) ) ? "<img src='{$child_theme_uri}/dist/images/new-noteworthy.png' alt='new and noteworthy' />" : the_post_thumbnail( '150' );
-    ?>
-        <p>
-            <a href="<?php the_permalink(); ?>" rel="bookmark"
-               title="<?php the_title_attribute(); ?>"><?php echo $thumbnail; ?></a>
-        </p>
-        <h4>
-            <a href="<?php the_permalink(); ?>" rel="bookmark"
-               title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-        </h4>
-        <p><?php the_excerpt(); ?>
-
+	echo '<article class="col">';
+	$child_theme_uri = get_stylesheet_directory_uri();
+	$thumbnail       = ( empty( the_post_thumbnail() ) ) ? "<img src='{$child_theme_uri}/dist/images/new-noteworthy.png' alt='new and noteworthy' />" : the_post_thumbnail( '150' );
+	?>
+	<p>
+		<a href="<?php the_permalink(); ?>" rel="bookmark"
+		   title="<?php the_title_attribute(); ?>"><?php echo $thumbnail; ?></a>
+	</p>
+	<h4>
+		<a href="<?php the_permalink(); ?>" rel="bookmark"
+		   title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+	</h4>
+	<p><?php the_excerpt(); ?></p>
+	</article>
 <?php endforeach;
 
-echo '</article>';
 
 wp_reset_postdata(); ?>
