@@ -19,6 +19,11 @@ body.home-page .top-wrap.row {
   margin: 0;
 }
 
+.top-wrap{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 #wrapper {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -55,8 +60,13 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
 }
 
 .row {
-  width: 100% !important;
-  margin: 0px !important;
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
 .text-center{
@@ -65,4 +75,9 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
 
 .clear{
   clear: both;
+}
+
+.main-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
 }

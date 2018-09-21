@@ -13,7 +13,8 @@
   border: none;
   box-shadow: none;
   padding-top: 2rem;
-
+  max-width: 1280px;
+  margin: 0 auto;
   a {
     color: $color-neutral-80;
 
@@ -32,7 +33,7 @@
   border-top: 1px solid $color-gray-boulder;
   color: inherit;
   font-weight: normal;
-  padding-top: 0;
+  padding-top: 10px;
 }
 
 #footer {

@@ -17,21 +17,25 @@
 infinity_get_header();
 
 ?>
-<div class="c-search">
+<section class="row-fluid">
+	<div class="col-12">
         <h2 class="text-green text-center">Find learning events</h2>
         <p class="text-center">Fill in one or more of the fields below</p>
         <?php echo do_shortcode( '[events_search]' ); ?>
-</div>
+	</div>
+</section>
 
-<div class="row justify-content-center align-self-center">
+<section class="row-fluid mb-4 justify-content-center align-self-center">
     <h2 class="text-green text-center">New + Noteworthy</h2>
+	<div class="col-12">
 	<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
-</div>
+	</div>
+</section>
 
-<div class="c-map row">
-    <div class="row justify-content-center align-self-center">
-    <h2 class="text-green text-center">Find learning events near you</h2>
-    </div>
+<section class="c-map row-fluid">
+	<div class="justify-content-center align-self-center col-12">
+		<h2 class="text-green text-center">Find learning events near you</h2>
+	</div>
     <!-- tabs start -->
     <div id="tabs" class="col-sm">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -61,7 +65,7 @@ infinity_get_header();
         </div>
     </div>
     <!-- tabs end -->
-</div>
+</section>
 
 <?php
 infinity_get_footer();

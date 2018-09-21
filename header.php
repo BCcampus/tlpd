@@ -32,7 +32,7 @@ infinity_get_template_part( 'templates/parts/header-head' );
 do_action( 'open_body' );
 ?>
 
-<div id="wrapper" class="hfeed">
+<div id="container-fluid" class="hfeed">
 <?php
 do_action( 'open_wrapper' );
 ?>
@@ -46,7 +46,7 @@ do_action( 'open_container' );
 ?>
 
 	<!-- start main wrap. the main-wrap div will be closed in the footer template -->
-<div class="main-wrap row <?php do_action( 'main_wrap_class' ); ?>">
+<div class="main-wrap <?php do_action( 'main_wrap_class' ); ?>">
 <?php
 do_action( 'open_main_wrap' );
 ?>
