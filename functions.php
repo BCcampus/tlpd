@@ -374,7 +374,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.92;
+	$tlpd_version        = 6.93;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -391,6 +391,7 @@ function tlpd_run_once() {
 		'dbem_bookings_double',
 		'dbem_bookings_login_form',
 		'dbem_search_form_geo',
+		'dbem_events_page_search_form',
 	];
 	$default_yes         = [
 		'dbem_rsvp_enabled',
