@@ -20,10 +20,10 @@ $args    = [
 $myposts = get_posts( $args );
 
 foreach ( $myposts as $post ) : setup_postdata( $post );
-	echo '<article class="col-sm-3">';
 	$child_theme_uri = get_stylesheet_directory_uri();
 	$thumbnail       = ( empty( the_post_thumbnail() ) ) ? "<img src='{$child_theme_uri}/dist/images/new-noteworthy.png' alt='new and noteworthy' />" : the_post_thumbnail( '150' );
 	?>
+	<article class="col-sm-4">
 	<p>
 		<a href="<?php the_permalink(); ?>" rel="bookmark"
 		   title="<?php the_title_attribute(); ?>"><?php echo $thumbnail; ?></a>
