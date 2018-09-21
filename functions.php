@@ -374,7 +374,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.9;
+	$tlpd_version        = 6.91;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -413,14 +413,12 @@ function tlpd_run_once() {
 #_ATT{Online}{|Yes|No}
 #_ATT{Registration Fee}
 #_ATT{Registration Space}{|Filling Up!|FULL}
-#_ATT{Registration Contact Email}
 #_ATT{Registration Contact Phone Number}
 #_ATT{Registration Link}
 #_ATT{Prerequisite(s)}
-#_ATT{Required Materials}
 #_ATT{Presenter(s)}
 #_ATT{Presenter Information}
-#_ATT{Event Sponsors}';
+#_ATT{Event Hosts}';
 	$single_event_format = '<div class="single-event-map">#_LOCATIONMAP</div>
 <p>
 	<strong>Date/Time</strong><br/>
