@@ -24,3 +24,7 @@ thead:first-child tr th {
     table-layout: fixed;
   }
 }
+
+.css-events-list table.events-table th.event-description {
+  width: 33%;
+}
