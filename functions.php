@@ -374,7 +374,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.91;
+	$tlpd_version        = 6.92;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -452,7 +452,7 @@ function tlpd_run_once() {
         <tr>
 			<th class="event-time" width="150">Date/Time</th>
 			<th class="event-description" width="*">Event</th>
-			<th class="event-capacity" width="*">Capacity</th>
+			<th class="event-capacity" width="*">Availability</th>
 		</tr>
    	</thead>
     <tbody>';
