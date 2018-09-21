@@ -17,7 +17,7 @@
 infinity_get_header();
 
 ?>
-<section class="row-fluid">
+<section class="flex-row container-fluid">
 	<div class="col-12">
         <h2 class="text-green text-center">Find learning events</h2>
         <p class="text-center">Fill in one or more of the fields below</p>
@@ -25,15 +25,15 @@ infinity_get_header();
 	</div>
 </section>
 
-<section class="row-fluid mb-4 justify-content-center align-self-center">
+<section class="flex-row container-fluid mb-4 justify-content-center align-self-center">
     <h2 class="text-green text-center">New + Noteworthy</h2>
 	<div class="d-flex flex-row flex-wrap no-gutters">
 	<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
 	</div>
 </section>
 
-<section class="c-map row-fluid">
-	<div class="justify-content-center align-self-center col-12">
+<section class="flex-row container-fluid">
+	<div class="justify-content-center align-self-center py-2 grey-bkgd">
 		<h2 class="text-green text-center">Find learning events near you</h2>
 	</div>
     <!-- tabs start -->
