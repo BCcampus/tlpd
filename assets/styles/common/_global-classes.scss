@@ -53,14 +53,8 @@ h2.page-title, h2.post-title, h1.page-title, h1.post-title {
   background-size: 13px;
 }
 
-.row {
-  width: 100%;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+.main-wrap.row{
+  display: block;
 }
 
 .text-center{
