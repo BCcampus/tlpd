@@ -336,6 +336,18 @@ function tlpd_read_more( $more ) {
 
 add_filter( 'excerpt_more', 'tlpd_read_more' );
 
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function tlpd_excerpt_length( $length ) {
+	return 25;
+}
+add_filter( 'excerpt_length', 'tlpd_excerpt_length', 999 );
+
 /*
 |--------------------------------------------------------------------------
 | Labels/Localization
@@ -1058,3 +1070,12 @@ add_action(
 		}
 	}, 2
 );
+
+/**
+ * Add image size for homepage new + noteworthy
+ * Images will be cropped to the specified dimensions using center positions.
+ *
+ */
+add_action( 'after_setup_theme', function () {
+	add_image_size( 'featured-size', 340, 135, true );
+} );
