@@ -25,7 +25,9 @@ div.css-search,
   }
 
   .em-search-main,
-  .em-search-scope {
+  .em-search-scope,
+  .em-search-advanced,
+  .em-search-options {
     display: flex;
   }
 
@@ -60,10 +62,29 @@ div.css-search,
 
   .em-search-category {
     display: block;
-    padding-left: $unit*2;
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: $unit*4;
 
     @media (min-width: $medium) {
-      padding-left: $unit*6;
+      width: auto;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    select {
+      width: 100%;
+
+      @media (min-width: $small) {
+        min-width: 300px;
+      }
+
+      @media (min-width: 900px) {
+        min-width: 340px;
+      }
     }
   }
 
@@ -85,7 +106,9 @@ div.css-search,
     }
   }
 
-  .em-search-scope {
+  .em-search-scope,
+  .em-search-location,
+  .em-search-category {
     width: 100%;
     float: none;
 
@@ -153,30 +176,4 @@ div.css-search,
     }
   }
 
-  .em-search-category {
-    width: 100%;
-    padding-left: 0;
-
-    @media (min-width: $medium) {
-      width: auto;
-      margin-left: $unit*8;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-    }
-
-    select {
-      width: 100%;
-
-      @media (min-width: $small) {
-        min-width: 300px;
-      }
-
-      @media (min-width: 900px) {
-        min-width: 340px;
-      }
-    }
-  }
 }
