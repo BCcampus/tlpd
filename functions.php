@@ -343,10 +343,10 @@ add_filter( 'excerpt_more', 'tlpd_read_more' );
  * @param int $length Excerpt length.
  * @return int (Maybe) modified excerpt length.
  */
-function wpdocs_custom_excerpt_length( $length ) {
+function tlpd_excerpt_length( $length ) {
 	return 25;
 }
-add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+add_filter( 'excerpt_length', 'tlpd_excerpt_length', 999 );
 
 /*
 |--------------------------------------------------------------------------
