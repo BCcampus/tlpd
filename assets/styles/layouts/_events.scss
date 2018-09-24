@@ -16,11 +16,6 @@ a.em-button {
   }
 }
 
-// Upcoming/Paste events
-.subsubsub {
-  display: none;
-}
-
 // Search events box
 .search-box {
   display: none;
@@ -51,7 +46,11 @@ a.em-button {
   }
 }
 
-// remove evil edit hand
-a.post-edit-link {
+// remove stuff
+.subsubsub,
+a.post-edit-link,
+span.post-comments,
+span.time-posted,
+.author-avatar {
   display: none;
 }
