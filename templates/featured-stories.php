@@ -11,7 +11,7 @@
  */
 global $post;
 $args    = [
-	'posts_per_page' => 2,
+	'posts_per_page' => 3,
 	'category_name'  => 'Homepage',
 	'post_status'    => 'publish',
 	'order'          => 'DESC',
@@ -21,7 +21,7 @@ $myposts = get_posts( $args );
 
 foreach ( $myposts as $post ) : setup_postdata( $post );
 	$child_theme_uri = get_stylesheet_directory_uri();
-	$thumbnail       = ( empty( the_post_thumbnail() ) ) ? "<img src='{$child_theme_uri}/dist/images/new-noteworthy.png' alt='new and noteworthy' />" : the_post_thumbnail( '150' );
+	$thumbnail       = ( empty( the_post_thumbnail() ) ) ? "<img src='{$child_theme_uri}/dist/images/noteworthy.jpg' alt='new and noteworthy' />" : the_post_thumbnail( '150' );
 	?>
 	<article class="col-sm-4">
 	<p>

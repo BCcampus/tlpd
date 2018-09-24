@@ -27,7 +27,7 @@ infinity_get_header();
 
 <section class="flex-row container-fluid mb-4 justify-content-center align-self-center">
     <h2 class="text-green text-center">New + Noteworthy</h2>
-	<div class="d-flex flex-row flex-wrap no-gutters">
+	<div class="d-flex flex-row flex-wrap">
 	<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
 	</div>
 </section>
