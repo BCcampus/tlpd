@@ -25,11 +25,15 @@ div.css-search,
   }
 
   .em-search-main,
-  .em-search-scope {
+  .em-search-scope,
+  .em-search-advanced,
+  .em-search-options,
+  .em-search-category {
     display: flex;
   }
 
-  .em-search-main {
+  .em-search-main,
+  .em-search-advanced {
     flex-direction: column;
 
     @media (min-width: $small) {
@@ -38,7 +42,8 @@ div.css-search,
   }
 
   .em-search-text,
-  .em-search-geo {
+  .em-search-geo,
+  .em-search-category {
     flex: 1;
 
     input {
@@ -46,7 +51,8 @@ div.css-search,
     }
   }
 
-  .em-search-text {
+  .em-search-text,
+  .em-search-category {
     @media (min-width: $small) {
       padding-right: $unit*5;
     }
@@ -59,11 +65,19 @@ div.css-search,
   }
 
   .em-search-category {
-    display: block;
-    padding-left: $unit*2;
+    flex: initial;
 
-    @media (min-width: $medium) {
-      padding-left: $unit*6;
+    label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    select {
+      width: 100%;
+
+      @media (min-width: $xsmall) {
+        width: 250px;
+      }
     }
   }
 
@@ -85,14 +99,13 @@ div.css-search,
     }
   }
 
-  .em-search-scope {
+  .em-search-scope,
+  .em-search-location {
     width: 100%;
-    float: none;
 
     @media (min-width: $medium) {
       width: auto;
       float: left;
-      margin-right: $unit*4;
     }
   }
 
@@ -102,10 +115,6 @@ div.css-search,
 
     .em-search-field {
       flex: 1;
-
-      @media (min-width: $medium) {
-        flex: initial;
-      }
 
       & + .em-search-field {
         margin-left: $unit*4;
@@ -153,30 +162,4 @@ div.css-search,
     }
   }
 
-  .em-search-category {
-    width: 100%;
-    padding-left: 0;
-
-    @media (min-width: $medium) {
-      width: auto;
-      margin-left: $unit*8;
-    }
-
-    label {
-      display: flex;
-      flex-direction: column;
-    }
-
-    select {
-      width: 100%;
-
-      @media (min-width: $small) {
-        min-width: 300px;
-      }
-
-      @media (min-width: 900px) {
-        min-width: 340px;
-      }
-    }
-  }
 }

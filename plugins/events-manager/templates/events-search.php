@@ -3,7 +3,7 @@
  * Modified from original events manager plugin version: 5.7.3
  *
  * @author Alex Paredes
- * @package early-years
+ * @package tlpd
  * @since 0.9.6
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -98,11 +98,12 @@ $args = ! empty( $args ) ? $args : []; /* @var $args array */
 					}
 					?>
 					<?php do_action( 'em_template_events_search_form_footer' ); //hook in here to add extra fields, text etc. ?>
-					<?php if ( ! $args['show_main'] || empty( $args['css'] ) ) : //show button if it wasn't shown further up ?>
-						<input type="submit" value="<?php echo esc_attr( $args['search_button'] ); ?>"
-							   class="em-search-submit"/>
-					<?php endif; ?>
+
 				</div>
+				<?php if ( ! $args['show_main'] || empty( $args['css'] ) ) : //show button if it wasn't shown further up ?>
+					<input type="submit" value="<?php echo esc_attr( $args['search_button'] ); ?>"
+					       class="em-search-submit"/>
+				<?php endif; ?>
 			<?php endif; ?>
 			<?php if ( ! empty( $args['advanced_hidden'] ) && ! empty( $args['show_advanced'] ) ) : //show the advanced search toggle if advanced fields are collapsed ?>
 				<div class="em-search-options">

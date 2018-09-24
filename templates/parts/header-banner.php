@@ -4,7 +4,7 @@
  *
  * Modified from original header template in cbox theme
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9.5
  * @license http://www.gnu.org/licenses/gpl.html GPLv3 or later
  */
@@ -19,7 +19,7 @@
 	<!-- header -->
 	<header id="header" role="banner">
 		<div id="logo-menu-wrap">
-			<div class="col-sm">
+			<div class="col-sm-4 px-0">
 			<?php
 			do_action( 'open_header' );
 			?>
@@ -34,7 +34,7 @@
 			</a>
 		</<?php echo $heading_tag; ?>>
 		</div>
-		<div class="col-sm">
+		<div class="col-sm-8 px-0">
 		<?php
 		// Load Main Menu only if it's enabled
 		if ( current_theme_supports( 'infinity-main-menu-setup' ) ) :

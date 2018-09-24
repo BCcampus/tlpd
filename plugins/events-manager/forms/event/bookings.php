@@ -2,7 +2,7 @@
 /**
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9.2
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *

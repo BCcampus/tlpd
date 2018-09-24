@@ -86,7 +86,7 @@ add_filter( /**
  */
 add_action(
 	'wp_enqueue_scripts', function () {
-		wp_enqueue_style( 'early-years', get_stylesheet_directory_uri() . '/dist/styles/main.css', [ '@:dynamic' ], '', 'screen' );
+		wp_enqueue_style( 'tlpd', get_stylesheet_directory_uri() . '/dist/styles/main.css', [ '@:dynamic' ], '', 'screen' );
 	}, 11
 );
 
@@ -386,7 +386,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.93;
+	$tlpd_version        = 6.94;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -404,9 +404,9 @@ function tlpd_run_once() {
 		'dbem_bookings_login_form',
 		'dbem_search_form_geo',
 		'dbem_events_page_search_form',
+		'dbem_rsvp_enabled',
 	];
 	$default_yes         = [
-		'dbem_rsvp_enabled',
 		'dbem_recurrence_enabled',
 		'dbem_categories_enabled',
 		'dbem_attributes_enabled',
@@ -421,17 +421,18 @@ function tlpd_run_once() {
 		'dbem_bookings_user_cancellation',
 		'dbem_bookings_approval_overbooking',
 	];
-	$default_attributes  = '#_ATT{Target Audience}
-#_ATT{Event is open to external}{|Yes|No}
-#_ATT{Online}{|Yes|No}
-#_ATT{Registration Fee}
-#_ATT{Registration Space}{|Filling Up!|FULL}
-#_ATT{Registration Contact Phone Number}
-#_ATT{Registration Link}
-#_ATT{Prerequisite(s)}
-#_ATT{Presenter(s)}
+	$default_attributes = '#_ATT{Presenter(s)}
 #_ATT{Presenter Information}
-#_ATT{Event Hosts}';
+#_ATT{Event Hosts}
+#_ATT{Target Audience}
+#_ATT{Event is open to external}{|Yes|No}
+#_ATT{Prerequisite(s)}
+#_ATT{Registration Fee}
+#_ATT{Online}{|Yes|No}
+#_ATT{Availability}{|Filling Up!|FULL}
+#_ATT{Website}
+#_ATT{Registration Contact Phone Number}';
+
 	$single_event_format = '<div class="single-event-map">#_LOCATIONMAP</div>
 <p>
 	<strong>Date/Time</strong><br/>
@@ -811,7 +812,7 @@ function tlpd_validate_attributes() {
 	}
 
 	if ( empty( $EM_Event->event_attributes['Registration Fee'] ) ) {
-		$EM_Event->add_error( sprintf( __( '%s is required.', 'early-years' ), __( 'Registration Fee', 'early-years' ) ) );
+		$EM_Event->add_error( sprintf( __( '%s is required.', 'tlpd' ), __( 'Registration Fee', 'tlpd' ) ) );
 	}
 
 	return $EM_Event;
