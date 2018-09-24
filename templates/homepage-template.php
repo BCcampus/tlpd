@@ -5,7 +5,7 @@
  * Modified from original header template in cbox theme
  *
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *

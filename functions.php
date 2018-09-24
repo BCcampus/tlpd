@@ -86,7 +86,7 @@ add_filter( /**
  */
 add_action(
 	'wp_enqueue_scripts', function () {
-		wp_enqueue_style( 'early-years', get_stylesheet_directory_uri() . '/dist/styles/main.css', [ '@:dynamic' ], '', 'screen' );
+		wp_enqueue_style( 'tlpd', get_stylesheet_directory_uri() . '/dist/styles/main.css', [ '@:dynamic' ], '', 'screen' );
 	}, 11
 );
 
@@ -800,7 +800,7 @@ function tlpd_validate_attributes() {
 	}
 
 	if ( empty( $EM_Event->event_attributes['Registration Fee'] ) ) {
-		$EM_Event->add_error( sprintf( __( '%s is required.', 'early-years' ), __( 'Registration Fee', 'early-years' ) ) );
+		$EM_Event->add_error( sprintf( __( '%s is required.', 'tlpd' ), __( 'Registration Fee', 'tlpd' ) ) );
 	}
 
 	return $EM_Event;

@@ -5,7 +5,7 @@
  *
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -20,7 +20,7 @@ global $EM_Event, $EM_Notices, $bp;
 if ( is_object( $EM_Event ) && ! $EM_Event->can_manage( 'edit_events', 'edit_others_events' ) ) {
 	?>
 	<div class="wrap"><h2><?php esc_html_e( 'Looking to Learn?', 'events-manager' ); ?></h2>
-		<p><?php echo __( 'You are using this site in the role as a Learner. Learners may search for, share, and print events. Learners are not authorized to post events.', 'events-manager' ); ?></p>
+		<p>Please <a href='<?php echo wp_login_url();?>'>Login</a> or <a href='<?php echo home_url();?>/sign-up'>Sign up</a> to post events.</p>
 	</div>
 	<?php
 	return false;
@@ -39,7 +39,7 @@ if ( ! empty( $_REQUEST['success'] ) ) {
 
 if ( empty( $_REQUEST['success'] ) ) {
 	echo "<p class='margin-up'>";
-	_e( 'This form is to be completed in order to post events on this web portal. To add your event, fill in the fields below. Fields marked with an * are mandatory. If you have multiple events to post please contact earlyyears[at]bccampus.ca for assistance.', 'early-years' );
+	_e( 'This form is to be completed in order to post events on this web portal. To add your event, fill in the fields below. Fields marked with an * are mandatory.', 'tlpd' );
 	echo '</p>';
 }
 ?>
