@@ -1070,12 +1070,11 @@ add_action(
 	}, 2
 );
 
-	/**
-	 * Add image size for homepage new + noteworthy
-	 * Images will be cropped to the specified dimensions using center positions.
-	 *
-	 */
-	add_action( 'after_setup_theme', 'tlpd_featured_image_size' );
-	function tlpd_featured_image_size() {
-		add_image_size( 'featured-size', 340, 135, true );
-	}
+/**
+ * Add image size for homepage new + noteworthy
+ * Images will be cropped to the specified dimensions using center positions.
+ *
+ */
+add_action( 'after_setup_theme', function () {
+	add_image_size( 'featured-size', 340, 135, true );
+} );
