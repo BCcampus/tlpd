@@ -3,7 +3,7 @@
  * Modified from Original in c-box theme version: 1.0.16
  *
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9.6
  * @license https://www.gnu.org/licenses/gpl-3.0.txt
  *
