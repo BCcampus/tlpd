@@ -96,6 +96,8 @@ select {
   box-shadow: none;
   border: 1px solid $color-neutral-50;
   border-radius: $border-radius;
+  font-weight: normal;
+  font-size: $font-size - 2;
 
   background-image: url('../images/tlpd-plus.svg');
   background-repeat: no-repeat;
