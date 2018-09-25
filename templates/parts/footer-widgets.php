@@ -13,9 +13,9 @@
  */
 ?>
 <?php if ( is_active_sidebar( 'Footer Left' ) || is_active_sidebar( 'Footer Middle' ) || is_active_sidebar( 'Footer Right' ) ) : ?>
-	<div class="footer-widgets d-flex flex-row flex-wrap no-gutters">
+	<div class="footer-widgets d-flex flex-row flex-wrap">
 		<div class="col-md">
-			<p>B.C.'s post-secondary educators can promote and join their colleagues in professional development opportunities for teaching and learning around the province. The Teaching and Learning Professional Development portal (TLPD) is sponsored by BCcampus.</p>
+			<p>B.C.'s post-secondary educators can promote and join their colleagues in professional development opportunities for teaching and learning around the province. The <i>Teaching and Learning Professional Development portal (TLPD)</i> is sponsored by BCcampus.</p>
 		</div>
 		<?php if ( is_active_sidebar( 'Footer Left' ) ) : ?>
 			<!-- footer widgets -->
@@ -41,13 +41,3 @@
 		<?php endif; ?>
 	</div>
 <?php endif; ?>
-<div class="d-flex flex-row flex-wrap no-gutters">
-	<div class="col-sm-9"></div>
-	<div class="widget col-sm-3">
-		<picture>
-			<source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcc15-logo.png">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcc15-logo.png" width="240" height="200" alt="BCcampus logo">
-		</picture>
-	</div>
-</div>
-<div style="clear:both;"></div>

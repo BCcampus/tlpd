@@ -11,6 +11,7 @@ div.css-search,
 .c-search {
   padding: $unit*3;
   margin: 0 auto;
+  max-width: 1024px;
 
   @media (min-width: $large) {
     padding: 0;
