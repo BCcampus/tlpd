@@ -134,4 +134,3 @@ $args = ! empty( $args ) ? $args : []; /* @var $args array */
 </div>
 	<?php if ( ! empty( $args['ajax'] ) ) : ?>
 		<div class='em-search-ajax'></div><?php endif; ?>
-</div>
