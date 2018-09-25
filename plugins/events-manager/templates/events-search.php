@@ -27,7 +27,6 @@ $args = ! empty( $args ) ? $args : []; /* @var $args array */
 			<input type="hidden" name="action" value="<?php echo esc_attr( $args['search_action'] ); ?>"/>
 			<?php if ( $args['show_main'] ) : //show the 'main' search form ?>
 				<div class="row">
-					<div class="c-search">
 						<div class="em-search-main">
 							<?php do_action( 'em_template_events_search_form_header' ); //hook in here to add extra fields, text etc. ?>
 							<?php
