@@ -27,10 +27,10 @@
 			$heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div';
 			?>
 			<<?php echo $heading_tag; ?> id="icext" class="icext-feature icext-header-logo tlpd-header-logo">
-			<a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>">
-                <picture>
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo.svg" alt="Teaching and Learning Professional Development">
-                </picture>
+			<a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?>">
+				<picture>
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/tlpd-logo.svg" alt="Teaching and Learning Professional Development">
+				</picture>
 			</a>
 		</<?php echo $heading_tag; ?>>
 		</div>
