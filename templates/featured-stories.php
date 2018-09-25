@@ -27,9 +27,9 @@ foreach ( $myposts as $post ) : setup_postdata( $post );
 			<a href="<?php the_permalink(); ?>" rel="bookmark"
 			   title="<?php the_title_attribute(); ?>"><?php if ( ! has_post_thumbnail() ) {
 					echo "<img src='{$child_theme_uri}/dist/images/noteworthy.jpg' alt='new and noteworthy' />";
-				} else {
-					the_post_thumbnail( 'featured-size' );
-				}
+} else {
+	the_post_thumbnail( 'featured-size' );
+}
 				?></a>
 		</p>
 		<h4>

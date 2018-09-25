@@ -19,7 +19,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 		<p>
 			<input type="checkbox" name="no_location" id="no-location"
 				   value="1" 
-				   <?php
+					<?php
 					if ( $EM_Event->location_id === '0' || $EM_Event->location_id === 0 ) {
 						echo 'checked="checked"';
 					}
@@ -124,7 +124,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 				<td>
 					<input id="location-address" type="text" name="location_address"
 						   value="
-						   <?php
+							<?php
 							echo esc_attr( $EM_Location->location_address );
 							;
 							?>

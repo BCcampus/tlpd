@@ -102,7 +102,7 @@ $args = ! empty( $args ) ? $args : []; /* @var $args array */
 				</div>
 				<?php if ( ! $args['show_main'] || empty( $args['css'] ) ) : //show button if it wasn't shown further up ?>
 					<input type="submit" value="<?php echo esc_attr( $args['search_button'] ); ?>"
-					       class="em-search-submit"/>
+						   class="em-search-submit"/>
 				<?php endif; ?>
 			<?php endif; ?>
 			<?php if ( ! empty( $args['advanced_hidden'] ) && ! empty( $args['show_advanced'] ) ) : //show the advanced search toggle if advanced fields are collapsed ?>
