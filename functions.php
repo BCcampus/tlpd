@@ -1012,7 +1012,7 @@ add_action(
 	'template_redirect', function () {
 		global $wp_query;
 		if ( $wp_query->get( TLPD_MANIFEST_ARG ) ) {
-			$theme_color = '#bee7fa';
+			$theme_color = '#006338';
 			$lang_dir    = ( is_rtl() ) ? 'rtl' : 'ltr';
 
 			$manifest = [
