@@ -41,13 +41,4 @@
 		<?php endif; ?>
 	</div>
 <?php endif; ?>
-<div class="d-flex flex-row flex-wrap no-gutters">
-	<div class="col-sm-9"></div>
-	<div class="widget col-sm-3">
-		<picture>
-			<source srcset="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcc15-logo.png">
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/images/bcc15-logo.png" width="240" height="200" alt="BCcampus logo">
-		</picture>
-	</div>
-</div>
 <div style="clear:both;"></div>
