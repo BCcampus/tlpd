@@ -34,7 +34,7 @@ infinity_get_header();
 </section>
 
 <section class="flex-row container-fluid">
-	<div class="justify-content-center align-self-center py-2 grey-bkgd">
+	<div class="justify-content-center align-self-center py-2">
 		<h2 class="text-green text-center">Find learning events near you</h2>
 	</div>
 	<!-- tabs start -->
