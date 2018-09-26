@@ -14,6 +14,7 @@
 
 $args = ! empty( $args ) ? $args : []; /* @var $args array */
 ?>
+<div class="c-search">
 <div class="em-search-wrapper">
 	<div class="em-events-search em-search 
 	<?php
@@ -130,6 +131,7 @@ $args = ! empty( $args ) ? $args : []; /* @var $args array */
 			<?php endif; ?>
 		</form>
 	</div>
+</div>
 </div>
 </div>
 	<?php if ( ! empty( $args['ajax'] ) ) : ?>

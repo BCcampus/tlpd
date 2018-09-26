@@ -20,9 +20,7 @@ infinity_get_header();
 <section class="flex-row container-fluid">
 	<div class="col-12">
 		<h2 class="text-green text-center">Find learning events</h2>
-		<div class="c-search">
 			<?php echo do_shortcode( '[events_search]' ); ?>
-		</div>
 	</div>
 </section>
 
