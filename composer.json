@@ -2,7 +2,7 @@
   "name": "bccampus/tlpd",
   "description": "Theme and functionality to support Teaching and Learning Professional Development",
   "type": "wordpress-theme",
-  "version": "0.9.11",
+  "version": "1.0.0",
   "homepage": "https://github.com/bccampus/tlpd",
   "authors": [
     {
