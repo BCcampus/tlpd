@@ -385,7 +385,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.95;
+	$tlpd_version        = 6.96;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -424,6 +424,7 @@ function tlpd_run_once() {
 #_ATT{Presenter Information}
 #_ATT{Event Hosts}
 #_ATT{Target Audience}{Administrators|Consultants|Ed Developers|Ed Technologists & Media Developers|Faculty & Instructors|Instructional Designers|Information Technology staff|Librarians|Students|Students|Everyone}
+#_ATT{Target Audience - Other}
 #_ATT{Event is open to external}{|Yes|No}
 #_ATT{Prerequisite(s)}
 #_ATT{Registration Fee}
