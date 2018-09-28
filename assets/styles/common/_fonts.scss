@@ -14,14 +14,3 @@
 @include font-face( 'Montserrat', url('../fonts/Montserrat-BoldItalic.ttf'), 'truetype', bold, italic);
 @include font-face( 'Montserrat', url('../fonts/Montserrat-Light.ttf'), 'truetype', lighter, normal);
 @include font-face( 'Montserrat', url('../fonts/Montserrat-Italic.ttf'), 'truetype', normal, italic);
-
-// Bootstrap
-@font-face {
-  font-family: 'Glyphicons';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-  url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'),
-  url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
-  url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
-  url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}

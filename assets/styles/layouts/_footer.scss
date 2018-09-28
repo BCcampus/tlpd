@@ -9,56 +9,58 @@
 */
 .footer-wrap {
   background: $color-neutral-10 !important;
-  color: $color-neutral-80;
   border: none;
   box-shadow: none;
   padding-top: 2rem;
-
+  max-width: 1280px;
+  margin: 0 auto;
+  clear: both;
+  font-size: $font-size - 2;
+  p, li, h4 {
+    font-size: $font-size - 2;
+  }
   a {
     color: $color-neutral-80;
 
-    &.text-blue{
+    &.text-blue {
       color: $color-brand-blue;
     }
 
     &:hover {
-      color: $color-brand-green;
+      color: $color-brand-blue;
     }
   }
-}
-
-#powered-by{
-  border-top: 1px solid $color-gray-boulder;
-  background-color: $color-neutral-00;
-  color: inherit;
-  font-weight: normal;
-  padding-top: 0;
-}
-
-#footer {
-  .widget h4 {
-    color: $color-brand-green;
-    text-shadow: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: none;
-    margin-top: 0;
-    padding-top: 0;
-  }
-  .footer-widget {
+  .powered-by {
     color: inherit;
-    text-shadow: none;
+    font-weight: normal;
+    padding-top: 10px;
   }
-  ul {
-    list-style: none;
+  footer#footer {
     padding-left: 0;
-    li ul {
-      margin-left: 20px;
+    padding-right: 0;
+    .widget h4, .funded {
+      color: $color-neutral-80;
+      text-shadow: none;
+      font-weight: bold;
+      border-bottom: none;
+      margin-top: 0;
+      padding-top: 0;
+
     }
-  }
-  & #copyright-info{
-    padding: $unit*2;
-    text-align: left;
+    .footer-widget {
+      color: inherit;
+      text-shadow: none;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      li ul {
+        margin-left: 20px;
+      }
+    }
+    & #footer-info {
+      padding: 15px;
+    }
   }
 }
 
@@ -77,16 +79,14 @@
   padding-top: 19px;
   width: 100%;
   z-index: 2;
-
-  .container {
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    position: relative;
-    text-align: left;
-    width: 750px;
-  }
 }
 
-
+#filter-bar .container {
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  position: relative;
+  text-align: left;
+  width: 750px;
+}

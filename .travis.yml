@@ -1,0 +1,55 @@
+language: php
+php:
+- 7.0.29
+- 7.1.18
+sudo: required
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+branches:
+  only:
+  - dev
+  - "/\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+env:
+- WP_VERSION=latest TRAVIS_NODE_VERSION="9"
+cache:
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
+  - node_modules
+  - vendor
+before_install:
+- sudo apt-get -qq update
+- source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION
+install:
+- node -v
+- npm install -g yarn
+- yarn
+- composer install
+before_script:
+- if [[ ${TRAVIS_PHP_VERSION:0:3} != "7.1" ]] && php -v | grep -q 'Xdebug'; then phpenv config-rm xdebug.ini; fi
+- bash bin/install-wp-tests.sh tlpd_test root '' localhost $WP_VERSION
+script:
+- yarn run build:production
+- vendor/bin/phpunit --configuration phpunit.xml
+before_deploy:
+- export TRAVIS_PROJECT_SLUG="$(basename $TRAVIS_BUILD_DIR)"
+- curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+- chmod +x wp-cli.phar
+- sudo mv wp-cli.phar /usr/local/bin/wp
+- wp package install wp-cli/dist-archive-command
+- composer install --no-dev --optimize-autoloader
+- cd ../
+- wp dist-archive $TRAVIS_PROJECT_SLUG $TRAVIS_BUILD_DIR/$TRAVIS_PROJECT_SLUG-$TRAVIS_TAG.zip
+- cd $TRAVIS_BUILD_DIR
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: jtiezO5SnBXHnnNHAXxUfKZCzA4gKknVJLaDTtnm7K9qPjjUEHMU8LLxBNiZCsp4zpXhy/Jt0C9C+/DE6Z1Ro4BRrpE5AQ/LqTbA7DZ+pgfj+VfcXjjMqnATNcS8QlZ0RHJV097YU+aQK+DX13TYRgp6XdwyI+E0yWlXnSisr8XyrEyGRcCuEURbX1enWGe8qWAl3iRYRrP8frEAStgZ8WxNlS+4DKpxrDbUKQcgxn0jibWrnrgxTnkMxYxm7kL11h5XzJZDBT81c+aNAkNaHPauC0P0DGys4kzx56b+9S2L0fZ6aFy8OKpwLXpANjspAs2EP+k3ONZuzZ7kbcDkRRkcqgt/8ln5CPXHvjnEqno8B38/kvgB5gGQEKpKRkEMxJ+k1vXkr5/4E7Pjl01ga00U1M4Nm4q2l6jbsSAi+DZARtP8RjgtKey4CaDahTH+1TWt4TGQ7umjpcVhV9eXqLc1yoIUJQPNHxFhYDybLaRlwQZP9mrQOzXdcyQWag4UivVzxWIVv7KTN7w9d6dXhcAzVCuXR2WBXLFoHt5IG3kCPncDVk4NfKsKwbtbYiqSok3tLVxUrnAG8GL/sqk8rxCr2g0PPjCTj1iWbdLFDYLjJC1rVmha95G7/jRwPWw3ZOAf/DqP7oy5GnjRj5L7VjQWjmyo1zFsInbY0bd4euI=
+  file: "tlpd-$TRAVIS_TAG.zip"
+  on:
+    tags: true
+    repo: BCcampus/tlpd
+    branch: dev

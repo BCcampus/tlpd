@@ -1,6 +1,6 @@
 <?php
 /**
- * Project: early-years
+ * Project: tlpd
  * Project Sponsor: BCcampus <https://bccampus.ca>
  * Copyright 2012-2017 Brad Payne <https://bradpayne.ca>
  * Date: 2017-11-02
@@ -32,7 +32,7 @@ infinity_get_template_part( 'templates/parts/header-head' );
 do_action( 'open_body' );
 ?>
 
-<div id="wrapper" class="hfeed">
+<div class="hfeed container-fluid">
 <?php
 do_action( 'open_wrapper' );
 ?>

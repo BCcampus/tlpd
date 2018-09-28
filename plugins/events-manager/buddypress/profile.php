@@ -4,7 +4,7 @@
  * events-manager/templates/buddypress/profile.php
  *
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9.2
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *

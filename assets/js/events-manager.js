@@ -2,7 +2,7 @@
  * Modified from original events-manager.js
  *
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -1011,7 +1011,7 @@ function em_maps_load_clusters(el) {
             var bounds = new google.maps.LatLngBounds(minLatLng, maxLatLng);
             maps[map_id].fitBounds(bounds);
 
-            var markerCluster = new MarkerClusterer(maps[map_id], maps_markers[map_id], {imagePath: 'wp-content/themes/early-years/dist/images/cluster/m'});
+            var markerCluster = new MarkerClusterer(maps[map_id], maps_markers[map_id], {imagePath: 'wp-content/themes/tlpd/dist/images/cluster/m'});
 
             //Call a hook if exists
             jQuery(document).triggerHandler('em_maps_locations_hook', [maps[map_id], data, map_id]);

@@ -1,4 +1,5 @@
 ### Teaching and Learning Professional Development Child Theme ###
+[![Build Status](https://travis-ci.com/BCcampus/tlpd.svg?branch=dev)](https://travis-ci.com/BCcampus/tlpd)
 
 #### About ####
 The Teaching Learning Professional Development (TLPD) web portal is an initiative developed by BCcampus with the B.C. post-secondary educator community. 

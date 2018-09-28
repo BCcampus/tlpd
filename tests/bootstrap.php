@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Early_Years
+ * @package TLPD
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
@@ -26,6 +26,9 @@ function _register_theme() {
 	add_filter( 'pre_option_stylesheet', function() use ( $current_theme ) {
 		return $current_theme;
 	});
+
+	// manually add theme functions file
+	require_once( __DIR__ . '/../functions.php' );
 }
 tests_add_filter( 'muplugins_loaded', '_register_theme' );
 

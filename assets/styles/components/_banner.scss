@@ -6,7 +6,7 @@
   display: flex;
   height: auto;
   position: relative;
-  background-color: $color-blue-sail;
+  background-color: $color-neutral-10;
   background-size: cover;
   padding-right: 15px;
   padding-left: 15px;
@@ -46,10 +46,12 @@
 
 }
 
-@media (max-width: $small) {
-  #icext {
-    display: none;
-  }
+.tlpd-header-logo {
+  max-width: 315px;
 }
 
-
+@media(max-width: $medium) {
+  .tlpd-header-logo {
+    max-width: 220px;
+  }
+}

@@ -2,7 +2,7 @@
 /**
  * Modified from original events manager plugin version: 5.6.6.1
  * @author Brad Payne
- * @package early-years
+ * @package tlpd
  * @since 0.9
  * @license https://www.gnu.org/licenses/gpl.html GPLv3 or later
  *
@@ -23,8 +23,8 @@ if ( count( $attributes['names'] ) > 0 ) : ?>
 			<label for="em_attributes[<?php echo $name; ?>]"><?php echo $name; ?><?php echo ( in_array( $name, $required_attributes ) ) ? '<i>*</i>' : ''; ?></label>
 			<?php
 			switch ( $name ) {
-				case 'Registration Link':
-					echo '<p class="margin-up"><i>(if available)</i></p>';
+				case 'Registration Fee':
+					echo '<p class="margin-up"><i>Enter the registration fee ($CAD). Add notes as required; e.g., \'Free\', \'No fee for internal staff\'</i></p>';
 					break;
 				default:
 					echo '';

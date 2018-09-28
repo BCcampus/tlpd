@@ -46,7 +46,6 @@ add_filter( /**
 			'events-manager',
 			'jquery-mobilemenu',
 			'jquery-fitvids',
-			'modal-video',
 		];
 
 		$async = [
@@ -87,7 +86,7 @@ add_filter( /**
  */
 add_action(
 	'wp_enqueue_scripts', function () {
-		wp_enqueue_style( 'early-years', get_stylesheet_directory_uri() . '/dist/styles/main.css', [ '@:dynamic' ], '', 'screen' );
+		wp_enqueue_style( 'tlpd', get_stylesheet_directory_uri() . '/dist/styles/main.css', [ '@:dynamic' ], '', 'screen' );
 	}, 11
 );
 
@@ -122,17 +121,14 @@ add_action(
 		wp_enqueue_script( 'events-manager', $template_dir . '/dist/scripts/events-manager.js', array_values( $script_deps ), isset( $EM_VERSION ) );
 		wp_enqueue_script( 'tinyscrollbar', $template_dir . '/dist/scripts/jquery.tinyscrollbar.min.js', [ 'jquery' ], '1.0', true );
 
-		// load popover only for users who aren't logged in
-		if ( ! is_user_logged_in() ) {
-			wp_enqueue_script( 'bootstrap-tooltip', $template_dir . '/dist/scripts/tooltip.js', [], null, true );
-			wp_enqueue_script( 'bootstrap-popover', $template_dir . '/dist/scripts/popover.js', [ 'bootstrap-tooltip' ], null, true );
-			wp_enqueue_script( 'initpopover', $template_dir . '/dist/scripts/initpopover.js', [ 'bootstrap-popover' ], null, true );
-			wp_enqueue_script( 'popover-dismiss', $template_dir . '/dist/scripts/popover-dismiss.js', [ 'initpopover' ], null, true );
-		}
-
-		wp_enqueue_script( 'bootstrap-script', $template_dir . '/dist/scripts/bootstrap.min.js', [], null, true );
+		wp_enqueue_script( 'bootstrap-script', $template_dir . '/dist/scripts/bootstrap.bundle.js', [ 'jquery' ], null, true );
 		wp_enqueue_style( 'bootstrap-style', $template_dir . '/dist/styles/bootstrap.min.css' );
-		wp_enqueue_script( 'modal-video', $template_dir . '/dist/scripts/modal-video.js', [ 'jquery' ], null, true );
+
+		// load tooltips only for users who aren't logged in
+		if ( ! is_user_logged_in() ) {
+			wp_enqueue_script( 'bootstrap-tooltip', $template_dir . '/dist/scripts/tooltip.js', [ 'bootstrap-script' ], null, true );
+			wp_enqueue_script( 'inittooltip', $template_dir . '/dist/scripts/inittooltip.js', [ 'bootstrap-tooltip' ], null, true );
+		}
 
 		if ( is_front_page() ) {
 			wp_enqueue_script( 'jquery-tabs', $template_dir . '/dist/scripts/tabs.js', [ 'jquery' ], null, true );
@@ -146,7 +142,6 @@ add_action(
 		if ( is_page( 'edit-events' ) || is_page( 'post-event' ) ) {
 			wp_enqueue_style( 'media-manager', $template_dir . '/dist/styles/media.css' );
 		}
-
 	}, 10
 );
 
@@ -340,6 +335,18 @@ function tlpd_read_more( $more ) {
 
 add_filter( 'excerpt_more', 'tlpd_read_more' );
 
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function tlpd_excerpt_length( $length ) {
+	return 25;
+}
+add_filter( 'excerpt_length', 'tlpd_excerpt_length', 999 );
+
 /*
 |--------------------------------------------------------------------------
 | Labels/Localization
@@ -378,7 +385,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.9;
+	$tlpd_version        = 6.96;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -395,9 +402,10 @@ function tlpd_run_once() {
 		'dbem_bookings_double',
 		'dbem_bookings_login_form',
 		'dbem_search_form_geo',
+		'dbem_events_page_search_form',
+		'dbem_rsvp_enabled',
 	];
 	$default_yes         = [
-		'dbem_rsvp_enabled',
 		'dbem_recurrence_enabled',
 		'dbem_categories_enabled',
 		'dbem_attributes_enabled',
@@ -412,19 +420,19 @@ function tlpd_run_once() {
 		'dbem_bookings_user_cancellation',
 		'dbem_bookings_approval_overbooking',
 	];
-	$default_attributes  = '#_ATT{Target Audience}
-#_ATT{Event is open to external}{|Yes|No}
-#_ATT{Online}{|Yes|No}
-#_ATT{Registration Fee}
-#_ATT{Registration Space}{|Filling Up!|FULL}
-#_ATT{Registration Contact Email}
-#_ATT{Registration Contact Phone Number}
-#_ATT{Registration Link}
-#_ATT{Prerequisite(s)}
-#_ATT{Required Materials}
-#_ATT{Presenter(s)}
+	$default_attributes = '#_ATT{Presenter(s)}
 #_ATT{Presenter Information}
-#_ATT{Event Sponsors}';
+#_ATT{Event Hosts}
+#_ATT{Target Audience}{Administrators|Consultants|Ed Developers|Ed Technologists & Media Developers|Faculty & Instructors|Instructional Designers|Information Technology staff|Librarians|Students|Students|Everyone}
+#_ATT{Target Audience - Other}
+#_ATT{Event is open to external}{|Yes|No}
+#_ATT{Prerequisite(s)}
+#_ATT{Registration Fee}
+#_ATT{Online}{|Yes|No}
+#_ATT{Availability}{|Filling Up!|FULL}
+#_ATT{Website}
+#_ATT{Registration Contact Phone Number}';
+
 	$single_event_format = '<div class="single-event-map">#_LOCATIONMAP</div>
 <p>
 	<strong>Date/Time</strong><br/>
@@ -458,7 +466,7 @@ function tlpd_run_once() {
         <tr>
 			<th class="event-time" width="150">Date/Time</th>
 			<th class="event-description" width="*">Event</th>
-			<th class="event-capacity" width="*">Capacity</th>
+			<th class="event-capacity" width="*">Availability</th>
 		</tr>
    	</thead>
     <tbody>';
@@ -573,7 +581,7 @@ function tlpd_terminology_modify( $translated, $original, $domain ) {
 		$modify = [
 			'Register'                                                                                                                  => 'Sign Up',
 			'Email Address'                                                                                                             => 'Work Email Address',
-			'Registering for this site is easy. Just fill in the fields below, and we\'ll get a new account set up for you in no time.' => 'Fill in the fields below to register as an Organizer. <b>Organizer</b> — you are primarily posting training events on behalf of your organization.',
+			'Registering for this site is easy. Just fill in the fields below, and we\'ll get a new account set up for you in no time.' => 'Register as a Contributor to post professional learning events.',
 		];
 	}
 
@@ -611,11 +619,9 @@ add_filter( 'gettext', 'tlpd_howdy_message', 10, 3 );
  *
  * @return array
  */
-function tlpd_event_output( $post_id = 0, $data = [] ) {
+function tlpd_event_output( $post_id = 0 ) {
 	// get the data
-	if ( is_array( $data ) ) {
-		$data = get_post_custom( $post_id );
-	}
+	$data = get_post_custom( $post_id );
 
 	// return the design
 	return $data;
@@ -759,29 +765,26 @@ function tlpd_bp_nav() {
 add_action( 'bp_setup_nav', 'tlpd_bp_nav', 1000 );
 
 
-// Filter wp_nav_menu() to add pop-overs to links in header menu
-function tlpd_nav_menu_items( $nav, $args ) {
+// Filter wp_nav_menu() to add tooltips to links in header menu
+add_filter( 'wp_nav_menu_items', function ( $nav, $args ) {
 	if ( $args->theme_location == 'main-menu' ) {
 		if ( is_user_logged_in() ) {
-			$nav = '<li class="home"><a href=' . home_url() . '/post-event>Post an Event</a></li>';
+			$nav = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+			$nav .= '<li class="home"><a href=' . home_url() . '/post-event>Add New</a></li>';
 			$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
-			//          $nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i>TLPD' ) . '</a></li>';
+			$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i> Events' ) . '</a></li>';
 		} else {
-			//add popover with a message, and login and sign-up links
-			$popover = '<li class="home"><a href="#" data-container="body"  role="button"  data-toggle="popover" data-placement="bottom" data-html="true" data-original-title="" data-content="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
-			$nav     = $popover . 'post events.">Post an Event</a></li>';
+			//add tooltip with a message, and login and sign-up links
+			$popover = '<li class="home"><a href="#" data-toggle="tooltip" data-placement="bottom" data-container="body" data-trigger="click focus" data-html="true" data-title="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
+			$nav     = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+			$nav     .= $popover . 'post events.">Add New</a></li>';
 			$nav     .= $popover . 'edit your events.">Edit Event</a></li>';
-			//          $nav     .= $popover . ' view your events."><i>my</i>TLPD</a></li>';
+			$nav     .= $popover . ' view your events."><i>my</i> Events</a></li>';
 		}
 	}
 
 	return $nav;
-}
-
-/**
- * Leave the default menu functionality for now. See https://github.com/BCcampus/tlpd/issues/36#issuecomment-396754255
- * add_filter( 'wp_nav_menu_items', 'tlpd_nav_menu_items', 10, 2 );
- */
+}, 10, 2 );
 
 /**
  * Add favicon, theme color, PWA manifest
@@ -809,7 +812,7 @@ function tlpd_validate_attributes() {
 	}
 
 	if ( empty( $EM_Event->event_attributes['Registration Fee'] ) ) {
-		$EM_Event->add_error( sprintf( __( '%s is required.', 'early-years' ), __( 'Registration Fee', 'early-years' ) ) );
+		$EM_Event->add_error( sprintf( __( '%s is required.', 'tlpd' ), __( 'Registration Fee', 'tlpd' ) ) );
 	}
 
 	return $EM_Event;
@@ -872,23 +875,6 @@ function tlpd_get_my_bookings_url() {
 		return $bp->events->link;
 	} else {
 		return '#';
-	}
-}
-
-/**
- * Check for dependencies, add admin notice
- */
-function tlpd_dependencies_check() {
-
-	if ( file_exists( $composer = get_stylesheet_directory() . '/vendor/autoload.php' ) ) {
-		include( $composer );
-	} else {
-		// Remind to install dependencies
-		add_action(
-			'admin_notices', function () {
-				echo '<div id="message" class="notice notice-warning is-dismissible"><p>' . __( 'TLPD theme dependency missing, please run composer install. ' ) . '</p></div>';
-			}
-		);
 	}
 }
 
@@ -1027,7 +1013,7 @@ add_action(
 	'template_redirect', function () {
 		global $wp_query;
 		if ( $wp_query->get( TLPD_MANIFEST_ARG ) ) {
-			$theme_color = '#bee7fa';
+			$theme_color = '#006338';
 			$lang_dir    = ( is_rtl() ) ? 'rtl' : 'ltr';
 
 			$manifest = [
@@ -1084,3 +1070,12 @@ add_action(
 		}
 	}, 2
 );
+
+/**
+ * Add image size for homepage new + noteworthy
+ * Images will be cropped to the specified dimensions using center positions.
+ *
+ */
+add_action( 'after_setup_theme', function () {
+	add_image_size( 'featured-size', 340, 135, true );
+} );

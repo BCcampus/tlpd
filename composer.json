@@ -2,7 +2,7 @@
   "name": "bccampus/tlpd",
   "description": "Theme and functionality to support Teaching and Learning Professional Development",
   "type": "wordpress-theme",
-  "version": "0.9.6",
+  "version": "1.0.0",
   "homepage": "https://github.com/bccampus/tlpd",
   "authors": [
     {
@@ -31,7 +31,7 @@
       "@standards"
     ],
     "standards": [
-      "vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php ."
+      "vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php plugins/ templates/"
     ]
   }
 }
