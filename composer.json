@@ -31,7 +31,7 @@
       "@standards"
     ],
     "standards": [
-      "vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php plugins/ templates/"
+      "vendor/bin/phpcs --standard=phpcs.ruleset.xml ."
     ]
   }
 }

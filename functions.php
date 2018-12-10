@@ -815,6 +815,10 @@ function tlpd_validate_attributes() {
 		$EM_Event->add_error( sprintf( __( '%s is required.', 'tlpd' ), __( 'Registration Fee', 'tlpd' ) ) );
 	}
 
+	if ( ! empty( $EM_Event->event_attributes['Registration Link'] ) && false === tlpd_maybe_url( $EM_Event->event_attributes['Registration Link'] ) ) {
+		$EM_Event->add_error( sprintf( __( '%s is not a valid URL.', 'tlpd' ), __( 'Registration Link', 'tlpd' ) ) );
+	}
+
 	return $EM_Event;
 
 }
@@ -1079,3 +1083,29 @@ add_action(
 add_action( 'after_setup_theme', function () {
 	add_image_size( 'featured-size', 340, 135, true );
 } );
+
+/**
+ * Attempts to make a valid url from a string such as: url.ca
+ *
+ * @param $url
+ *
+ * @return bool|false|string
+ */
+function tlpd_maybe_url( $url ) {
+	if ( is_null( $url ) ) {
+		return false;
+	}
+
+	$parts = wp_parse_url( $url );
+
+	// tries to ameliorate 'url.ca' as input to '//url.ca'
+	if ( ! isset( $parts['scheme'] ) && ! isset( $parts['host'] ) && isset( $parts['path'] ) ) {
+		if ( false !== strpos( $parts['path'], '.' ) ) {
+			$url = '//' . $parts['path'];
+		}
+	}
+
+	$valid = wp_http_validate_url( $url );
+
+	return $valid;
+}
