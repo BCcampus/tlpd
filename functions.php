@@ -385,7 +385,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.97;
+	$tlpd_version        = 7.0;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -465,17 +465,15 @@ function tlpd_run_once() {
         <tr>
 			<th class="event-time" width="150">Date/Time</th>
 			<th class="event-description" width="*">Event</th>
-			<th class="event-capacity" width="*">Availability</th>
+			<th class="event-capacity" width="*">Location</th>
 		</tr>
    	</thead>
     <tbody>';
 
 	$format_event_list = '<tr>
 			<td>#_EVENTDATES<br/>#_EVENTTIMES</td>
-            <td>#_EVENTLINK
-                {has_location}<br/><i>#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE</i>{/has_location}
-            </td>
-			<td>#_ATT{Registration Space}</td>
+            <td>#_EVENTLINK</td>
+			<td>{has_location}#_LOCATIONNAME, #_LOCATIONTOWN #_LOCATIONSTATE{/has_location}</td>
         </tr>';
 
 	$format_event_list_footer = '</tbody></table>';
