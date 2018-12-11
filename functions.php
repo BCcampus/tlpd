@@ -379,7 +379,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 7.1;
+	$tlpd_version        = 7.21;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -536,6 +536,8 @@ function tlpd_run_once() {
 		 */
 		update_option( '	dbem_bookings_form_msg_bookings_link', 'My Profile Page' );
 
+		update_option( 'dbem_map_default_width', '100%' );
+		update_option( 'dbem_map_default_height', '300px' );
 		/**
 		 * Update option to current version
 		 */

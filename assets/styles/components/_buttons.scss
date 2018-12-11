@@ -84,3 +84,21 @@ input.c-button.c--primary, button {
   @extend .c-button;
   @extend .c--primary;
 }
+
+// Add new button
+a.em-button {
+  padding: $unit*2 $unit*4 !important;
+  margin: 0;
+  background: none;
+  border: none;
+  color: $color-brand-green;
+  float: none;
+  font-size: 16px;
+  padding: 0 !important;
+
+  &:before {
+    content: '+';
+    font-weight: 400 !important;
+    font-family: 'Roboto' !important;
+  }
+}

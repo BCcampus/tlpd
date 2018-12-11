@@ -18,3 +18,29 @@
   }
 
 }
+
+// fix for plus/minus icons in google map
+.gm-control-active img{
+  margin:11px !important;
+}
+
+
+// move event location map over to the right
+.entry {
+  .single-event-map {
+    float: right;
+    clear: right;
+    margin: 0px 0px 15px 15px;
+    width: 400px;
+  }
+}
+
+@media (max-width: $medium) {
+  .entry {
+    .single-event-map {
+      float: none;
+      margin: 0px 0px 15px 0px;
+      width: auto;
+    }
+  }
+}

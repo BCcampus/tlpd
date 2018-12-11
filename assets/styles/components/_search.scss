@@ -164,3 +164,24 @@ div.css-search,
   }
 
 }
+
+// Search events box
+.search-box {
+  display: none;
+
+  @media (min-width: $xsmall) {
+    // display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  label {
+    text-transform: capitalize;
+  }
+
+  label,
+  input {
+    margin-right: $unit*2;
+  }
+}
