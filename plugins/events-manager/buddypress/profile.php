@@ -42,4 +42,3 @@ if ( user_can( $bp->displayed_user->id, 'edit_events' ) ) {
 	}
 }
 ?>
-
