@@ -124,12 +124,6 @@ add_action(
 		wp_enqueue_script( 'bootstrap-script', $template_dir . '/dist/scripts/bootstrap.bundle.js', [ 'jquery' ], null, true );
 		wp_enqueue_style( 'bootstrap-style', $template_dir . '/dist/styles/bootstrap.min.css' );
 
-		// load tooltips only for users who aren't logged in
-		if ( ! is_user_logged_in() ) {
-			wp_enqueue_script( 'bootstrap-tooltip', $template_dir . '/dist/scripts/tooltip.js', [ 'bootstrap-script' ], null, true );
-			wp_enqueue_script( 'inittooltip', $template_dir . '/dist/scripts/inittooltip.js', [ 'bootstrap-tooltip' ], null, true );
-		}
-
 		if ( is_front_page() ) {
 			wp_enqueue_script( 'jquery-tabs', $template_dir . '/dist/scripts/tabs.js', [ 'jquery' ], null, true );
 			wp_enqueue_script( 'jquery-ui-tabs' );
@@ -771,12 +765,7 @@ add_filter( 'wp_nav_menu_items', function ( $nav, $args ) {
 			$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
 			$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i> Events' ) . '</a></li>';
 		} else {
-			//add tooltip with a message, and login and sign-up links
-			$popover = '<li class="home"><a href="#" data-toggle="tooltip" data-placement="bottom" data-container="body" data-trigger="click focus" data-html="true" data-title="Please <a href=' . wp_login_url() . '>Login</a> or <a href=' . home_url() . '/sign-up>Sign up</a> to ';
 			$nav     = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
-			$nav     .= $popover . 'post events.">Add New</a></li>';
-			$nav     .= $popover . 'edit your events.">Edit Event</a></li>';
-			$nav     .= $popover . ' view your events."><i>my</i> Events</a></li>';
 		}
 	}
 
