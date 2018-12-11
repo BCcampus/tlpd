@@ -385,7 +385,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 6.96;
+	$tlpd_version        = 6.97;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -429,7 +429,6 @@ function tlpd_run_once() {
 #_ATT{Prerequisite(s)}
 #_ATT{Registration Fee}
 #_ATT{Online}{|Yes|No}
-#_ATT{Availability}{|Filling Up!|FULL}
 #_ATT{Website}
 #_ATT{Registration Contact Phone Number}';
 
