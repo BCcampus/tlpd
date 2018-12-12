@@ -138,6 +138,12 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 						   value="<?php echo esc_attr( $EM_Location->location_town ); ?>"/>
 				</td>
 			</tr>
+			<tr class="em-location-data-region">
+				<th><?php _e( 'Region:', 'events-manager' )?>&nbsp;</th>
+				<td>
+					<input id="location-region" type="text" name="location_region" value="<?php echo esc_attr( $EM_Location->location_region ); ?>" />
+				</td>
+			</tr>
 			<tr class="em-location-data-state">
 				<th><?php _e( 'Province:', 'events-manager' ); ?><?php echo $required; ?></th>
 				<td>
@@ -167,7 +173,6 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 						   value="<?php echo esc_attr( $EM_Location->location_postcode ); ?>"/>
 				</td>
 			</tr>
-
 		</table>
 	<?php endif; ?>
 	<?php
