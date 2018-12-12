@@ -19,7 +19,7 @@ echo $EM_Event->output_single();
 echo '<br class="clear">';
 
 foreach ( $EM_Event->event_attributes as $key => $att ) {
-	if ( 0 === strcmp( 'Registration Link', $key ) ) {
+	if ( 0 === strcmp( 'Website', $key ) ) {
 		$link = tlpd_maybe_url( $att );
 		echo "<p><b>{$key}</b><br><a href='{$link}'>{$att}</a></p>";
 	} else {

@@ -803,8 +803,8 @@ function tlpd_validate_attributes() {
 		$EM_Event->add_error( sprintf( __( '%s is required.', 'tlpd' ), __( 'Registration Fee', 'tlpd' ) ) );
 	}
 
-	if ( ! empty( $EM_Event->event_attributes['Registration Link'] ) && false === tlpd_maybe_url( $EM_Event->event_attributes['Registration Link'] ) ) {
-		$EM_Event->add_error( sprintf( __( '%s is not a valid URL.', 'tlpd' ), __( 'Registration Link', 'tlpd' ) ) );
+	if ( ! empty( $EM_Event->event_attributes['Website'] ) && false === tlpd_maybe_url( $EM_Event->event_attributes['Website'] ) ) {
+		$EM_Event->add_error( sprintf( __( '%s is not a valid URL.', 'tlpd' ), __( 'Website', 'tlpd' ) ) );
 	}
 
 	return $EM_Event;
