@@ -383,7 +383,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 7.21;
+	$tlpd_version        = 7.22;
 	$current_version     = get_option( 'tlpd_version', 0 );
 	$img_max_dimension   = 1000;
 	$img_min_dimension   = 50;
@@ -418,8 +418,8 @@ function tlpd_run_once() {
 		'dbem_bookings_user_cancellation',
 		'dbem_bookings_approval_overbooking',
 	];
-	$default_attributes = '#_ATT{Presenter(s)}
-#_ATT{Presenter Information}
+	$default_attributes = '#_ATT{Facilitator Name(s)}
+#_ATT{Facilitator(s) Bio}
 #_ATT{Event Hosts}
 #_ATT{Target Audience}{Administrators|Consultants|Ed Developers|Ed Technologists & Media Developers|Faculty & Instructors|Instructional Designers|Information Technology staff|Librarians|Students|Students|Everyone}
 #_ATT{Target Audience - Other}

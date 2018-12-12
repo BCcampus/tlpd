@@ -26,6 +26,9 @@ if ( count( $attributes['names'] ) > 0 ) : ?>
 				case 'Registration Fee':
 					echo '<p class="margin-up"><i>Enter the registration fee ($CAD). Add notes as required; e.g., \'Free\', \'No fee for internal staff\'</i></p>';
 					break;
+				case 'Facilitator(s) Bio':
+					echo '<p class="margin-up"><i>Maximum 100 words</i></p>';
+					break;
 				default:
 					echo '';
 			}
