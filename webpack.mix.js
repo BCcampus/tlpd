@@ -37,12 +37,16 @@ mix.browserSync({
 mix.copy(`${assets}/fonts`, `${dist}/fonts`)
     .copy(`${node}/bootstrap/dist/css/bootstrap.min.css`, `${dist}/styles`)
     .copy(`${assets}/images`, `${dist}/images`)
+    .copy(`${node}/select2/dist/css/select2.min.css`, `${dist}/styles`)
+    .copy(`${node}/select2/dist/js/select2.min.js`, `${dist}/scripts`)
 
 // compiled Javascript
 mix.js(`${node}/bootstrap/dist/js/bootstrap.bundle.js`, `${dist}/scripts`)
     .js(`${assets}/js/tabs.js`, `${dist}/scripts`)
     .js(`${assets}/js/jquery.tinyscrollbar.min.js`, `${dist}/scripts`)
     .js(`${assets}/js/events-manager.js`, `${dist}/scripts`)
+    .js(`${assets}/js/select-multiple.js`, `${dist}/scripts`)
+
 
 // Sass
 mix.sass(`${assets}/styles/main.scss`, `${dist}/styles/main.css`)

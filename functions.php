@@ -109,14 +109,14 @@ add_action(
 		wp_enqueue_script( 'jquery-ui-draggable' );
 
 		$script_deps = [
-			'jquery'                 => 'jquery',
-			'jquery-ui-core'         => 'jquery-ui-core',
-			'jquery-ui-widget'       => 'jquery-ui-widget',
-			'jquery-ui-position'     => 'jquery-ui-position',
-			'jquery-ui-sortable'     => 'jquery-ui-sortable',
-			'jquery-ui-datepicker'   => 'jquery-ui-datepicker',
-			'jquery-ui-autocomplete' => 'jquery-ui-autocomplete',
-			'jquery-ui-dialog'       => 'jquery-ui-dialog',
+		'jquery'                 => 'jquery',
+		'jquery-ui-core'         => 'jquery-ui-core',
+		'jquery-ui-widget'       => 'jquery-ui-widget',
+		'jquery-ui-position'     => 'jquery-ui-position',
+		'jquery-ui-sortable'     => 'jquery-ui-sortable',
+		'jquery-ui-datepicker'   => 'jquery-ui-datepicker',
+		'jquery-ui-autocomplete' => 'jquery-ui-autocomplete',
+		'jquery-ui-dialog'       => 'jquery-ui-dialog',
 		];
 		wp_enqueue_script( 'events-manager', $template_dir . '/dist/scripts/events-manager.js', array_values( $script_deps ), isset( $EM_VERSION ) );
 		wp_enqueue_script( 'tinyscrollbar', $template_dir . '/dist/scripts/jquery.tinyscrollbar.min.js', [ 'jquery' ], '1.0', true );
@@ -135,6 +135,10 @@ add_action(
 
 		if ( is_page( 'edit-events' ) || is_page( 'post-event' ) ) {
 			wp_enqueue_style( 'media-manager', $template_dir . '/dist/styles/media.css' );
+			wp_enqueue_style( 'select2-style', $template_dir . '/dist/styles/select2.min.css' );
+
+			wp_enqueue_script( 'select2', $template_dir . '/dist/scripts/select2.min.js', [], null, true );
+			wp_enqueue_script( 'select-multiple', $template_dir . '/dist/scripts/select-multiple.js', [ 'select2' ], null, true );
 		}
 	}, 10
 );
@@ -536,8 +540,16 @@ function tlpd_run_once() {
 		 */
 		update_option( '	dbem_bookings_form_msg_bookings_link', 'My Profile Page' );
 
+		/**
+		 * Make the map responsive width
+		 */
 		update_option( 'dbem_map_default_width', '100%' );
+
+		/**
+		 * Control all the things map-ish
+		 */
 		update_option( 'dbem_map_default_height', '300px' );
+
 		/**
 		 * Update option to current version
 		 */
