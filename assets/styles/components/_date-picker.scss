@@ -2,3 +2,8 @@
   background: $color-brand-grey !important;
   border: none !important;
 }
+
+// prevents datepicker from hiding underneath header
+div#ui-datepicker-div{
+  z-index: 113 !important;
+}
