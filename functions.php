@@ -109,14 +109,14 @@ add_action(
 		wp_enqueue_script( 'jquery-ui-draggable' );
 
 		$script_deps = [
-		'jquery'                 => 'jquery',
-		'jquery-ui-core'         => 'jquery-ui-core',
-		'jquery-ui-widget'       => 'jquery-ui-widget',
-		'jquery-ui-position'     => 'jquery-ui-position',
-		'jquery-ui-sortable'     => 'jquery-ui-sortable',
-		'jquery-ui-datepicker'   => 'jquery-ui-datepicker',
-		'jquery-ui-autocomplete' => 'jquery-ui-autocomplete',
-		'jquery-ui-dialog'       => 'jquery-ui-dialog',
+			'jquery'                 => 'jquery',
+			'jquery-ui-core'         => 'jquery-ui-core',
+			'jquery-ui-widget'       => 'jquery-ui-widget',
+			'jquery-ui-position'     => 'jquery-ui-position',
+			'jquery-ui-sortable'     => 'jquery-ui-sortable',
+			'jquery-ui-datepicker'   => 'jquery-ui-datepicker',
+			'jquery-ui-autocomplete' => 'jquery-ui-autocomplete',
+			'jquery-ui-dialog'       => 'jquery-ui-dialog',
 		];
 		wp_enqueue_script( 'events-manager', $template_dir . '/dist/scripts/events-manager.js', array_values( $script_deps ), isset( $EM_VERSION ) );
 		wp_enqueue_script( 'tinyscrollbar', $template_dir . '/dist/scripts/jquery.tinyscrollbar.min.js', [ 'jquery' ], '1.0', true );
@@ -289,7 +289,7 @@ function tlpd_login_message( $message ) {
 	if ( empty( $message ) ) {
 		$imgdir = get_stylesheet_directory_uri();
 		$html   = '<p class="login-logo"><picture><source srcset="' . $imgdir . '/dist/images/bccampus-logo.png"><img src="' . $imgdir . '/dist/images/bccampus-logo.png" width="249" height="96" alt="BCcampus"></picture></p>';
-		$html   .= '<p class="logintext">Log in To Your TLPD Account</p>';
+		$html  .= '<p class="logintext">Log in To Your TLPD Account</p>';
 		echo $html;
 	} else {
 		return $message;
@@ -302,7 +302,7 @@ add_filter( 'login_message', 'tlpd_login_message' );
  * Adds Sign Up button and Forgot lost password link
  */
 function tlpd_login_form() {
-	$html = '<p class="signuptext">New to TLPD?</p><p><a class ="button button-primary button-large signup" href="' . home_url() . '/sign-up" title="Sign Up">Sign Up</a></p>';
+	$html  = '<p class="signuptext">New to TLPD?</p><p><a class ="button button-primary button-large signup" href="' . home_url() . '/sign-up" title="Sign Up">Sign Up</a></p>';
 	$html .= '&nbsp; &#45; &nbsp;<a class ="forgot" href="' . wp_lostpassword_url() . '" title="Lost Password">Forgot Password?</a>';
 
 	echo $html;
@@ -383,12 +383,12 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version        = 7.22;
-	$current_version     = get_option( 'tlpd_version', 0 );
-	$img_max_dimension   = 1000;
-	$img_min_dimension   = 50;
-	$img_max_size        = 8388608;
-	$default_no          = [
+	$tlpd_version       = 7.22;
+	$current_version    = get_option( 'tlpd_version', 0 );
+	$img_max_dimension  = 1000;
+	$img_min_dimension  = 50;
+	$img_max_size       = 8388608;
+	$default_no         = [
 		'dbem_css_search',
 		'dbem_events_form_reshow',
 		'dbem_events_anonymous_submissions',
@@ -403,7 +403,7 @@ function tlpd_run_once() {
 		'dbem_events_page_search_form',
 		'dbem_rsvp_enabled',
 	];
-	$default_yes         = [
+	$default_yes        = [
 		'dbem_recurrence_enabled',
 		'dbem_categories_enabled',
 		'dbem_attributes_enabled',
@@ -647,9 +647,9 @@ function tlpd_event_etc_output( $input = '' ) {
 		$cats       = wp_get_object_terms( $post_id, 'event-categories' );
 		$cat_output = $space = '';
 		foreach ( $cats as $cat ) {
-			$c          = get_category( $cat );
+			$c           = get_category( $cat );
 			$cat_output .= $space . 'cat_' . str_replace( '-', '_', $c->slug );
-			$space      = ' ';
+			$space       = ' ';
 		}
 		$new_classes = "<li class=\"$cat_output\">";
 		$output      = str_replace( $output_array[0][ $index ], $new_classes, $output );
@@ -771,20 +771,22 @@ add_action( 'bp_setup_nav', 'tlpd_bp_nav', 1000 );
 
 
 // Filter wp_nav_menu() to add tooltips to links in header menu
-add_filter( 'wp_nav_menu_items', function ( $nav, $args ) {
-	if ( $args->theme_location == 'main-menu' ) {
-		if ( is_user_logged_in() ) {
-			$nav = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
-			$nav .= '<li class="home"><a href=' . home_url() . '/post-event>Add New</a></li>';
-			$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
-			$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i> Events' ) . '</a></li>';
-		} else {
-			$nav     = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+add_filter(
+	'wp_nav_menu_items', function ( $nav, $args ) {
+		if ( $args->theme_location == 'main-menu' ) {
+			if ( is_user_logged_in() ) {
+				$nav  = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+				$nav .= '<li class="home"><a href=' . home_url() . '/post-event>Add New</a></li>';
+				$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
+				$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i> Events' ) . '</a></li>';
+			} else {
+				$nav = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
+			}
 		}
-	}
 
-	return $nav;
-}, 10, 2 );
+		return $nav;
+	}, 10, 2
+);
 
 /**
  * Add favicon, theme color, PWA manifest
@@ -1080,9 +1082,11 @@ add_action(
  * Images will be cropped to the specified dimensions using center positions.
  *
  */
-add_action( 'after_setup_theme', function () {
-	add_image_size( 'featured-size', 340, 135, true );
-} );
+add_action(
+	'after_setup_theme', function () {
+		add_image_size( 'featured-size', 340, 135, true );
+	}
+);
 
 /**
  * Attempts to make a valid url from a string such as: url.ca

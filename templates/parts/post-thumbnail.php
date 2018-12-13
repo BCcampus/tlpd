@@ -15,7 +15,7 @@
 ?>
 <?php
    $thumbheight = infinity_option_get( 'cbox-thumb-height' );
-   $thumbwidth = infinity_option_get( 'cbox-thumb-width' );
+   $thumbwidth  = infinity_option_get( 'cbox-thumb-width' );
 ?>
 <!-- show the post thumb? -->
 <?php /** if ( has_post_thumbnail() && current_theme_supports( 'infinity-post-thumbnails' )):?>

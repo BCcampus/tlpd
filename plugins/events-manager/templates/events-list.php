@@ -10,12 +10,14 @@
  */
 $args = apply_filters( 'em_content_events_args', $args );
 
-if ( get_option( 'dbem_css_evlist' ) ) { echo "<div class='css-events-list'>";
+if ( get_option( 'dbem_css_evlist' ) ) {
+	echo "<div class='css-events-list'>";
 }
 
 echo EM_Events::output( $args );
 
-if ( get_option( 'dbem_css_evlist' ) ) { echo '</div>';
+if ( get_option( 'dbem_css_evlist' ) ) {
+	echo '</div>';
 }
 
 if ( is_page( 'events' ) ) {

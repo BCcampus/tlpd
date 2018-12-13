@@ -13,8 +13,8 @@
 
 global $EM_Event;
 /* @var $EM_Event EM_Event */
-$attributes     = em_get_attributes();
-$has_deprecated = false;
+$attributes          = em_get_attributes();
+$has_deprecated      = false;
 $required_attributes = [ '' ];
 
 if ( count( $attributes['names'] ) > 0 ) : ?>

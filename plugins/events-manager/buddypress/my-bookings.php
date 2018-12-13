@@ -2,8 +2,8 @@
 <?php
 global $wpdb, $current_user, $EM_Notices, $EM_Person;
 if ( is_user_logged_in() ) :
-	$EM_Person = new EM_Person( get_current_user_id() );
-	$EM_Bookings = $EM_Person->get_bookings();
+	$EM_Person      = new EM_Person( get_current_user_id() );
+	$EM_Bookings    = $EM_Person->get_bookings();
 	$bookings_count = count( $EM_Bookings->bookings );
 	if ( $bookings_count > 0 ) {
 		//Get events here in one query to speed things up

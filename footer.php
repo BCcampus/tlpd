@@ -23,10 +23,11 @@ do_action( 'close_main_wrap' );
 	do_action( 'open_footer_wrap' );
 	?>
 	<!-- begin footer -->
-	<footer id="footer" role="contentinfo">		<?php
+	<footer id="footer" role="contentinfo">		
+	<?php
 		do_action( 'open_footer' );
 		infinity_get_template_part( 'templates/parts/footer-widgets' );
-		?>
+	?>
 		<div class="d-flex flex-row flex-wrap border-top powered-by">
 			<div class="col-md">
 				<?php echo infinity_option_get( 'infinity-core-options.footer-text' ); ?>

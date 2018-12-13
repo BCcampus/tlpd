@@ -67,8 +67,8 @@ function tlpd_init_actions() {
 			foreach ( $EM_Locations as $location_key => $EM_Location ) {
 				$json_locations[ $location_key ] = $EM_Location->to_array();
 
-				$tlpd_edit                                           = $EM_Location->output( get_option( 'dbem_map_text_format' ) );
-				$tlpd_edit                                           = tlpd_event_etc_output( $tlpd_edit );
+				$tlpd_edit = $EM_Location->output( get_option( 'dbem_map_text_format' ) );
+				$tlpd_edit = tlpd_event_etc_output( $tlpd_edit );
 				$json_locations[ $location_key ]['location_balloon'] = $tlpd_edit;
 				// toss venues without events
 				if ( ( substr_count( $tlpd_edit, '<li' ) < 2 ) && ( substr_count( $tlpd_edit, 'No events in this location' ) > 0 ) ) {
@@ -751,7 +751,7 @@ WHERE ( `location_name` LIKE %s ) AND location_status=1 $location_cond LIMIT 10
 			}
 			//reiterate loop
 			$EM_Bookings_Table->offset += $EM_Bookings_Table->limit;
-			$EM_Bookings               = $EM_Bookings_Table->get_bookings();
+			$EM_Bookings                = $EM_Bookings_Table->get_bookings();
 		}
 		fclose( $handle );
 		exit();

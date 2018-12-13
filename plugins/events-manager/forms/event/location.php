@@ -139,7 +139,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 				</td>
 			</tr>
 			<tr class="em-location-data-region">
-				<th><?php _e( 'Region:', 'events-manager' )?>&nbsp;</th>
+				<th><?php _e( 'Region:', 'events-manager' ) ?>&nbsp;</th>
 				<td>
 					<input id="location-region" type="text" name="location_region" value="<?php echo esc_attr( $EM_Location->location_region ); ?>" />
 				</td>

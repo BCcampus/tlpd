@@ -20,7 +20,7 @@ global $EM_Event, $EM_Notices, $bp;
 if ( is_object( $EM_Event ) && ! $EM_Event->can_manage( 'edit_events', 'edit_others_events' ) ) {
 	?>
 	<div class="wrap"><h2><?php esc_html_e( 'Looking to Learn?', 'events-manager' ); ?></h2>
-		<p>Please <a href='<?php echo wp_login_url();?>'>Login</a> or <a href='<?php echo home_url();?>/sign-up'>Sign up</a> to post events.</p>
+		<p>Please <a href='<?php echo wp_login_url(); ?>'>Login</a> or <a href='<?php echo home_url(); ?>/sign-up'>Sign up</a> to post events.</p>
 	</div>
 	<?php
 	return false;
@@ -44,7 +44,7 @@ if ( empty( $_REQUEST['success'] ) ) {
 }
 ?>
 <form enctype='multipart/form-data' id="event-form" method="post"
-	  action="<?php echo esc_url( add_query_arg( array( 'success' => null ) ) ); ?>">
+	  action="<?php echo esc_url( add_query_arg( [ 'success' => null ] ) ); ?>">
 	<div class="wrap">
 		<?php do_action( 'em_front_event_form_header' ); ?>
 		<?php if ( get_option( 'dbem_events_anonymous_submissions' ) && ! is_user_logged_in() ) : ?>

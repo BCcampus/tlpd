@@ -7,11 +7,15 @@
 
 		<div class="page" id="activate-page">
 
-			<h3><?php if ( bp_account_was_activated() ) :
+			<h3>
+			<?php
+			if ( bp_account_was_activated() ) :
 					_e( 'Account Activated', 'buddypress' );
 				else :
 					_e( 'Activate your Account', 'buddypress' );
-				endif; ?></h3>
+				endif;
+				?>
+				</h3>
 
 			<?php do_action( 'template_notices' ); ?>
 

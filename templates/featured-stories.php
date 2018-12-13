@@ -19,18 +19,22 @@ $args    = [
 ];
 $myposts = get_posts( $args );
 
-foreach ( $myposts as $post ) : setup_postdata( $post );
+foreach ( $myposts as $post ) :
+	setup_postdata( $post );
 	$child_theme_uri = get_stylesheet_directory_uri();
 	?>
 	<article class="col-sm-4">
 		<p>
 			<a href="<?php the_permalink(); ?>" rel="bookmark"
-			   title="<?php the_title_attribute(); ?>"><?php if ( ! has_post_thumbnail() ) {
-					echo "<img src='{$child_theme_uri}/dist/images/noteworthy.jpg' alt='new and noteworthy' />";
-} else {
-	the_post_thumbnail( 'featured-size' );
-}
-				?></a>
+			   title="<?php the_title_attribute(); ?>">
+												   <?php
+													if ( ! has_post_thumbnail() ) {
+														echo "<img src='{$child_theme_uri}/dist/images/noteworthy.jpg' alt='new and noteworthy' />";
+													} else {
+														the_post_thumbnail( 'featured-size' );
+													}
+													?>
+				</a>
 		</p>
 		<h4>
 			<a href="<?php the_permalink(); ?>" rel="bookmark"
