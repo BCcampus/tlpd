@@ -69,7 +69,7 @@ if ( empty( $_REQUEST['success'] ) ) {
 			<input type="text" name="event_name" id="event-name"
 				   value="<?php echo esc_attr( $EM_Event->event_name, ENT_QUOTES ); ?>"/>
 			<br/>
-			<i><?php esc_html_e( 'The event name. Example: Birthday party', 'events-manager' ); ?></i>
+			<i><?php esc_html_e( 'Event name example: "Instructional Skills Workshop"', 'events-manager' ); ?></i>
 			<?php em_locate_template( 'forms/event/group.php', true ); ?>
 		</div>
 
@@ -88,8 +88,7 @@ if ( empty( $_REQUEST['success'] ) ) {
 
 		<?php if ( get_option( 'dbem_locations_enabled' ) ) : ?>
 			<h3 class="event-form-where"><?php esc_html_e( 'Where', 'events-manager' ); ?></h3>
-			<p class="margin-up"><i>If your event is online fill in the location fields based on the location of the
-					organization sponsoring this event.</i></p>
+			<p class="margin-up"><i>If your event is online select the location of the organizers of the event.</i></p>
 			<div class="inside event-form-where">
 				<?php em_locate_template( 'forms/event/location.php', true ); ?>
 			</div>

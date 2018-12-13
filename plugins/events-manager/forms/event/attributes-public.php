@@ -29,6 +29,12 @@ if ( count( $attributes['names'] ) > 0 ) : ?>
 				case 'Facilitator(s) Bio':
 					echo '<p class="margin-up"><i>Maximum 100 words</i></p>';
 					break;
+				case 'Event Hosts':
+					echo '<p class="margin-up"><i>Who is organizing the event?</i></p>';
+					break;
+				case 'Online':
+					echo '<p class="margin-up"><i>Is this offering available online or provide opportunities for online participation?</i></p>';
+					break;
 				default:
 					echo '';
 			}
