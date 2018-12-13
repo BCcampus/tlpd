@@ -22,7 +22,7 @@ body {
   }
 
   &.login div#login form#loginform p.submit input#wp-submit {
-    background-color: $color-blue-bright;
+    background-color: $color-brand-green;
     width: 100%;
     border-radius: 20px;
     border: 0;
@@ -35,7 +35,7 @@ body {
 a {
 
   &.forgot {
-    color: $color-blue-bright;
+    color: $color-brand-green;
     text-decoration: none;
   }
 
@@ -46,11 +46,11 @@ a {
     height: 29px;
     width: 272px;
     border-radius: 20px;
-    border: 1px solid $color-blue-bright;
+    border: 1px solid $color-brand-green;
     text-shadow: none;
     box-shadow: none;
     text-align: center;
-    color: $color-blue-bright;
+    color: $color-brand-green;
     font-weight: bold;
   }
 }
