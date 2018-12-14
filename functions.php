@@ -767,8 +767,8 @@ function tlpd_bp_nav() {
 	bp_core_remove_subnav_item( 'events', 'my-events' );
 
 }
-
-add_action( 'bp_setup_nav', 'tlpd_bp_nav', 1000 );
+// Commenting out 2018-12-13 to restore BP functionality
+//add_action( 'bp_setup_nav', 'tlpd_bp_nav', 1000 );
 
 
 // Filter wp_nav_menu() to add tooltips to links in header menu
