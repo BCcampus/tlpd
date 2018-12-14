@@ -36,6 +36,7 @@ mix.browserSync({
 // Assets
 mix.copy(`${assets}/fonts`, `${dist}/fonts`)
     .copy(`${node}/bootstrap/dist/css/bootstrap.min.css`, `${dist}/styles`)
+    .copy(`${node}/font-awesome/fonts`, `${dist}/fonts`)
     .copy(`${assets}/images`, `${dist}/images`)
     .copy(`${node}/select2/dist/css/select2.min.css`, `${dist}/styles`)
     .copy(`${node}/select2/dist/js/select2.min.js`, `${dist}/scripts`)

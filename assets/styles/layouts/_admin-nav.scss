@@ -45,26 +45,27 @@
 
       li#wp-admin-bar-bp-login {
 
-        //a {
-        //
-        //  &:before {
-        //    font-family: 'Glyphicons';
-        //    content: "\e161";
-        //    color: $color-neutral-00;
-        //  }
-        //}
+        a {
+
+          &:before {
+            font-family: 'FontAwesome';
+            content: "\f090";
+            color: $color-neutral-00;
+
+          }
+        }
       }
 
       li#wp-admin-bar-bp-register {
 
-        //a {
-        //
-        //  &:before {
-        //    font-family: 'Glyphicons';
-        //    content: "\e162";
-        //    color: $color-neutral-00;
-        //  }
-        //}
+        a {
+
+          &:before {
+            font-family: 'FontAwesome';
+            content: "\f0e7";
+            color: $color-neutral-00;
+          }
+        }
       }
     }
   }
