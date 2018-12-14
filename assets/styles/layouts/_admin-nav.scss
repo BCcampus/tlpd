@@ -3,11 +3,21 @@
   background-color: $color-neutral-10;
   display: block !important;
 
+  ul {
+    li {
+      a {
+        &:hover {
+          color: $color-neutral-10;
+        }
+      }
+    }
+  }
+
   a {
     &.ab-item {
       color: $color-neutral-80;
-      &:hover{
-        color: $color-neutral-10;
+      &:hover {
+        color: $color-neutral-10 !important;
       }
     }
   }
@@ -29,12 +39,17 @@
     &.quicklinks {
 
       ul {
-        li#wp-admin-bar-my-account {
+        li#wp-admin-bar-bp-login {
           a {
             &:before {
               font-family: 'FontAwesome';
               content: "\f090";
-              color: $color-neutral-00;
+              color: $color-neutral-80;
+            }
+            &:hover {
+              &:before {
+                color: $color-neutral-10;
+              }
             }
           }
         }
@@ -44,7 +59,12 @@
             &:before {
               font-family: 'FontAwesome';
               content: "\f0e7";
-              color: $color-neutral-00;
+              color: $color-neutral-80;
+            }
+            &:hover {
+              &:before {
+                color: $color-neutral-10;
+              }
             }
           }
         }
@@ -94,9 +114,9 @@
     a {
       color: $color-neutral-10 !important;
       &:hover {
-        color: $color-neutral-10 !important;
+        color: darken($color-neutral-20, 10%) !important;
         span {
-          color: $color-neutral-10 !important;
+          color: darken($color-neutral-10, 10%) !important;
         }
       }
     }
@@ -124,6 +144,14 @@
 #wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item {
   &:focus {
     background: $color-brand-green;
+    color: $color-neutral-10;
+  }
+
+  &:hover {
+    background-color: $color-brand-green;
+    a {
+      color: $color-neutral-10;
+    }
   }
 }
 
