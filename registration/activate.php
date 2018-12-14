@@ -31,12 +31,11 @@
 
 			<?php else : ?>
 
-				<p><?php _e( 'Please provide a valid activation key.', 'buddypress' ); ?></p>
+				<p><?php _e( 'Please activate your account below, by clicking the activate button.', 'buddypress' ); ?></p>
 
 				<form action="" method="get" class="standard-form" id="activation-form">
 
-					<label for="key"><?php _e( 'Activation Key:', 'buddypress' ); ?></label>
-					<input type="text" name="key" id="key" value="<?php echo esc_attr( bp_get_current_activation_key() ); ?>" />
+					<input type="hidden" name="key" id="key" value="<?php echo esc_attr( bp_get_current_activation_key() ); ?>" />
 
 					<p class="submit">
 						<input type="submit" name="submit" value="<?php esc_attr_e( 'Activate', 'buddypress' ); ?>" />
