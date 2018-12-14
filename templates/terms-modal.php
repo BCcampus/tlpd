@@ -1,12 +1,12 @@
 <?php
-// Get the Terms and Conditions post by page name
-$page = get_page_by_title( 'terms and conditions' );
+// Get the Terms of Use post by page name
+$page = get_page_by_title( 'terms of use' );
 // $page is the post array. Get the title and content
 $title   = $page->post_title;
 $content = $page->post_content;
 ?>
 
-<!-- Modal for Registration page "Terms and Conditions" Field -->
+<!-- Modal for Registration page "Terms of Use" Field -->
 <div id="terms" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">

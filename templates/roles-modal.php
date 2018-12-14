@@ -1,5 +1,5 @@
 <?php
-// Get the Terms and Conditions post by page name
+// Get the Organizer Learner post by page name
 $page = get_page_by_title( 'What’s the difference between Learner and Organizer?' );
 // $page is the post array. Get the title and content
 $title   = $page->post_title;
