@@ -842,7 +842,7 @@ function tlpd_profile_field_modals() {
 		switch ( $bp_field_name ) {
 
 			case 'Agreement Terms:':
-				$field_description = '<a href="#terms" data-toggle="modal">Terms and Conditions</a>';
+				$field_description = '<a href="#terms" data-toggle="modal">Terms of Use</a>';
 
 				return $field_description;
 				break;
