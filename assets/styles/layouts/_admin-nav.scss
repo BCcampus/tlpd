@@ -159,3 +159,9 @@
   padding-left: $unit*4 !important;
 }
 
+#main-menu-wrap .main-menu ul a{
+  &:hover{
+    color: $color-neutral-10;
+    background-color: $color-brand-green;
+  }
+}
