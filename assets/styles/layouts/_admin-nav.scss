@@ -1,72 +1,107 @@
 // Admin Bar
-
 #wpadminbar {
   background-color: $color-neutral-10;
   display: block !important;
 
+  a {
+    &.ab-item {
+      color: $color-neutral-80;
+      &:hover{
+        color: $color-neutral-10;
+      }
+    }
+  }
+
   @media screen and (max-width: $small) {
     position: fixed;
   }
-  #wp-admin-bar-root-default {
-    display: flex;
-    justify-content: flex-end;
-  }
 
-  #wp-toolbar > ul > li {
-    display: block !important;
+  #wp-toolbar {
 
-    a {
-      padding: 0 8px 0 7px !important;
+    ul.ab-submenu li a {
+      color: $color-neutral-10;
+      &:hover {
+        background-color: $color-brand-green !important;
+        color: $color-neutral-10 !important;
+      }
+    }
+
+    &.quicklinks {
+
+      ul {
+        li#wp-admin-bar-my-account {
+          a {
+            &:before {
+              font-family: 'FontAwesome';
+              content: "\f090";
+              color: $color-neutral-00;
+            }
+          }
+        }
+
+        li#wp-admin-bar-bp-register {
+          a {
+            &:before {
+              font-family: 'FontAwesome';
+              content: "\f0e7";
+              color: $color-neutral-00;
+            }
+          }
+        }
+      }
+
+      li#wp-admin-bar-my-account.with-avatar > a img {
+        position: initial;
+      }
+
+      #wp-admin-bar-my-account {
+        .ab-item {
+          text-indent: initial !important;
+          width: auto !important;
+          position: static !important;
+        }
+      }
     }
   }
-  #wp-admin-bar-my-account .ab-sub-wrapper * {
-    background-color: $color-brand-green !important;
+
+  .menupop {
+    .ab-sub-wrapper {
+      background-color: $color-brand-green !important;
+      color: $color-neutral-10;
+    }
   }
+}
 
-  #wp-admin-bar-user-actions li a:hover span,
-  #wp-admin-bar-user-actions li:hover a,
-  #wp-admin-bar-user-actions li a:hover {
-    background-color: $color-brand-green !important;
+#wp-admin-bar-root-default {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#wp-toolbar, .base-menu {
+  padding: 0px;
+}
+
+#wp-toolbar > ul > li {
+  display: block !important;
+
+  a {
+    padding: 0 8px 0 7px !important;
   }
+}
 
-  #wp-admin-bar-my-account .ab-item {
-    text-indent: initial !important;
-    width: auto !important;
-    position: static !important;
-  }
-
-  #wp-admin-bar-my-account-buddypress li {
-    padding-left: $unit*4 !important;
-  }
-
-  .quicklinks {
-
-    ul {
-
-      li#wp-admin-bar-bp-login {
-
-        a {
-
-          &:before {
-            font-family: 'FontAwesome';
-            content: "\f090";
-            color: $color-neutral-00;
-
-          }
+#wp-admin-bar-user-actions {
+  li {
+    a {
+      color: $color-neutral-10 !important;
+      &:hover {
+        color: $color-neutral-10 !important;
+        span {
+          color: $color-neutral-10 !important;
         }
       }
-
-      li#wp-admin-bar-bp-register {
-
-        a {
-
-          &:before {
-            font-family: 'FontAwesome';
-            content: "\f0e7";
-            color: $color-neutral-00;
-          }
-        }
-      }
+    }
+    &:hover a {
+      color: $color-neutral-10 !important;
     }
   }
 }
@@ -90,5 +125,9 @@
   &:focus {
     background: $color-brand-green;
   }
+}
+
+#wp-admin-bar-my-account-buddypress li {
+  padding-left: $unit*4 !important;
 }
 

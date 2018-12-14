@@ -8,18 +8,6 @@
 |
 */
 
-#wp-toolbar, .base-menu {
-  padding: 0px;
-
-  ul li a {
-    color: $color-black-mineshaft !important;
-    &:hover {
-      background-color: $color-brand-green !important;
-      color: $color-neutral-00 !important;
-    }
-  }
-}
-
 .base-menu ul li.current-cat a,
 .base-menu ul li.current_page_item a,
 .base-menu ul li.current-menu-item a {
