@@ -7,3 +7,25 @@
 div#ui-datepicker-div{
   z-index: 113 !important;
 }
+
+table {
+  &.ui-datepicker-calendar {
+    td {
+      a {
+        &.ui-state-default,
+        &.ui-state-highlight {
+          &:hover {
+            background: $color-brand-dave;
+            border: $color-neutral-00;
+            color: $color-black;
+          }
+        }
+        &.ui-state-highlight {
+          background: $color-brand-purple;
+          color: $color-neutral-00;
+          border: 1px solid $color-neutral-00;
+        }
+      }
+    }
+  }
+}
