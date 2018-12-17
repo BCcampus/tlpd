@@ -136,3 +136,11 @@ div.time-picker li {
 .events-table th {
   color: $color-neutral-80 !important; //1
 }
+
+@media (max-width: $small) {
+  input, textarea {
+    &.wpcf7-form-control {
+      width: 100%;
+    }
+  }
+}
