@@ -8,6 +8,23 @@
   border-bottom: 1px solid $color-neutral-40;
   box-shadow: none;
 
+  .widget.widget_em_widget {
+    ul {
+      li {
+        padding-bottom: 10px;
+        &:last-child {
+          padding-bottom: 0;
+        }
+        ul {
+          margin-left: 0;
+          li {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
   .widget_calendar,
   .widget_em_calendar  {
     display: none;
