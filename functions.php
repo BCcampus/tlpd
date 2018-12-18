@@ -421,7 +421,7 @@ function tlpd_run_once() {
 	$default_attributes = '#_ATT{Facilitator Name(s)}
 #_ATT{Facilitator(s) Bio}
 #_ATT{Event Hosts}
-#_ATT{Target Audience}{Administrators|Consultants|Ed Developers|Ed Technologists & Media Developers|Faculty & Instructors|Instructional Designers|Information Technology staff|Librarians|Students|Everyone}
+#_ATT{Target Audience}{Administrators|Consultants|Ed Developers|Ed Technologists & Media Developers|Faculty & Instructors|Instructional Designers|Information Technology staff|Librarians|Students|Teaching & Learning Staff|Everyone}
 #_ATT{Target Audience - Other}
 #_ATT{Event is open to external}{|Yes|No}
 #_ATT{Prerequisite(s)}
