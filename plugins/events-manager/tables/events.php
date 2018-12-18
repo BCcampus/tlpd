@@ -15,15 +15,17 @@
 
 //TODO Simplify panel for events, use form flags to detect certain actions (e.g. submitted, etc)
 global $wpdb, $bp, $EM_Notices;
-/* @var $args array */
-/* @var $EM_Events array */
-/* @var $events_count int */
-/* @var $future_count int */
-/* @var $past_count int */
-/* @var $pending_count int */
-/* @var $url string */
-/* @var $show_add_new bool */
-/* @var $limit int */
+/**
+ * @var $args array
+ * @var $EM_Events array
+ * @var $events_count int
+ * @var $future_count int
+ * @var $past_count int
+ * @var $pending_count int
+ * @var $url string
+ * @var $show_add_new bool
+ * @var $limit int
+ */
 ?>
 <p class="margin-up"><i>Click on the links below to begin editing an event post.</i></p>
 <?php
@@ -71,7 +73,7 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 					]
 				);
 				?>
-							' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'pending' ) ? 'class="current"' : ''; ?>><?php _e( 'Pending', 'events-manager' ); ?>
+							' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] === 'pending' ) ? 'class="current"' : ''; ?>><?php _e( 'Pending', 'events-manager' ); ?>
 					<span class="count">(<?php echo $pending_count; ?>)</span></a> &nbsp;|&nbsp;
 			<?php endif; ?>
 			<?php if ( $draft_count > 0 ) : ?>
@@ -83,7 +85,7 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 					]
 				);
 				?>
-							' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'draft' ) ? 'class="current"' : ''; ?>><?php _e( 'Draft', 'events-manager' ); ?>
+							' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] === 'draft' ) ? 'class="current"' : ''; ?>><?php _e( 'Draft', 'events-manager' ); ?>
 					<span class="count">(<?php echo $draft_count; ?>)</span></a> &nbsp;|&nbsp;
 			<?php endif; ?>
 			<a href='
@@ -94,14 +96,13 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 				]
 			);
 			?>
-			' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] == 'past' ) ? 'class="current"' : ''; ?>><?php _e( 'Past Events', 'events-manager' ); ?>
+			' <?php echo ( isset( $_GET['view'] ) && $_GET['view'] === 'past' ) ? 'class="current"' : ''; ?>><?php _e( 'Past Events', 'events-manager' ); ?>
 				<span class="count">(<?php echo $past_count; ?>)</span></a>
 		</div>
 		<p class="search-box">
 			<label class="screen-reader-text" for="post-search-input"><?php _e( 'Search Events', 'events-manager' ); ?>
 				:</label>
-			<input type="text" id="post-search-input" name="em_search"
-				   value="<?php echo ( ! empty( $_REQUEST['em_search'] ) ) ? esc_attr( $_REQUEST['em_search'] ) : ''; ?>"/>
+			<input type="text" id="post-search-input" name="em_search" value="<?php echo ( ! empty( $_REQUEST['em_search'] ) ) ? esc_attr( $_REQUEST['em_search'] ) : ''; ?>"/>
 			<?php if ( ! empty( $_REQUEST['view'] ) ) : ?>
 				<input type="hidden" name="view" value="<?php echo esc_attr( $_REQUEST['view'] ); ?>"/>
 			<?php endif; ?>
@@ -143,7 +144,9 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 				<?php
 				$rowno = 0;
 				foreach ( $EM_Events as $EM_Event ) {
-					/* @var $EM_Event EM_Event */
+					/**
+					 * @var $EM_Event EM_Event
+					 */
 					$rowno ++;
 					$class = ( $rowno % 2 ) ? 'alternate' : '';
 					// FIXME set to american
@@ -172,31 +175,28 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 						?>
 						<td>
 							<strong>
-								<a class="row-title"
-								   href="<?php echo esc_url( $EM_Event->get_edit_url() ); ?>"><?php echo esc_html( $EM_Event->event_name ); ?></a>
+								<a class="row-title" href="<?php echo esc_url( $EM_Event->get_edit_url() ); ?>"><?php echo esc_html( $EM_Event->event_name ); ?></a>
 							</strong>
 							<div class="row-actions">
 								<?php if ( current_user_can( 'delete_events' ) ) : ?>
 									<span class="trash"><a href="
 									<?php
-									echo esc_url(
-										add_query_arg(
-											[
-												'action'   => 'event_delete',
-												'event_id' => $EM_Event->event_id,
-												'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->event_id ),
-											]
-										)
-									);
+										echo esc_url(
+											add_query_arg(
+												[
+													'action'   => 'event_delete',
+													'event_id' => $EM_Event->event_id,
+													'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->event_id ),
+												]
+											)
+										);
 									?>
-									"
-														   class="em-event-delete"><?php _e( 'Delete', 'events-manager' ); ?></a></span>
+									" class="em-event-delete"><?php _e( 'Delete', 'events-manager' ); ?></a></span>
 								<?php endif; ?>
 							</div>
 						</td>
 						<td>
-							<a href="<?php echo $EM_Event->duplicate_url(); ?>"
-							   title="<?php _e( 'Duplicate this event', 'events-manager' ); ?>">
+							<a href="<?php echo $EM_Event->duplicate_url(); ?>" title="<?php _e( 'Duplicate this event', 'events-manager' ); ?>">
 								<strong>+</strong>
 							</a>
 						</td>
@@ -206,7 +206,7 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 
 						<td>
 							<?php echo $localised_start_date; ?>
-							<?php echo ( $localised_end_date != $localised_start_date ) ? " - $localised_end_date" : ''; ?>
+							<?php echo ( $localised_end_date !== $localised_start_date ) ? " - $localised_end_date" : ''; ?>
 							<br/>
 							<?php
 							if ( ! $EM_Event->event_all_day ) {
@@ -227,18 +227,17 @@ if ( ! empty( $show_add_new ) && current_user_can( 'edit_events' ) ) {
 									<?php if ( current_user_can( 'delete_events' ) ) : ?>
 										<span class="trash"><a href="
 										<?php
-										echo esc_url(
-											add_query_arg(
-												[
-													'action'   => 'event_delete',
-													'event_id' => $EM_Event->recurrence_id,
-													'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->recurrence_id ),
-												]
-											)
-										);
+											echo esc_url(
+												add_query_arg(
+													[
+														'action'   => 'event_delete',
+														'event_id' => $EM_Event->recurrence_id,
+														'_wpnonce' => wp_create_nonce( 'event_delete_' . $EM_Event->recurrence_id ),
+													]
+												)
+											);
 										?>
-										" class="em-event-rec-delete"
-															   onclick="if( !confirm('<?php echo $recurrence_delete_confirm; ?>') ){ return false; }"><?php _e( 'Delete', 'events-manager' ); ?></a></span>
+										" class="em-event-rec-delete" onclick="if( !confirm('<?php echo $recurrence_delete_confirm; ?>') ){ return false; }"><?php _e( 'Delete', 'events-manager' ); ?></a></span>
 									<?php endif; ?>
 								</strong>
 								<?php

@@ -34,7 +34,7 @@ if ( user_can( $bp->displayed_user->id, 'edit_events' ) ) {
 	} else {
 		?>
 		<p><?php _e( 'No Events', 'events-manager' ); ?>.
-			<?php if ( get_current_user_id() == $bp->displayed_user->id ) : ?>
+			<?php if ( get_current_user_id() === $bp->displayed_user->id ) : ?>
 				<a href="<?php echo home_url() . '/post-event'; ?>"><?php _e( 'Add Event', 'events-manager' ); ?></a>
 			<?php endif; ?>
 		</p>

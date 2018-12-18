@@ -43,8 +43,7 @@ if ( empty( $_REQUEST['success'] ) ) {
 	echo '</p>';
 }
 ?>
-<form enctype='multipart/form-data' id="event-form" method="post"
-	  action="<?php echo esc_url( add_query_arg( [ 'success' => null ] ) ); ?>">
+<form enctype='multipart/form-data' id="event-form" method="post" action="<?php echo esc_url( add_query_arg( [ 'success' => null ] ) ); ?>">
 	<div class="wrap">
 		<?php do_action( 'em_front_event_form_header' ); ?>
 		<?php if ( get_option( 'dbem_events_anonymous_submissions' ) && ! is_user_logged_in() ) : ?>
@@ -52,13 +51,11 @@ if ( empty( $_REQUEST['success'] ) ) {
 			<div class="inside event-form-submitter">
 				<p>
 					<label><?php esc_html_e( 'Name', 'events-manager' ); ?></label>
-					<input type="text" name="event_owner_name" id="event-owner-name"
-						   value="<?php echo esc_attr( $EM_Event->event_owner_name ); ?>"/>
+					<input type="text" name="event_owner_name" id="event-owner-name" value="<?php echo esc_attr( $EM_Event->event_owner_name ); ?>"/>
 				</p>
 				<p>
 					<label><?php esc_html_e( 'Email', 'events-manager' ); ?></label>
-					<input type="text" name="event_owner_email" id="event-owner-email"
-						   value="<?php echo esc_attr( $EM_Event->event_owner_email ); ?>"/>
+					<input type="text" name="event_owner_email" id="event-owner-email" value="<?php echo esc_attr( $EM_Event->event_owner_email ); ?>"/>
 				</p>
 				<?php do_action( 'em_front_event_form_guest' ); ?>
 				<?php do_action( 'em_font_event_form_guest' ); //deprecated ?>
@@ -66,8 +63,7 @@ if ( empty( $_REQUEST['success'] ) ) {
 		<?php endif; ?>
 		<h3 class="event-form-name"><?php esc_html_e( 'Event Name', 'events-manager' ); ?><?php echo $required; ?></h3>
 		<div class="inside event-form-name">
-			<input type="text" name="event_name" id="event-name"
-				   value="<?php echo esc_attr( $EM_Event->event_name, ENT_QUOTES ); ?>"/>
+			<input type="text" name="event_name" id="event-name" value="<?php echo esc_attr( $EM_Event->event_name, ENT_QUOTES ); ?>"/>
 			<br/>
 			<i><?php esc_html_e( 'Event name example: "Instructional Skills Workshop"', 'events-manager' ); ?></i>
 			<?php em_locate_template( 'forms/event/group.php', true ); ?>
@@ -107,8 +103,7 @@ if ( empty( $_REQUEST['success'] ) ) {
 					);
 					?>
 				<?php else : ?>
-					<textarea name="content" rows="10"
-							  style="width:100%"><?php echo $EM_Event->post_content; ?></textarea>
+					<textarea name="content" rows="10" style="width:100%"><?php echo $EM_Event->post_content; ?></textarea>
 					<br/>
 					<?php esc_html_e( 'Details about the event.', 'events-manager' ); ?><?php esc_html_e( 'HTML allowed.', 'events-manager' ); ?>
 				<?php endif; ?>
@@ -127,15 +122,6 @@ if ( empty( $_REQUEST['success'] ) ) {
 			</div>
 		</div>
 
-		<?php
-		 /**  if ( $EM_Event->can_manage( 'upload_event_images', 'upload_event_images' ) ) : ?>
-			<h3><?php esc_html_e( 'Event Image', 'events-manager' ); ?></h3>
-			<div class="inside event-form-image">
-				<?php em_locate_template( 'forms/event/featured-image-public.php', true ); ?>
-			</div>
-		<?php endif; */
-		?>
-
 		<?php if ( get_option( 'dbem_rsvp_enabled' ) && $EM_Event->can_manage( 'manage_bookings', 'manage_others_bookings' ) ) : ?>
 			<!-- START Bookings -->
 			<div class="inside event-form-bookings">
@@ -148,11 +134,9 @@ if ( empty( $_REQUEST['success'] ) ) {
 	</div>
 	<p class="submit">
 		<?php if ( empty( $EM_Event->event_id ) ) : ?>
-			<input type='submit' class='button-primary'
-				   value='<?php echo esc_attr( sprintf( __( 'Submit %s', 'events-manager' ), __( 'Event', 'events-manager' ) ) ); ?>'/>
+			<input type='submit' class='button-primary' value='<?php echo esc_attr( sprintf( __( 'Submit %s', 'events-manager' ), __( 'Event', 'events-manager' ) ) ); ?>'/>
 		<?php else : ?>
-			<input type='submit' class='button-primary'
-				   value='<?php echo esc_attr( sprintf( __( 'Update %s', 'events-manager' ), __( 'Event', 'events-manager' ) ) ); ?>'/>
+			<input type='submit' class='button-primary' value='<?php echo esc_attr( sprintf( __( 'Update %s', 'events-manager' ), __( 'Event', 'events-manager' ) ) ); ?>'/>
 		<?php endif; ?>
 	</p>
 	<input type="hidden" name="event_id" value="<?php echo $EM_Event->event_id; ?>"/>

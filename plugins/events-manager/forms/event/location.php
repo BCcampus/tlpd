@@ -17,14 +17,13 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 <?php if ( ! get_option( 'dbem_require_location' ) && ! get_option( 'dbem_use_select_for_locations' ) ) : ?>
 	<div class="em-location-data-nolocation">
 		<p>
-			<input type="checkbox" name="no_location" id="no-location"
-				   value="1" 
+			<input type="checkbox" name="no_location" id="no-location" value="1"
 					<?php
 					if ( $EM_Event->location_id === '0' || $EM_Event->location_id === 0 ) {
 						echo 'checked="checked"';
 					}
 					?>
-					 />
+					/>
 			<?php _e( 'This event does not have a physical location.', 'events-manager' ); ?>
 		</p>
 		<script type="text/javascript">
@@ -46,10 +45,8 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 <?php endif; ?>
 <div id="em-location-data" class="em-location-data">
 	<div id="location_coordinates" style='display: none;'>
-		<input id='location-latitude' name='location_latitude' type='text'
-			   value='<?php echo esc_attr( $EM_Event->get_location()->location_latitude ); ?>' size='15'/>
-		<input id='location-longitude' name='location_longitude' type='text'
-			   value='<?php echo esc_attr( $EM_Event->get_location()->location_longitude ); ?>' size='15'/>
+		<input id='location-latitude' name='location_latitude' type='text' value='<?php echo esc_attr( $EM_Event->get_location()->location_latitude ); ?>' size='15'/>
+		<input id='location-longitude' name='location_longitude' type='text' value='<?php echo esc_attr( $EM_Event->get_location()->location_longitude ); ?>' size='15'/>
 	</div>
 	<?php if ( get_option( 'dbem_use_select_for_locations' ) || ! $EM_Event->can_manage( 'edit_locations', 'edit_others_locations' ) ) : ?>
 		<table class="em-location-data">
@@ -58,8 +55,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 				<td>
 					<select name="location_id" id='location-select-id' size="1">
 						<?php if ( ! get_option( 'dbem_require_location', true ) ) : ?>
-							<option
-									value="0"><?php esc_html_e( 'No Location', 'events-manager' ); ?></option><?php endif; ?>
+							<option value="0"><?php esc_html_e( 'No Location', 'events-manager' ); ?></option><?php endif; ?>
 						<?php
 						$ddm_args          = [
 							'blog'    => false,
@@ -108,10 +104,8 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 			<tr class="em-location-data-name">
 				<th><?php _e( 'Location:', 'events-manager' ); ?><?php echo $required; ?></th>
 				<td>
-					<input id='location-id' name='location_id' type='hidden'
-						   value='<?php echo esc_attr( $EM_Location->location_id ); ?>' size='15'/>
-					<input id="location-name" type="text" name="location_name"
-						   value="<?php echo esc_attr( $EM_Location->location_name, ENT_QUOTES ); ?>"/>
+					<input id='location-id' name='location_id' type='hidden' value='<?php echo esc_attr( $EM_Location->location_id ); ?>' size='15'/>
+					<input id="location-name" type="text" name="location_name" value="<?php echo esc_attr( $EM_Location->location_name, ENT_QUOTES ); ?>"/>
 					<br/>
 					<em id="em-location-search-tip"><?php esc_html_e( 'Create a location or start typing to search a previously created location.', 'events-manager' ); ?></em>
 					<em id="em-location-reset"
@@ -122,8 +116,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 			<tr class="em-location-data-address">
 				<th><?php _e( 'Address:', 'events-manager' ); ?>&nbsp;<?php echo $required; ?></th>
 				<td>
-					<input id="location-address" type="text" name="location_address"
-						   value="
+					<input id="location-address" type="text" name="location_address" value="
 							<?php
 							echo esc_attr( $EM_Location->location_address );
 							;
@@ -134,8 +127,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 			<tr class="em-location-data-town">
 				<th><?php _e( 'City/Town:', 'events-manager' ); ?>&nbsp;<?php echo $required; ?></th>
 				<td>
-					<input id="location-town" type="text" name="location_town"
-						   value="<?php echo esc_attr( $EM_Location->location_town ); ?>"/>
+					<input id="location-town" type="text" name="location_town" value="<?php echo esc_attr( $EM_Location->location_town ); ?>"/>
 				</td>
 			</tr>
 			<tr class="em-location-data-region">
@@ -149,8 +141,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 				<td>
 					<select id="location-state" name="location_state">
 						<?php foreach ( tlpd_get_provinces() as $province_name ) : ?>
-							<option
-									value="<?php echo esc_attr( $province_name ); ?>" <?php echo ( get_option( 'tlpd_location_default_province' ) == $province_name ) ? 'selected="selected"' : ''; ?>><?php echo esc_html( $province_name ); ?></option>
+							<option value="<?php echo esc_attr( $province_name ); ?>" <?php echo ( get_option( 'tlpd_location_default_province' ) == $province_name ) ? 'selected="selected"' : ''; ?>><?php echo esc_html( $province_name ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</td>
@@ -169,8 +160,7 @@ $required = apply_filters( 'em_required_html', '<i>*</i>' );
 			<tr class="em-location-data-postcode">
 				<th><?php _e( 'Postcode:', 'events-manager' ); ?>&nbsp;</th>
 				<td>
-					<input id="location-postcode" type="text" name="location_postcode"
-						   value="<?php echo esc_attr( $EM_Location->location_postcode ); ?>"/>
+					<input id="location-postcode" type="text" name="location_postcode" value="<?php echo esc_attr( $EM_Location->location_postcode ); ?>"/>
 				</td>
 			</tr>
 		</table>

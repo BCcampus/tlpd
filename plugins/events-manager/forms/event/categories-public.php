@@ -12,7 +12,9 @@
  */
 
 global $EM_Event;
-/* @var $EM_Event EM_Event */
+/**
+ * @var $EM_Event EM_Event
+ */
 $categories = EM_Categories::get(
 	[
 		'orderby'    => 'name',
@@ -23,7 +25,7 @@ $categories = EM_Categories::get(
 <?php if ( count( $categories ) > 0 ) : ?>
 	<div class="event-categories">
 		<!-- START Categories -->
-		<label for="event_categories"><?php _e( 'Category:', 'events-manager' ); ?><?php //echo $required; ?>  </label>
+		<label for="event_categories"><?php _e( 'Category:', 'events-manager' ); ?> </label>
 		<select name="event_categories[]" multiple class="event-categories-select2" id="event_categories">
 			<?php
 			$selected = $EM_Event->get_categories()->get_ids();

@@ -70,4 +70,11 @@
     <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
         <exclude-pattern>/functions.php</exclude-pattern>
     </rule>
+
+    <!-- files from another mother -->
+    <rule ref="WordPress.CSRF.NonceVerification.NoNonceVerification">
+        <exclude-pattern>/plugins/events-manager/tables/events.php</exclude-pattern>
+        <exclude-pattern>/plugins/events-manager/forms/event-editor.php</exclude-pattern>
+        <exclude-pattern>/plugins/events-manager/buddypress/my-bookings.php</exclude-pattern>
+    </rule>
 </ruleset>

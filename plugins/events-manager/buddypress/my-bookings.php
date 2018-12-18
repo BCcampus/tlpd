@@ -53,7 +53,9 @@ if ( is_user_logged_in() ) :
 					$event_count = 0;
 					$nonce       = wp_create_nonce( 'booking_cancel' );
 					foreach ( $EM_Bookings as $EM_Booking ) {
-						/* @var $EM_Booking EM_Booking */
+						/**
+						 * @var $EM_Booking EM_Booking
+						 */
 						$EM_Event = $EM_Booking->get_event();
 						if ( ( $rowno < $limit || empty( $limit ) ) && ( $event_count >= $offset || $offset === 0 ) ) {
 							$rowno ++;
@@ -85,5 +87,5 @@ if ( is_user_logged_in() ) :
 	</div>
 	<?php do_action( 'em_template_my_bookings_footer', $EM_Bookings ); ?>
 <?php else : ?>
-	<p><?php echo sprintf( __( 'Please <a href="%s">Log In</a> to view your bookings.', 'events-manager' ), site_url( 'wp-login.php?redirect_to=' . urlencode( get_permalink() ), 'login' ) ); ?></p>
+	<p><?php echo sprintf( __( 'Please <a href="%s">Log In</a> to view your bookings.', 'events-manager' ), site_url( 'wp-login.php?redirect_to=' . rawurlencode( get_permalink() ), 'login' ) ); ?></p>
 <?php endif; ?>
