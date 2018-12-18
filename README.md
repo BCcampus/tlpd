@@ -13,7 +13,7 @@ suite of WordPress and BuddyPress plugins and themes for community communication
 - install the plugin [Events Manager](https://wordpress.org/plugins/events-manager/)
 - activate the bundled theme 'CBox Theme' which comes as part of `Commons in a Box`
 - activate this child theme 'Teaching and Learning Professional Development'
-- install dependencies via the `composer install` command in your terminal
+- (developers) install dependencies via the `composer install` command in your terminal
 
 #### Purpose ####
 The main purpose of the child theme is to tie the locations of events generated from `Events Manager` to a map using Google API. 
@@ -21,11 +21,11 @@ Map functions include displaying location pins, clustering, searching, and filte
 A secondary purpose is to contain all customizations in the child theme and still benefit from parent theme updates. 
 
 #### Licence ####
-Unless otherwise noted, the Teaching and Learning Professional Development Child Theme is copyright (c) Brad Payne, Maggie Caspar and is released under a GPLv3 or later version.
+The Teaching and Learning Professional Development Child Theme is a derivative of the EYPD child theme which is copyright (c) Brad Payne, Maggie Caspar and is released under a GPLv3 or later version.
+The TLPD derivative was created by Jen Grajkowski. 
 
 Otherwise noted: 
 - markerclusterer.js is copyright Google Inc. licenced under Apache 2.0 (compatible with GPLv3)
 
 ### Contributors ###
 - Alex Paredes
-- Shawn DeWolfe 
