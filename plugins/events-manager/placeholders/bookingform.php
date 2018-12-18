@@ -9,7 +9,9 @@
  * Again, even if you're an advanced user, consider NOT editing this form and using other methods instead.
  */
 
-/* @var $EM_Event EM_Event */
+/**
+ * @var $EM_Event EM_Event
+ */
 global $EM_Notices;
 //count tickets and available tickets
 $tickets_count           = count( $EM_Event->get_bookings()->get_tickets()->tickets );
@@ -51,9 +53,9 @@ if ( get_option( 'dbem_css_rsvp' ) ) {
 		<?php if ( $tickets_count > 0 ) : ?>
 			<?php //Tickets exist, so we show a booking form. ?>
 			<form class="em-booking-form" name='booking-form' method='post' action='<?php echo apply_filters( 'em_booking_form_action_url', '' ); ?>#em-booking'>
-				 <input type='hidden' name='action' value='booking_add'/>
-				 <input type='hidden' name='event_id' value='<?php echo $EM_Event->get_bookings()->event_id; ?>'/>
-				 <input type='hidden' name='_wpnonce' value='<?php echo wp_create_nonce( 'booking_add' ); ?>'/>
+				<input type='hidden' name='action' value='booking_add'/>
+				<input type='hidden' name='event_id' value='<?php echo $EM_Event->get_bookings()->event_id; ?>'/>
+				<input type='hidden' name='_wpnonce' value='<?php echo wp_create_nonce( 'booking_add' ); ?>'/>
 				<?php
 					// Tickets Form
 				if ( $show_tickets && ( $can_book || get_option( 'dbem_bookings_tickets_show_loggedout' ) ) && ( $tickets_count > 1 || get_option( 'dbem_bookings_tickets_single_form' ) ) ) { //show if more than 1 ticket, or if in forced ticket list view mode
