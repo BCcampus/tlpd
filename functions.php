@@ -8,7 +8,8 @@
 |
 |
 */
-if ( file_exists( $composer = __DIR__ . '/vendor/autoload.php' ) ) {
+$composer = __DIR__ . '/vendor/autoload.php';
+if ( file_exists( $composer ) ) {
 	require_once( $composer );
 }
 
@@ -57,11 +58,11 @@ add_filter( /**
 			'joyride',
 		];
 
-		if ( in_array( $handle, $defer ) ) {
+		if ( in_array( $handle, $defer, true ) ) {
 			return "<script defer type='text/javascript' src='{$src}'></script>" . "\n";
 		}
 
-		if ( in_array( $handle, $async ) ) {
+		if ( in_array( $handle, $async, true ) ) {
 			return "<script async type='text/javascript' src='{$src}'></script>" . "\n";
 		}
 
@@ -210,7 +211,7 @@ include( get_stylesheet_directory() . '/tlpd-events.php' );
  * @return mixed
  */
 function tlpd_em_scope_conditions( $conditions, $args ) {
-	if ( ! empty( $args['scope'] ) && $args['scope'] == 'after-today' ) {
+	if ( ! empty( $args['scope'] ) && $args['scope'] === 'after-today' ) {
 		$current_date        = date( 'Y-m-d', current_time( 'timestamp' ) );
 		$conditions['scope'] = " (event_start_date > CAST('$current_date' AS DATE))";
 	}
@@ -571,7 +572,7 @@ add_action( 'wp_loaded', 'tlpd_run_once' );
  */
 function tlpd_terminology_modify( $translated, $original, $domain ) {
 
-	if ( 'events-manager' == $domain ) {
+	if ( 'events-manager' === $domain ) {
 		$modify = [
 			'State/County:'                                                                  => 'Province:',
 			'Details'                                                                        => 'Event Description and Objectives',
@@ -582,7 +583,7 @@ function tlpd_terminology_modify( $translated, $original, $domain ) {
 		];
 	}
 
-	if ( 'buddypress' == $domain ) {
+	if ( 'buddypress' === $domain ) {
 		$modify = [
 			'Register'                                                                                                                  => 'Sign Up',
 			'Email Address'                                                                                                             => 'Work Email Address',
@@ -645,7 +646,8 @@ function tlpd_event_etc_output( $input = '' ) {
 	preg_match_all( '/<li class="category-(\d+)">/', $input, $output_array );
 	foreach ( $output_array[1] as $index => $post_id ) {
 		$cats       = wp_get_object_terms( $post_id, 'event-categories' );
-		$cat_output = $space = '';
+		$cat_output = '';
+		$space      = '';
 		foreach ( $cats as $cat ) {
 			$c           = get_category( $cat );
 			$cat_output .= $space . 'cat_' . str_replace( '-', '_', $c->slug );
@@ -668,9 +670,9 @@ function tlpd_event_etc_output( $input = '' ) {
  * @param bool $ajax
  */
 function et_fetch( $post_id = - 1, $ajax = true ) {
-	if ( $ajax == true ) {
+	if ( $ajax === true ) {
 		$output = tlpd_event_output( $post_id );
-		echo json_encode( $output ); //encode into JSON format and output
+		echo wp_json_encode( $output ); //encode into JSON format and output
 		die(); //stop "0" from being output
 	}
 }
@@ -773,7 +775,7 @@ function tlpd_bp_nav() {
 // Filter wp_nav_menu() to add tooltips to links in header menu
 add_filter(
 	'wp_nav_menu_items', function ( $nav, $args ) {
-		if ( $args->theme_location == 'main-menu' ) {
+		if ( $args->theme_location === 'main-menu' ) {
 			if ( is_user_logged_in() ) {
 				$nav  = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
 				$nav .= '<li class="home"><a href=' . home_url() . '/post-event>Add New</a></li>';

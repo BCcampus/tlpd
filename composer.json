@@ -24,13 +24,11 @@
   },
   "require-dev": {
     "humanmade/coding-standards": "^0.5.0",
-    "fig-r/psr2r-sniffer": "^0.5.0",
-    "squizlabs/php_codesniffer": "^3.3.2",
     "phpunit/phpunit": "^6.5.13"
   },
   "scripts": {
     "test": [
-      "@standards"
+      "vendor/bin/phpunit --configuration=phpunit.xml ."
     ],
     "standards": [
       "vendor/bin/phpcs --standard=phpcs.ruleset.xml ."

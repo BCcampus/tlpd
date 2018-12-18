@@ -25,20 +25,18 @@ foreach ( $myposts as $post ) :
 	?>
 	<article class="col-sm-4">
 		<p>
-			<a href="<?php the_permalink(); ?>" rel="bookmark"
-			   title="<?php the_title_attribute(); ?>">
-												   <?php
-													if ( ! has_post_thumbnail() ) {
-														echo "<img src='{$child_theme_uri}/dist/images/noteworthy.jpg' alt='new and noteworthy' />";
-													} else {
-														the_post_thumbnail( 'featured-size' );
-													}
-													?>
-				</a>
+			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">
+				<?php
+				if ( ! has_post_thumbnail() ) {
+					echo "<img src='{$child_theme_uri}/dist/images/noteworthy.jpg' alt='new and noteworthy' />";
+				} else {
+					the_post_thumbnail( 'featured-size' );
+				}
+				?>
+			</a>
 		</p>
 		<h4>
-			<a href="<?php the_permalink(); ?>" rel="bookmark"
-			   title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 		</h4>
 		<p><?php the_excerpt(); ?></p>
 	</article>

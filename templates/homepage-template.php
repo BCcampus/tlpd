@@ -20,14 +20,14 @@ infinity_get_header();
 <section class="flex-row container-fluid">
 	<div class="col-12">
 		<h2 class="text-green text-center">Find learning events</h2>
-			<?php echo do_shortcode( '[events_search]' ); ?>
+		<?php echo do_shortcode( '[events_search]' ); ?>
 	</div>
 </section>
 
 <section class="flex-row container-fluid mb-4 justify-content-center align-self-center">
 	<h2 class="text-green text-center">New + Noteworthy</h2>
 	<div class="d-flex flex-row flex-wrap">
-	<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
+		<?php infinity_load_template( 'templates/featured-stories.php' ); ?>
 	</div>
 </section>
 
@@ -39,26 +39,24 @@ infinity_get_header();
 	<div id="tabs" class="col-sm">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item">
-				<a class="nav-link active" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab"
-				   aria-controls="home" aria-selected="true">Upcoming Events</a>
+				<a class="nav-link active" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab" aria-controls="home" aria-selected="true">Upcoming Events</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" id="recent-tab" data-toggle="tab" href="#recent" role="tab"
-				   aria-controls="profile" aria-selected="false">Recently Posted</a>
+				<a class="nav-link" id="recent-tab" data-toggle="tab" href="#recent" role="tab" aria-controls="profile" aria-selected="false">Recently Posted</a>
 			</li>
 		</ul>
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
 				<?php
-					$events_list = '[events_list scope="after-today" limit="4"]';
-					echo do_shortcode( $events_list );
+				$events_list = '[events_list scope="after-today" limit="4"]';
+				echo do_shortcode( $events_list );
 				?>
 			</div>
 			<div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
 				<?php
-					// documentation http://wp-events-plugin.com/documentation/event-search-attributes/event-location-grouping-ordering/
-					$events_recent = '[events_list orderby="event_date_created" order="DESC" groupby="location_id" groupby_orderby="event_date_created" groupby_order="DESC" limit="4"]';
-					echo do_shortcode( $events_recent );
+				// documentation http://wp-events-plugin.com/documentation/event-search-attributes/event-location-grouping-ordering/
+				$events_recent = '[events_list orderby="event_date_created" order="DESC" groupby="location_id" groupby_orderby="event_date_created" groupby_order="DESC" limit="4"]';
+				echo do_shortcode( $events_recent );
 				?>
 			</div>
 		</div>
