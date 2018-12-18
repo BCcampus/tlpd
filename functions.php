@@ -383,7 +383,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version       = 7.23;
+	$tlpd_version       = 7.25;
 	$current_version    = get_option( 'tlpd_version', 0 );
 	$img_max_dimension  = 1000;
 	$img_min_dimension  = 50;
@@ -426,7 +426,6 @@ function tlpd_run_once() {
 #_ATT{Event is open to external}{|Yes|No}
 #_ATT{Prerequisite(s)}
 #_ATT{Registration Fee}
-#_ATT{Online}{|Yes|No}
 #_ATT{Website}
 #_ATT{Registration Contact Phone Number}
 #_ATT{Registration Contact Email}';
