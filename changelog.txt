@@ -1,4 +1,23 @@
 == Change Log ==
+
+= v1.3.0 (12/19/2018) =
+* input/output validation for hyperlinks
+* event label and attribute changes
+* enhanced UI for multi-select categories via select2
+* theme consistency improvements
+* addition of region to locations
+* Login/signup workflow improvements
+
+= v1.0.0 (09/28/2018) =
+* many look and feel changes
+* event attribution labels and order
+* PWA fixes
+* mobile optimizations
+* colour contrast accessibility improvements
+* content and label changes
+* upgrade to bootstrap 4 framework
+* resolution to account creation issue
+
 = v0.9.5 (09/15/2017) =
 * coding standards and clean up
 * severe restrictions for editor role
