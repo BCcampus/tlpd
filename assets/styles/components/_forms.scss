@@ -27,13 +27,6 @@ form.standard-form #basic-details-section {
   float: right;
 }
 
-#event-form {
-  #em-editor-content_ifr {
-    height: 200px !important;
-  }
-}
-
-
 // increases line height for time picker
 div.time-picker li {
   height: auto;
@@ -44,28 +37,13 @@ div.time-picker li {
   width: 100%;
 }
 
-#event-form, .css-events-admin {
-  p.margin-up {
-    margin-top: 0;
-  }
-  #event-name {
-    padding: 8px 11px;
-  }
-  .mce-path-item {
-    display: none;
-  }
-}
-
 .field-visibility-settings-toggle {
   display: none;
 }
 
 // Post Event Page
-// ---
-// 1. Remove large margin under title
-//
 .entry {
-  margin-top: 0; // 1
+  margin-top: 0;
 
   em {
     font-size: 16px;
@@ -73,15 +51,32 @@ div.time-picker li {
 }
 
 // Content Editor
-// ---
-// 1. Add a border around the edit box
-//
 .mce-tinymce.mce-container.mce-panel {
-  border: 1px solid $color-gray-mercury; // 1
+  border: 1px solid $color-gray-mercury;
 }
 
 // Post Event Form
-// ---
+#event-form, .css-events-admin {
+  p.margin-up {
+    margin-top: 0;
+  }
+
+  #event-name {
+    padding: 8px 11px;
+  }
+
+  .mce-path-item {
+    display: none;
+  }
+}
+
+
+#event-form {
+  #em-editor-content_ifr {
+    height: 200px !important;
+  }
+}
+
 .entry,
 #event-form {
   em, .margin-up {
@@ -104,10 +99,6 @@ div.time-picker li {
   }
 
   // Submit button
-  // ---
-  // 1. Important to override p style
-  //
-
   .submit.button.orange {
     margin-top: $unit*10 !important;
     background: none;
@@ -122,16 +113,25 @@ div.time-picker li {
       border: none;
     }
   }
+
   .event-form-bookings {
     display: none;
+  }
+
+  .event-attributes {
+    input[type="text"] {
+      width: 50%;
+    }
+  }
+
+  .em-location-data {
+    input[type="text"] {
+      width: 100%;
+    }
   }
 }
 
 // Form Table
-// ---
-// 1. important t ooverride dynamic styles
-//
-
 .form-table th,
 .events-table th {
   color: $color-neutral-80 !important; //1

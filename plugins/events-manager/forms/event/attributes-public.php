@@ -26,7 +26,7 @@ if ( count( $attributes['names'] ) > 0 ) : ?>
 			<?php
 			switch ( $name ) {
 				case 'Registration Fee':
-					echo '<p class="margin-up"><i>Enter the registration fee ($CAD). Add notes as required; e.g., \'Free\', \'No fee for internal staff\'</i></p>';
+					echo '<p class="margin-up"><i>Enter the registration fee ($CAD). Add notes as required; e.g., "Free", "No fee for internal staff"</i></p>';
 					break;
 				case 'Facilitator(s) Bio':
 					echo '<p class="margin-up"><i>Maximum 100 words</i></p>';

@@ -62,10 +62,9 @@ if ( empty( $_REQUEST['success'] ) ) {
 			</div>
 		<?php endif; ?>
 		<h3 class="event-form-name"><?php esc_html_e( 'Event Name', 'events-manager' ); ?><?php echo $required; ?></h3>
-		<div class="inside event-form-name">
+        <i><?php esc_html_e( 'E.g., "Instructional Skills Workshop"', 'events-manager' ); ?></i>
+        <div class="inside event-form-name">
 			<input type="text" name="event_name" id="event-name" value="<?php echo esc_attr( $EM_Event->event_name, ENT_QUOTES ); ?>"/>
-			<br/>
-			<i><?php esc_html_e( 'Event name example: "Instructional Skills Workshop"', 'events-manager' ); ?></i>
 			<?php em_locate_template( 'forms/event/group.php', true ); ?>
 		</div>
 
@@ -84,14 +83,14 @@ if ( empty( $_REQUEST['success'] ) ) {
 
 		<?php if ( get_option( 'dbem_locations_enabled' ) ) : ?>
 			<h3 class="event-form-where"><?php esc_html_e( 'Where', 'events-manager' ); ?></h3>
-			<p class="margin-up"><i>If your event is online select the location of the organizers of the event.</i></p>
+            <p class="margin-up"><i>If your location is not on this list, <a href="<?php echo get_site_url().'/contact-us/';?>">contact us</a> for assistance.</i></p>
 			<div class="inside event-form-where">
 				<?php em_locate_template( 'forms/event/location.php', true ); ?>
 			</div>
 		<?php endif; ?>
 
 		<h3 class="event-form-details"><?php esc_html_e( 'Details', 'events-manager' ); ?><?php echo $required; ?></h3>
-		<p class="margin-up"><i>(What will participants learn?)</i></p>
+		<p class="margin-up"><i>What will participants learn?</i></p>
 		<div class="inside event-form-details">
 			<div class="event-editor">
 				<?php if ( get_option( 'dbem_events_form_editor' ) && function_exists( 'wp_editor' ) ) : ?>
