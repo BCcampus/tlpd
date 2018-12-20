@@ -14,7 +14,6 @@
     "bootstrap": "4.1.3",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
-    "laravel-mix": "^4.0.7",
     "popper.js": "^1.14.4",
     "select2": "^4.0.6-rc.1"
   },
@@ -22,6 +21,7 @@
     "browser-sync": "^2.26.3",
     "browser-sync-webpack-plugin": "^2.2.2",
     "sass": "^1.15.2",
-    "sass-loader": "7.*"
+    "sass-loader": "7.*",
+    "laravel-mix": "^4.0.7"
   }
 }
