@@ -1,5 +1,9 @@
 == Change Log ==
 
+= v1.3.1 (12/20/2018) =
+* minor label changes to event edit
+* fix build dependencies
+
 = v1.3.0 (12/19/2018) =
 * input/output validation for hyperlinks
 * event label and attribute changes
