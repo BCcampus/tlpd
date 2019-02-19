@@ -91,18 +91,16 @@ input[type="radio"] {
 
 select {
   -webkit-appearance: none;
-  padding: $unit*1.8 $unit*3;
-
+  padding: $unit*1.8 $unit*5 $unit*1.8 $unit*3;
   box-shadow: none;
   border: 1px solid $color-neutral-50;
   border-radius: $border-radius;
   font-weight: normal;
   font-size: $font-size - 2;
-
   background-image: url('../images/tlpd-plus.svg');
   background-repeat: no-repeat;
   background-size: 20px 20px;
-  background-position-x: 90%;
+  background-position-x: 98%;
   background-position-y: 50%;
 }
 
