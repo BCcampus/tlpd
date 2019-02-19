@@ -505,7 +505,7 @@ function tlpd_run_once() {
 		 * Changes to search for labels
 		 */
 		update_option( 'dbem_search_form_state_label', 'Province' );
-		update_option( 'dbem_search_form_text_label', 'Search by Topic, Keyword or Location' );
+		update_option( 'dbem_search_form_text_label', 'Search by Keyword (topic, location, institution, etc.)' );
 		update_option( 'dbem_search_form_dates_label', 'Search by Start Date' );
 		update_option( 'dbem_search_form_category_label', 'Search by Category' );
 		update_option( 'dbem_search_form_town_label', 'City/Community/Town' );
