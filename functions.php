@@ -384,7 +384,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version       = 7.25;
+	$tlpd_version       = 7.26;
 	$current_version    = get_option( 'tlpd_version', 0 );
 	$img_max_dimension  = 1000;
 	$img_min_dimension  = 50;
@@ -505,7 +505,7 @@ function tlpd_run_once() {
 		 * Changes to search for labels
 		 */
 		update_option( 'dbem_search_form_state_label', 'Province' );
-		update_option( 'dbem_search_form_text_label', 'Search by Topic, Keyword or Location' );
+		update_option( 'dbem_search_form_text_label', 'Search by Keyword (topic, location, institution, etc.)' );
 		update_option( 'dbem_search_form_dates_label', 'Search by Start Date' );
 		update_option( 'dbem_search_form_category_label', 'Search by Category' );
 		update_option( 'dbem_search_form_town_label', 'City/Community/Town' );
