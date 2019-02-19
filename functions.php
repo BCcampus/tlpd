@@ -534,7 +534,7 @@ function tlpd_run_once() {
 		/**
 		 * Booking submit success
 		 */
-		update_option( 'dbem_booking_feedback', 'Event added! Click on myTLPD (top right of your screen) to find this saved event.' );
+		update_option( 'dbem_booking_feedback', 'Event added! Click on My Events (top right of your screen) to find this saved event.' );
 
 		/**
 		 * Manage bookings link text
@@ -709,7 +709,7 @@ function tlpd_admin_bar_render() {
 		$wp_admin_bar->add_node(
 			[
 				'id'     => 'my_profile',
-				'title'  => 'myTLPD',
+				'title'  => 'My Events',
 				'href'   => $profileurl,
 				'parent' => 'user-actions',
 				'meta'   => [
