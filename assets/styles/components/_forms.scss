@@ -94,6 +94,11 @@ div.time-picker li {
     margin-top: $unit*10;
   }
 
+  select {
+    padding: 9px 25px 9px 15px;
+    background-position-x: 98%;
+  }
+
   .event-extra-details label {
     font-weight: 600;
   }
