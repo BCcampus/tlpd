@@ -384,7 +384,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version       = 7.26;
+	$tlpd_version       = 7.27;
 	$current_version    = get_option( 'tlpd_version', 0 );
 	$img_max_dimension  = 1000;
 	$img_min_dimension  = 50;
@@ -550,6 +550,11 @@ function tlpd_run_once() {
 		 * Control all the things map-ish
 		 */
 		update_option( 'dbem_map_default_height', '300px' );
+
+		/**
+		 * Update No Categories msg
+		 */
+		update_option( 'dbem_no_categories_message', '<br>No Categories' );
 
 		/**
 		 * Update option to current version
