@@ -384,7 +384,7 @@ function tlpd_get_provinces() {
 function tlpd_run_once() {
 
 	// change tlpd_version value to run it again
-	$tlpd_version       = 7.25;
+	$tlpd_version       = 7.26;
 	$current_version    = get_option( 'tlpd_version', 0 );
 	$img_max_dimension  = 1000;
 	$img_min_dimension  = 50;
