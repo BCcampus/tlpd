@@ -17,7 +17,7 @@ global $EM_Event;
  */
 $attributes          = em_get_attributes();
 $has_deprecated      = false;
-$required_attributes = [ '' ];
+$required_attributes = [ 'Registration Fee' ];
 
 if ( count( $attributes['names'] ) > 0 ) : ?>
 	<?php foreach ( $attributes['names'] as $name ) : ?>
