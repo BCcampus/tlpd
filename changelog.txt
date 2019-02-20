@@ -1,4 +1,6 @@
 == Change Log ==
+= v1.3.2 (02/19/2019) =
+* perfective maintenance release
 
 = v1.3.1 (12/20/2018) =
 * minor label changes to event edit
