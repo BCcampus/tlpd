@@ -785,7 +785,7 @@ add_filter(
 				$nav  = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
 				$nav .= '<li class="home"><a href=' . home_url() . '/post-event>Add New</a></li>';
 				$nav .= '<li class="home"><a href=' . home_url() . '/edit-events>Edit Events</a></li>';
-				$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( '<i>my</i> Events' ) . '</a></li>';
+				$nav .= '<li class="home"><a href="' . tlpd_get_my_bookings_url() . '">' . __( 'my Events' ) . '</a></li>';
 			} else {
 				$nav = '<li class="home"><a href=' . home_url() . '/events>Events</a></li>';
 			}
