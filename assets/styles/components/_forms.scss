@@ -32,9 +32,12 @@ div.time-picker li {
   height: auto;
 }
 
-.event-categories select {
-  background: none;
-  width: 100%;
+.event-categories {
+  margin-bottom: 12px;
+  select {
+    background: none;
+    width: 100%;
+  }
 }
 
 .field-visibility-settings-toggle {
