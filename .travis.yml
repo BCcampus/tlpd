@@ -29,7 +29,8 @@ install:
 - yarn
 - composer install
 before_script:
-- if [[ ${TRAVIS_PHP_VERSION:0:3} != "7.1" ]] && php -v | grep -q 'Xdebug'; then phpenv config-rm xdebug.ini; fi
+- if [[ ${TRAVIS_PHP_VERSION:0:3} != "7.1" ]] && php -v | grep -q 'Xdebug'; then phpenv
+  config-rm xdebug.ini; fi
 - bash bin/install-wp-tests.sh tlpd_test root '' localhost $WP_VERSION
 script:
 - yarn run build:production
@@ -49,9 +50,9 @@ deploy:
   provider: releases
   skip_cleanup: true
   api_key:
-    secure: jtiezO5SnBXHnnNHAXxUfKZCzA4gKknVJLaDTtnm7K9qPjjUEHMU8LLxBNiZCsp4zpXhy/Jt0C9C+/DE6Z1Ro4BRrpE5AQ/LqTbA7DZ+pgfj+VfcXjjMqnATNcS8QlZ0RHJV097YU+aQK+DX13TYRgp6XdwyI+E0yWlXnSisr8XyrEyGRcCuEURbX1enWGe8qWAl3iRYRrP8frEAStgZ8WxNlS+4DKpxrDbUKQcgxn0jibWrnrgxTnkMxYxm7kL11h5XzJZDBT81c+aNAkNaHPauC0P0DGys4kzx56b+9S2L0fZ6aFy8OKpwLXpANjspAs2EP+k3ONZuzZ7kbcDkRRkcqgt/8ln5CPXHvjnEqno8B38/kvgB5gGQEKpKRkEMxJ+k1vXkr5/4E7Pjl01ga00U1M4Nm4q2l6jbsSAi+DZARtP8RjgtKey4CaDahTH+1TWt4TGQ7umjpcVhV9eXqLc1yoIUJQPNHxFhYDybLaRlwQZP9mrQOzXdcyQWag4UivVzxWIVv7KTN7w9d6dXhcAzVCuXR2WBXLFoHt5IG3kCPncDVk4NfKsKwbtbYiqSok3tLVxUrnAG8GL/sqk8rxCr2g0PPjCTj1iWbdLFDYLjJC1rVmha95G7/jRwPWw3ZOAf/DqP7oy5GnjRj5L7VjQWjmyo1zFsInbY0bd4euI=
-  file: "tlpd-$TRAVIS_TAG.zip"
+    secure: WkB5n62slsMqROUPCpnLWTw3gceJJdwjaW+WVVA54G1v9JnIGhUK+rFAafhhoPdEpq9opLFzGG5gQL0uAjH2wwYFaVz6PhsW1mQKbaW9YyQnE7nB0LqOHKQGZExuMui2w/cEjCh8MlDKeFSKnk7fS9US5vYWycUKJ4CsLjtLBTKHhhozPovZK63/h+v6HWzALv8RV54JCpTjwNRL6G3iQdc4r0I2uKJDSy23/3G+OEDTfcIcRw20uAZlv9AUbhbkDpp90acjafXRIXYOeMpLEXSPkbrkJ3eTHg4gbbRr/kxCrsl9LS6BSHT7o0FHlcOg/DRBEIkPqWcBIye9S3/gbqfUjcMx23PmVgIT8JskU0CAbgjqBufaiv/sNHPrM71RQwYfZsFpP3LKKcmbTl0qg2wj6RBHyhGMe6jdCB4JoHlhOlV4c1lchgBnZMyR8uNQ0z7hVODRXXuV0zCOjSWAkdOCFyqqsIjv9bvLl1DTs3UTx3tcAireZN+2MJ+fzhcV8+llvKUlPC78PCzQTexiqa/bM7MzdLHusYcd9f+fPkidAXKyfMtabkLrVcyVV7145YeZIOLIHe/SRqjQIxAKhJZfilAkqs8SICMbByujRM8DDYXt6euEUMPL5V5zp3rX7RGm8ORnmDQdzgWEM4wUvG6EB2Xc8tufYTdKlOBJXEI=
+  file: tlpd-$TRAVIS_TAG.zip
   on:
-    tags: true
-    repo: BCcampus/tlpd
-    branch: dev
+  tags: true
+  repo: BCcampus/tlpd
+  branch: dev
