@@ -728,7 +728,7 @@ function tlpd_admin_bar_render() {
 		$wp_admin_bar->add_node(
 			[
 				'id'     => 'logout',
-				'title'  => 'Logout',
+				'title'  => 'Log Out',
 				'href'   => $logouturl,
 				'parent' => 'user-actions',
 				'meta'   => [
